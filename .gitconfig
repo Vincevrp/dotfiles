@@ -1,0 +1,12 @@
+[user]
+	name = Vincevrp
+	email = Vincevrp@users.noreply.github.com
+
+[push]
+	default = simple
+
+[github]
+	user = Vincevrp 
+
+[color]
+	ui = true
