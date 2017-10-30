@@ -10,4 +10,7 @@ source ~/.shell_prompt.sh
 
 # Aliases
 alias :q='exit'
+alias ls='ls --color=always'
 alias la='ls -hail'
+
+eval "$(dircolors ~/.dir_colors)"
