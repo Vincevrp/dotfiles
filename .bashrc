@@ -10,3 +10,4 @@ source ~/.shell_prompt.sh
 
 # Aliases
 alias :q='exit'
+alias la='ls -hail'
