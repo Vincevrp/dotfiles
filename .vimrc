@@ -18,16 +18,19 @@ Plugin 'tpope/vim-surround'
 call vundle#end()
 filetype plugin indent on
 
-" Set indent size to 4 spaces
-set tabstop=4
-set softtabstop=0 noexpandtab
-set shiftwidth=4
-
-" Set linenumbers
-set number
-
-" Escape delay fix
-set timeoutlen=1001 ttimeoutlen=0
+" Vim behaviour
+set tabstop=4 						" Number of spaces a tab counts for
+set softtabstop=0 noexpandtab 		" Use tab character instead of spaces
+set shiftwidth=4 					" Make indent correspond to single tab
+set smarttab 						" Enable smarttab
+set relativenumber					" Enable relative line numbers
+set ignorecase						" Ignore case when searching
+set smartcase 						" Ignore case if search is all lowercase, case-sensitive otherwise
+set hlsearch      					" Highlight search terms
+set incsearch     					" Show search matches as you type
+set showmatch 						" Show matching parenthesis
+set mouse=a 						" Enable mouse input
+set timeoutlen=1001 ttimeoutlen=0	" Escape delay fix
 
 " Set color scheme to Nord
 colorscheme nord
