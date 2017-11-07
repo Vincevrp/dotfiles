@@ -13,6 +13,13 @@ Plugin 'arcticicestudio/nord-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+
+" CSS3 and SASS Syntax support
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'gcorne/vim-sass-lint'
+Plugin 'cakebaker/scss-syntax.vim'
 
 " All plugins must be added before the following line
 call vundle#end()
@@ -46,3 +53,17 @@ let NERDTreeShowHidden=1 " Use Shift + i to toggle
 
 " CtrlP settings
 let g:ctrlp_show_hidden=1
+
+" Syntastic settings
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_sass_checkers=["sasslint"]
+let g:syntastic_scss_checkers=["sasslint"]
