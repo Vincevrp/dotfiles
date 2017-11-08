@@ -41,6 +41,19 @@ set mouse=a 						" Enable mouse input
 set timeoutlen=1001					" Set mapping delay (Escape delay fix)
 set ttimeoutlen=0					" Set key code delay (Escape delay fix)
 
+" Custom keybindings
+nnoremap <silent> <F1> :NERDTreeToggle<CR>
+nnoremap <silent> <A-e> :SyntasticCheck<CR>
+nnoremap <silent> <M-r> :SyntasticReset<CR>
+
+" Fix for Alt-keybindings
+let c='a'
+while c <= 'z'
+	exec "set <A-".c.">=\e".c
+	exec "imap \e".c." <A-".c.">"
+	let c = nr2char(1+char2nr(c))
+endw
+
 " Set color scheme to Nord
 colorscheme nord
 
@@ -48,7 +61,6 @@ colorscheme nord
 let g:airline_powerline_fonts=1
 
 " NERDTree settings
-nnoremap <silent> <F1> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1 " Use Shift + i to toggle
 
 " CtrlP settings
