@@ -17,3 +17,6 @@ To match the color scheme used in the dotfiles, install [Nord](https://github.co
 
 ### YouCompleteMe
 This plugin must be compiled by running `~/.vim/bundle/YouCompleteMe/install.py`.
+
+### JSHint
+Install by running `sudo npm install -g jshint`.
