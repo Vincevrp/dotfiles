@@ -12,6 +12,7 @@ source ~/.shell_prompt.sh
 alias :q='exit'
 alias ls='ls --color=always'
 alias la='ls -hail'
+alias ranger='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; cd "$LASTDIR"'
 
 eval "$(dircolors ~/.dir_colors)"
 
