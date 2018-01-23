@@ -41,6 +41,8 @@ set mouse=a 						" Enable mouse input
 set timeoutlen=1001					" Set mapping delay (Escape delay fix)
 set ttimeoutlen=0					" Set key code delay (Escape delay fix)
 
+syntax on							" Enable syntax highlighting
+
 " Custom keybindings
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
