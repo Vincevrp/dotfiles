@@ -27,8 +27,8 @@ filetype plugin indent on
 
 " Vim behaviour
 set tabstop=4 						" Number of spaces a tab counts for
-set softtabstop=0					" Set columns to 0 for tabs
-set noexpandtab 					" Use tab character instead of spaces
+set softtabstop=4					" Set columns to 0 for tabs
+set expandtab						" Use tab character instead of spaces
 set shiftwidth=4 					" Make indent correspond to single tab
 set smarttab 						" Enable smarttab
 set relativenumber					" Enable relative line numbers
@@ -40,6 +40,8 @@ set showmatch 						" Show matching parenthesis
 set mouse=a 						" Enable mouse input
 set timeoutlen=1001					" Set mapping delay (Escape delay fix)
 set ttimeoutlen=0					" Set key code delay (Escape delay fix)
+set encoding=utf-8					" Enable UTF-8
+set t_Co=256						" Enable 256 color support
 
 syntax on							" Enable syntax highlighting
 
@@ -61,6 +63,7 @@ colorscheme nord
 
 " Let vim-airline use powerline fonts
 let g:airline_powerline_fonts=1
+set guifont=Hack-regular
 
 " NERDTree settings
 let NERDTreeShowHidden=1 " Use Shift + i to toggle
