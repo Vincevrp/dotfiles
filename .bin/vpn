@@ -1,0 +1,28 @@
+#!/bin/bash
+
+OPENVPN_DIR="/etc/openvpn/conf.d"
+PID_DIR="/run/openvpn"
+PID_FILE="openvpn.pid"
+
+if [ "$EUID" -ne 0 ]; then
+    echo "Root privileges required"
+    exit 1
+fi
+
+if [ "$#" -le 0 ] || [ "$#" -gt 1 ]; then
+    echo "Please specify 1 configuration file"
+    exit 1
+fi
+
+# Disable IPv6
+sysctl -w net.ipv6.conf.all.disable_ipv6=1
+
+# Create directory and PID file
+mkdir -p $PID_DIR && touch $PID_DIR/$PID_FILE
+
+# Start OpenVPN
+openvpn --writepid "$PID_DIR/$PID_FILE" --cd "$OPENVPN_DIR" --config "$1.conf"
+
+# Re-enable IPv6 and run DHCP
+sysctl -w net.ipv6.conf.all.disable_ipv6=0
+dhcpcd

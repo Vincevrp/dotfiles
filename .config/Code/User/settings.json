@@ -1,0 +1,13 @@
+{
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "window.zoomLevel": 0,
+    "window.menuBarVisibility": "toggle",
+    "workbench.colorTheme": "Nord",
+    "editor.lineNumbers": "relative",
+    "vim.useCtrlKeys": false,
+    "vim.useSystemClipboard": true,
+    "jshint.config": "~/.jshintrc",
+    "editor.fontFamily": "'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontSize": 13
+}
