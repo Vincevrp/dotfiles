@@ -15,7 +15,7 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 alias clock='tty-clock -c'
 
 # Variables
-export PATH=$PATH:~/bin                     # Add ~/bin to PATH
+export PATH=$PATH:~/.bin                     # Add ~/bin to PATH
 export TERM=xterm
 export EDITOR=/usr/bin/vim
 export ZSH=/home/vince/.oh-my-zsh
