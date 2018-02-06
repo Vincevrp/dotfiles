@@ -5,8 +5,8 @@
 
 Dotfiles for my desktop workstation, based on Antergos Linux.
 
-![Clean screenshot](SCREENSHOT.png)
-![Dirty screenshot](SCREENSHOT2.png)
+![Clean screenshot](https://raw.githubusercontent.com/Vincevrp/dotfiles/master/SCREENSHOT.png)
+![Dirty screenshot](https://raw.githubusercontent.com/Vincevrp/dotfiles/master/SCREENSHOT2.png)
 
 ## Contents
 
