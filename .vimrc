@@ -23,6 +23,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 " All plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
+syntax on                           " Enable syntax highlighting
 
 " Vim behaviour
 set tabstop=4 						" Number of spaces a tab counts for
@@ -30,7 +31,7 @@ set softtabstop=4					" Set columns to 0 for tabs
 set expandtab						" Use tab character instead of spaces
 set shiftwidth=4 					" Make indent correspond to single tab
 set smarttab 						" Enable smarttab
-set relativenumber					" Enable relative line numbers
+set number relativenumber			" Enable relative line numbers
 set ignorecase						" Ignore case when searching
 set smartcase 						" Ignore case if search is all lowercase, case-sensitive otherwise
 set hlsearch      					" Highlight search terms
@@ -41,13 +42,13 @@ set timeoutlen=1001					" Set mapping delay (Escape delay fix)
 set ttimeoutlen=0					" Set key code delay (Escape delay fix)
 set encoding=utf-8					" Enable UTF-8
 set t_Co=256						" Enable 256 color support
-
-syntax on							" Enable syntax highlighting
+set showcmd                         " Show command while typing
 
 " Custom keybindings
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
+nnoremap <silent> <C-l> :noh<CR>
 
 " Fix for Alt-keybindings
 let c='a'
@@ -71,7 +72,6 @@ let NERDTreeShowHidden=1 " Use Shift + i to toggle
 let g:ctrlp_show_hidden=1
 
 " Syntastic settings
-
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
