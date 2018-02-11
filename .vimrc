@@ -6,14 +6,20 @@ call vundle#begin()
 
 " Vundle plugins
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'arcticicestudio/nord-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'arcticicestudio/nord-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+
+" Markdown plugins
+Plugin 'shime/vim-livedown'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " CSS3 and SASS Syntax support
 Plugin 'hail2u/vim-css3-syntax'
@@ -43,12 +49,19 @@ set ttimeoutlen=0					" Set key code delay (Escape delay fix)
 set encoding=utf-8					" Enable UTF-8
 set t_Co=256						" Enable 256 color support
 set showcmd                         " Show command while typing
+set conceallevel=2                  " Enable concealing
 
 " Custom keybindings
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
 nnoremap <silent> <C-l> :noh<CR>
+nnoremap <silent> <A-p> :LivedownToggle<CR>
+
+" Easymotion bindings
+let g:EasyMotion_do_mapping = 0
+nnoremap <silent> <Space> <Plug>(easymotion-prefix)
+map <Space>f <Plug>(easymotion-bd-w)
 
 " Fix for Alt-keybindings
 let c='a'
@@ -70,6 +83,15 @@ let NERDTreeShowHidden=1 " Use Shift + i to toggle
 
 " CtrlP settings
 let g:ctrlp_show_hidden=1
+
+" Markdown settings
+let g:vim_markdown_folding_style_pythonic=1
+
+" Livedown settings
+let g:livedown_autorun=0
+let g:livedown_open=1
+let g:livedown_port=4444
+let g:livedown_browser="chromium"
 
 " Syntastic settings
 set statusline+=%#warningmsg#
