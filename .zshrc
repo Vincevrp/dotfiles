@@ -6,13 +6,18 @@ plugins=(
 	git
 )
 
-
 # Aliases
 alias :q='exit'
 alias ls='ls --color=always'
 alias la='ls -hail'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias clock='tty-clock -c'
+
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gca='git commit -am'
+alias gp='git push'
 
 # Variables
 export PATH=$PATH:~/.bin                     # Add ~/.bin to PATH
