@@ -76,6 +76,15 @@ Requires [tpm](https://github.com/tmux-plugins/tpm) to be installed. Refer to th
 
 Requires [Vundle](https://github.com/VundleVim/Vundle.vim) to be installed. Refer to the repository for usage and installation instructions.
 
+#### YouCompleteMe
+
+This plugin must be compiled by running `~/.vim/bundle/YouCompleteMe/install.py`. Refer to the [repository](https://github.com/Valloric/YouCompleteMe) for the correct parameters.
+
+Syntax checkers:
+
+- [JSHint](https://github.com/jshint/jshint/): Install by running `sudo npm install -g jshint`.
+- [Sass-lint](https://github.com/sasstools/sass-lint): Install by running `sudo npm install -g sass-lint`.
+
 ### X.org
 
 [X.org](https://www.x.org/) requires different files:
@@ -90,15 +99,6 @@ Requires [Vundle](https://github.com/VundleVim/Vundle.vim) to be installed. Refe
   - [Nord](#color-scheme) color scheme.
   - [Rofi](#rofi) theme using the colors from Nord.
   - [Rxvt-unicode](#rxvt-unicode) settings.
-
-#### YouCompleteMe
-
-This plugin must be compiled by running `~/.vim/bundle/YouCompleteMe/install.sh`.
-
-Syntax checkers:
-
-- [JSHint](https://github.com/jshint/jshint/): Install by running `sudo npm install -g jshint`.
-- [Sass-lint](https://github.com/sasstools/sass-lint): Install by running `sudo npm install -g sass-lint`.
 
 ### Zsh
 
