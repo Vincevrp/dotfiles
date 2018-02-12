@@ -76,6 +76,10 @@ Requires [tpm](https://github.com/tmux-plugins/tpm) to be installed. Refer to th
 
 Requires [Vundle](https://github.com/VundleVim/Vundle.vim) to be installed. Refer to the repository for usage and installation instructions.
 
+#### vim-livedown
+
+Requires `npm`. To install [Livedown](https://github.com/shime/vim-livedown) run `sudo npm install -g livedown`.
+
 #### YouCompleteMe
 
 This plugin must be compiled by running `~/.vim/bundle/YouCompleteMe/install.py`. Refer to the [repository](https://github.com/Valloric/YouCompleteMe) for the correct parameters.
