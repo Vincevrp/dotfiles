@@ -15,6 +15,7 @@ alias clock='tty-clock -c'
 
 alias gs='git status'
 alias ga='git add'
+alias gd='git diff'
 alias gc='git commit -m'
 alias gca='git commit -am'
 alias gp='git push'
