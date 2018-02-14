@@ -51,6 +51,9 @@ set t_Co=256                        " Enable 256 color support
 set showcmd                         " Show command while typing
 set conceallevel=2                  " Enable concealing
 
+" Write as sudo
+command W execute ":w !sudo tee %"
+
 " Custom keybindings
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
