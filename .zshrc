@@ -3,7 +3,7 @@
 ZSH_THEME="robbyrussell"
 
 plugins=(
-	git
+    git
 )
 
 # Aliases
@@ -18,7 +18,8 @@ alias ga='git add'
 alias gd='git diff'
 alias gc='git commit -m'
 alias gca='git commit -am'
-alias gp='git push'
+alias gp='git pull'
+alias gP='git push'
 
 # Variables
 export PATH=$PATH:~/.bin                     # Add ~/.bin to PATH
