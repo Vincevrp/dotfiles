@@ -23,6 +23,7 @@ alias gP='git push'
 
 # Variables
 export PATH=$PATH:~/.bin                     # Add ~/.bin to PATH
+export VIMINIT="source ~/.vim/vimrc"
 export TERM=xterm
 export EDITOR=/usr/bin/vim
 export ZSH=/home/vince/.oh-my-zsh
