@@ -1,7 +1,8 @@
 # Shell aliases
 alias :q='exit'
 alias ls='ls --color=always'
-alias la='ls -hail'
+alias la='ls -hal'
+alias lai='ls -hail'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias clock='tty-clock -c'
 
