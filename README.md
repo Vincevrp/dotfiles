@@ -5,8 +5,8 @@
 
 Dotfiles for my desktop workstation, based on Antergos Linux.
 
-![Clean screenshot](https://github.com/Vincevrp/dotfiles/blob/master/assets/SCREENSHOT.png)
-![Dirty screenshot](https://github.com/Vincevrp/dotfiles/blob/master/assets/SCREENSHOT2.png)
+![Clean screenshot](https://raw.githubusercontent.com/Vincevrp/dotfiles/master/assets/SCREENSHOT.png)
+![Dirty screenshot](https://raw.githubusercontent.com/Vincevrp/dotfiles/master/assets/SCREENSHOT2.png)
 
 ## Contents
 
