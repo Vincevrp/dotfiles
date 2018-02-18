@@ -36,18 +36,18 @@ workspace 3 output DVI-I-1
 font pango:System San Francisco Display 10
 
 # Colors
-set $bg-color	         #2f343f
-set $inactive-bg-color   #2f343f
-set $text-color          #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color     #E53935
+set $bg-color               #2f343f
+set $inactive-bg-color      #2f343f
+set $text-color             #f3f4f5
+set $inactive-text-color    #676E7D
+set $urgent-bg-color        #E53935
 
 # Window colors
-#                       border              background         	text                 indicator
-client.focused          $bg-color           $bg-color          	$text-color          $text-color
-client.unfocused        $inactive-bg-color 	$inactive-bg-color 	$inactive-text-color $text-color
-client.focused_inactive $inactive-bg-color 	$inactive-bg-color 	$inactive-text-color $text-color
-client.urgent 			$urgent-bg-color 	$urgent-bg-color	$text-color			 $text-color
+#                           border                  background              text                    indicator
+client.focused              $bg-color               $bg-color               $text-color             $text-color
+client.unfocused            $inactive-bg-color      $inactive-bg-color      $inactive-text-color    $text-color
+client.focused_inactive     $inactive-bg-color      $inactive-bg-color      $inactive-text-color    $text-color
+client.urgent               $urgent-bg-color        $urgent-bg-color        $text-color             $text-color
 
 # Window style
 for_window [class="^.*"] border pixel 1
