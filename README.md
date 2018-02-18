@@ -93,8 +93,6 @@ Syntax checkers:
 
 [X.org](https://www.x.org/) requires different files:
 
-- `.Xdefaults`
-  - Originates from `xrdb -merge`.
 - `.Xinitrc`
   - Makes sure that i3 starts when the Xserver starts.
 - `.Xmodmap`
@@ -108,9 +106,9 @@ Syntax checkers:
 
 I use zsh as my main shell. Everything in `~/.bin/` is available in `$PATH`. Requires [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh).
 
-#### Zsh-autosuggestions
+#### Antigen
 
-[Zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) is required for control+space autocompletion. I install this from the [AUR](https://wiki.archlinux.org/index.php/Arch_User_Repository) instead of the oh-my-zsh method for convenience.
+Requires [Antigen](https://github.com/zsh-users/antigen) to be installed. Refer to the repository for usage and installation instructions.
 
 ## Other (optional)
 
