@@ -19,9 +19,6 @@ source $HOME/.shell/aliases.sh
 # Variables
 source $HOME/.shell/vars.sh
 
-# Functions
-source $HOME/.shell/functions.sh
-
 # Source external files
 eval "$(dircolors ~/.dir_colors)"
 
