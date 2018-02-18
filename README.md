@@ -93,7 +93,7 @@ Syntax checkers:
 
 [X.org](https://www.x.org/) requires different files:
 
-- `.Xinitrc`
+- `.xinitrc`
   - Makes sure that i3 starts when the Xserver starts.
 - `.Xmodmap`
   - I rebind caps lock to the meta key for [i3](#i3wm).
