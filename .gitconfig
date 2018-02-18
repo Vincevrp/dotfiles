@@ -1,12 +1,12 @@
 [user]
-	name = Vincevrp
-	email = Vincevrp@users.noreply.github.com
+    name = Vincevrp
+    email = Vincevrp@users.noreply.github.com
 
 [push]
-	default = simple
+    default = simple
 
 [github]
-	user = Vincevrp 
+    user = Vincevrp
 
 [color]
-	ui = true
+    ui = true
