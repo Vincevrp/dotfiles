@@ -1,38 +1,25 @@
 # Zsh config
 
-ZSH_THEME="robbyrussell"
+# Antigen
+source /usr/share/zsh/share/antigen.zsh
 
-plugins=(
-    git
-)
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen theme robbyrussell
+
+antigen apply
 
 # Aliases
-alias :q='exit'
-alias ls='ls --color=always'
-alias la='ls -hail'
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias clock='tty-clock -c'
-
-alias gs='git status'
-alias ga='git add'
-alias gd='git diff'
-alias gc='git commit -m'
-alias gca='git commit -am'
-alias gp='git pull'
-alias gP='git push'
+source $HOME/.shell/aliases.sh
 
 # Variables
-export PATH=$PATH:~/.bin                     # Add ~/.bin to PATH
-export VIMINIT="source ~/.vim/vimrc"
-export TERM=xterm
-export EDITOR=/usr/bin/vim
-export ZSH=/home/vince/.oh-my-zsh
-export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
-export KEYTIMEOUT=1
+source $HOME/.shell/vars.sh
 
 # Source external files
-source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(dircolors ~/.dir_colors)"
 
 # Settings
@@ -43,11 +30,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
 bindkey '^ ' autosuggest-accept
 
 # Default
-HISTFILE=~/.zsh_history
+HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd
 bindkey -e
-zstyle :compinstall filename '/home/vince/.zshrc'
 autoload -Uz compinit
-compinit alias ohmyzsh="mate ~/.oh-my-zsh"
