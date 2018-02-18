@@ -3,6 +3,7 @@ alias :q='exit'
 alias ls='ls --color=always'
 alias la='ls -hal'
 alias lai='ls -hail'
+alias ip='ip --color'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias clock='tty-clock -c'
 
