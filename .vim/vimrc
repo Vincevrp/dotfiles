@@ -21,6 +21,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'shime/vim-livedown'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'junegunn/vim-easy-align'
 
 " CSS3 and SASS Syntax support
 Plugin 'hail2u/vim-css3-syntax'
@@ -61,6 +62,9 @@ nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
 nnoremap <silent> <C-l> :noh<CR>
 nnoremap <silent> <A-p> :LivedownToggle<CR>
+
+" Markdown Easy Align
+au FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
 
 " Easymotion bindings
 let g:EasyMotion_do_mapping = 0
