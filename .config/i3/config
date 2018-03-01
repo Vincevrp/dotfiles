@@ -25,7 +25,7 @@ bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+Shift+Return exec /opt/i3lock-fancy/lock.sh
 
 # Screenshot
-bindsym Print exec escrotum -s -C
+bindsym Print exec maim -s -f png | xclip -selection clipboard -t image/png
 
 # Workspace monitor configs
 workspace 1 output DVI-D-0
