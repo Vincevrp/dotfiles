@@ -69,6 +69,7 @@ au FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
 
 " Easymotion bindings
 let g:EasyMotion_do_mapping=0
+hi link EasyMotionTarget ErrorMsg
 map <Space> <Plug>(easymotion-bd-w)
 
 " Fix for Alt-keybindings
