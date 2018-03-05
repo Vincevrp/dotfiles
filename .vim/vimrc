@@ -107,7 +107,7 @@ endw
 " NERDTree settings
 let NERDTreeShowHidden=1 " Use Shift + i to toggle
 let NERDTreeMapOpenVSplit='v'
-let NERDTreeMapOpenHSplit='h'
+let NERDTreeMapOpenSplit='h'
 let NERDTreeMapOpenInTab='t'
 
 " CtrlP settings
