@@ -62,21 +62,21 @@ nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
 nnoremap <silent> <C-l> :noh<CR>
 nnoremap <silent> <A-p> :LivedownToggle<CR>
+nnoremap <silent> <C-c> :bw<CR>
 
 " Markdown Easy Align
 au FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
 
 " Easymotion bindings
-let g:EasyMotion_do_mapping = 0
-nnoremap <silent> <Space> <Plug>(easymotion-prefix)
-map <Space>f <Plug>(easymotion-bd-w)
+let g:EasyMotion_do_mapping=0
+map <Space> <Plug>(easymotion-bd-w)
 
 " Fix for Alt-keybindings
 let c='a'
 while c <= 'z'
     exec "set <A-".c.">=\e".c
     exec "imap \e".c." <A-".c.">"
-    let c = nr2char(1+char2nr(c))
+    let c=nr2char(1+char2nr(c))
 endw
 
 " Set color scheme to Nord
@@ -95,7 +95,7 @@ let g:ctrlp_clear_cache_on_exit=0
 
 " Markdown settings
 let g:vim_markdown_folding_style_pythonic=1
-let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_frontmatter=1
 
 " Livedown settings
 let g:livedown_autorun=0
@@ -108,10 +108,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
 
 let g:syntastic_sass_checkers=["sasslint"]
 let g:syntastic_scss_checkers=["sasslint"]
