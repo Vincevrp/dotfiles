@@ -5,6 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# Disable XON/XOFF Flow control
+stty -ixon
+
 # Aliases
 source $HOME/.shell/aliases.sh
 

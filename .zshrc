@@ -13,6 +13,9 @@ antigen theme robbyrussell
 
 antigen apply
 
+# Disable XON/XOFF Control
+stty -ixon
+
 # Aliases
 source $HOME/.shell/aliases.sh
 
