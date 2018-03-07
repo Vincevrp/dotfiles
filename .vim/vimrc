@@ -23,7 +23,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'junegunn/vim-easy-align'
 
-" CSS3 and SASS Syntax support
+" Emmet + CSS3 and SASS Syntax support
+Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'gcorne/vim-sass-lint'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -118,6 +119,9 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("h")': ['<c-h>'],
     \ 'AcceptSelection("t")': ['<c-t>'],
 \ }
+
+" Emmet
+let g:user_emmet_leader_key='<C-q>'
 
 " Syntastic settings
 set statusline+=%#warningmsg#
