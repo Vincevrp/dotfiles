@@ -56,6 +56,10 @@ set encoding=utf-8                  " Enable UTF-8
 set t_Co=256                        " Enable 256 color support
 set showcmd                         " Show command while typing
 set conceallevel=2                  " Enable concealing
+set wrap                            " Enable visual word wrap
+set linebreak                       " Only wrap at breakat characters
+set breakindent                     " Indent breaks
+set showbreak=↪\                    " Display ↪\ in front of wrapped lines
 
 " Set color scheme to Nord
 colorscheme nord
@@ -71,15 +75,12 @@ command W execute ":w !sudo tee %"
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
-nnoremap <silent> <S-L> :noh<CR>
+nnoremap <silent> <S-l> :noh<CR>
 
 nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
-
-nnoremap <silent> <S-l> 20zl
-nnoremap <silent> <S-h> 20zh
 
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
@@ -88,10 +89,8 @@ nnoremap <silent> <C-c> :bw<CR>
 inoremap <C-Space> <C-x><C-o>
 
 autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
-autocmd FileType md nnoremap <silent> <A-p> :LivedownToggle<CR>
-
-" Markdown Easy Align
-au FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
+autocmd FileType markdown nnoremap <silent> <A-p> :LivedownToggle<CR>
+autocmd FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
 
 " Markdown settings
 let g:vim_markdown_folding_style_pythonic=1
