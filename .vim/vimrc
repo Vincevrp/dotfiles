@@ -23,6 +23,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'junegunn/vim-easy-align'
 
+" LaTeX
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
+
 " Emmet + CSS3 and SASS Syntax support
 Plugin 'mattn/emmet-vim'
 Plugin 'hail2u/vim-css3-syntax'
@@ -69,16 +72,23 @@ nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
 nnoremap <silent> <S-L> :noh<CR>
-nnoremap <silent> <A-p> :LivedownToggle<CR>
 
 nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
 
+nnoremap <silent> <S-l> 20zl
+nnoremap <silent> <S-h> 20zh
+
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
 nnoremap <silent> <C-c> :bw<CR>
+
+inoremap <C-Space> <C-x><C-o>
+
+autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
+autocmd FileType md nnoremap <silent> <A-p> :LivedownToggle<CR>
 
 " Markdown Easy Align
 au FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
