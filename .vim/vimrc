@@ -89,6 +89,7 @@ nnoremap <silent> <C-c> :bw<CR>
 inoremap <C-Space> <C-x><C-o>
 
 autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
+autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <A-p> :LivedownToggle<CR>
 autocmd FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
 
