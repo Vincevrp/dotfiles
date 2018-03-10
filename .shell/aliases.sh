@@ -17,6 +17,7 @@ alias gp='git pull'
 alias gP='git push'
 
 alias v='vagrant'
+alias vs='vagrant ssh'
 alias vu='vagrant up'
 alias vh='vagrant halt'
 alias vr='vagrant reload'
