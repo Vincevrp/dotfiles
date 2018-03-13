@@ -23,7 +23,7 @@ source $HOME/.shell/aliases.sh
 source $HOME/.shell/vars.sh
 
 # Source external files
-eval "$(dircolors ~/.dir_colors)"
+eval "$(dircolors ~/.shell/.dir_colors)"
 
 # Settings
 ENABLE_CORRECTION="true"
