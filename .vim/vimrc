@@ -77,10 +77,10 @@ nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
 nnoremap <silent> <S-l> :noh<CR>
 
-nnoremap <silent> <C-h> <C-W>h
-nnoremap <silent> <C-j> <C-W>j
-nnoremap <silent> <C-k> <C-W>k
-nnoremap <silent> <C-l> <C-W>l
+nnoremap <silent> <A-h> <C-W>h
+nnoremap <silent> <A-j> <C-W>j
+nnoremap <silent> <A-k> <C-W>k
+nnoremap <silent> <A-l> <C-W>l
 
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
@@ -92,6 +92,14 @@ autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
 autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <A-p> :LivedownToggle<CR>
 autocmd FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
+
+" Fix for Alt-keybindings
+let c='a'
+while c <= 'z'
+    exec "set <A-".c.">=\e".c
+    exec "imap \e".c." <A-".c.">"
+    let c=nr2char(1+char2nr(c))
+endw
 
 " Markdown settings
 let g:vim_markdown_folding_style_pythonic=1
@@ -106,14 +114,6 @@ let g:livedown_browser="chromium"
 " Easymotion bindings
 let g:EasyMotion_do_mapping=0
 map <Space> <Plug>(easymotion-bd-w)
-
-" Fix for Alt-keybindings
-let c='a'
-while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    exec "imap \e".c." <A-".c.">"
-    let c=nr2char(1+char2nr(c))
-endw
 
 " NERDTree settings
 let NERDTreeShowHidden=1 " Use Shift + i to toggle
@@ -131,7 +131,7 @@ let g:ctrlp_prompt_mappings = {
 \ }
 
 " Emmet
-let g:user_emmet_leader_key='<C-q>'
+let g:user_emmet_leader_key='<C-a>'
 
 " Syntastic settings
 set statusline+=%#warningmsg#
