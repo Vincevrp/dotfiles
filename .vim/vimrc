@@ -88,6 +88,10 @@ nnoremap <silent> <C-c> :bw<CR>
 
 inoremap <C-Space> <C-x><C-o>
 
+map <silent> <F2> :set nospell<CR>
+map <silent> <F3> :set spell spelllang=en_us<CR>
+map <silent> <F4> :set spell spelllang=nl<CR>
+
 autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
 autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <A-p> :LivedownToggle<CR>
@@ -100,7 +104,6 @@ while c <= 'z'
     exec "imap \e".c." <A-".c.">"
     let c=nr2char(1+char2nr(c))
 endw
-
 " Markdown settings
 let g:vim_markdown_folding_style_pythonic=1
 let g:vim_markdown_frontmatter=1
