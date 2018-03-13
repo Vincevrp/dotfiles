@@ -39,7 +39,6 @@ Plugin 'cakebaker/scss-syntax.vim'
 " All plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
-syntax on
 " }}}
 
 " Vim behaviour {{{
@@ -61,11 +60,28 @@ set encoding=utf-8                  " Enable UTF-8
 set t_Co=256                        " Enable 256 color support
 set showcmd                         " Show command while typing
 set conceallevel=2                  " Enable concealing
+set foldmethod=marker               " Enable folding
 set wrap                            " Enable visual word wrap
 set linebreak                       " Only wrap at breakat characters
 set breakindent                     " Indent breaks
 set showbreak=↪\                    " Display ↪\ in front of wrapped lines
-set foldmethod=marker               " Fold using \{\{\{
+set splitbelow                      " Open horizontal split below
+set cursorline                      " Highlight current line
+" }}}
+
+" Other settings {{{
+
+" Enable syntax highlighting
+syntax on
+
+" Highlight trailing whitespace and TAB characters
+highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 " }}}
 
 " Colorscheme and font {{{
