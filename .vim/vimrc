@@ -1,11 +1,15 @@
-" Vundle setup
+" Title: .vimrc
+" Author: Vincevrp | github.com/Vincevrp
+
+" Vundle setup {{{
 set nocompatible
 filetype off
 set viminfo+=n~/.vim/viminfo
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" }}}
 
-" Vundle plugins
+" Plugins {{{
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'vim-airline/vim-airline'
@@ -35,9 +39,10 @@ Plugin 'cakebaker/scss-syntax.vim'
 " All plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
-syntax on                           " Enable syntax highlighting
+syntax on
+" }}}
 
-" Vim behaviour
+" Vim behaviour {{{
 set tabstop=4                       " Number of spaces a tab counts for
 set softtabstop=4                   " Set columns to 0 for tabs
 set expandtab                       " Use tab character instead of spaces
@@ -60,18 +65,22 @@ set wrap                            " Enable visual word wrap
 set linebreak                       " Only wrap at breakat characters
 set breakindent                     " Indent breaks
 set showbreak=↪\                    " Display ↪\ in front of wrapped lines
+set foldmethod=marker               " Fold using \{\{\{
+" }}}
 
-" Set color scheme to Nord
+" Colorscheme and font {{{
 colorscheme nord
-
-" Let vim-airline use powerline fonts
 let g:airline_powerline_fonts=1
 set guifont=Hack-regular
+" }}}
+
+" Custom commands {{{
 
 " Write as sudo
 command W execute ":w !sudo tee %"
+" }}}
 
-" Custom keybindings
+" Custom keybindings {{{
 nnoremap <silent> <F1> :NERDTreeToggle<CR>
 nnoremap <silent> <A-e> :SyntasticCheck<CR>
 nnoremap <silent> <M-r> :SyntasticReset<CR>
@@ -104,7 +113,10 @@ while c <= 'z'
     exec "imap \e".c." <A-".c.">"
     let c=nr2char(1+char2nr(c))
 endw
-" Markdown settings
+" }}}
+
+" Markdown settings {{{
+autocmd FileType markdown set foldmethod=expr
 let g:vim_markdown_folding_style_pythonic=1
 let g:vim_markdown_frontmatter=1
 
@@ -113,18 +125,21 @@ let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=4444
 let g:livedown_browser="chromium"
+" }}}
 
-" Easymotion bindings
+" Easymotion settings {{{
 let g:EasyMotion_do_mapping=0
 map <Space> <Plug>(easymotion-bd-w)
+" }}}
 
-" NERDTree settings
+" NERDTree settings {{{
 let NERDTreeShowHidden=1 " Use Shift + i to toggle
 let NERDTreeMapOpenVSplit='v'
 let NERDTreeMapOpenSplit='h'
 let NERDTreeMapOpenInTab='t'
+" }}}
 
-" CtrlP settings
+" CtrlP settings {{{
 let g:ctrlp_show_hidden=1
 let g:ctrlp_clear_cache_on_exit=0
 let g:ctrlp_prompt_mappings = {
@@ -132,11 +147,13 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("h")': ['<c-h>'],
     \ 'AcceptSelection("t")': ['<c-t>'],
 \ }
+" }}}
 
-" Emmet
+" Emmet {{{
 let g:user_emmet_leader_key='<C-a>'
+" }}}
 
-" Syntastic settings
+" Syntastic settings {{{
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -148,3 +165,4 @@ let g:syntastic_check_on_wq=0
 
 let g:syntastic_sass_checkers=["sasslint"]
 let g:syntastic_scss_checkers=["sasslint"]
+ " }}}
