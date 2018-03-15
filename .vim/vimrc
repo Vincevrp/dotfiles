@@ -90,10 +90,20 @@ let g:airline_powerline_fonts=1
 set guifont=Hack-regular
 " }}}
 
-" Custom commands {{{
+" Custom commands and functions {{{
 
 " Write as sudo
 command W execute ":w !sudo tee %"
+
+" Ranger file explorer
+function Ranger()
+    let l:file = "/tmp/vim-ranger"
+    exec "silent !ranger --choosefile=".l:file
+    if filereadable(l:file)
+        exec 'edit'.system('<'.l:file.'&& rm '.l:file)
+    endif
+    redraw!
+endfun
 " }}}
 
 " Custom keybindings {{{
@@ -109,13 +119,15 @@ nnoremap <silent> <A-l> <C-W>l
 
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
+nnoremap <silent> <C-n> :tabe<CR>
 nnoremap <silent> <C-c> :bw<CR>
 
 inoremap <C-Space> <C-x><C-o>
 
-map <silent> <F2> :set nospell<CR>
-map <silent> <F3> :set spell spelllang=en_us<CR>
-map <silent> <F4> :set spell spelllang=nl<CR>
+noremap <silent> <F2> :set nospell<CR>
+noremap <silent> <F3> :set spell spelllang=en_us<CR>
+noremap <silent> <F4> :set spell spelllang=nl<CR>
+noremap <silent> <F5> :call Ranger()<CR>
 
 autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
 autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
