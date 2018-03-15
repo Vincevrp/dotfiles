@@ -74,6 +74,10 @@ set cursorline                      " Highlight current line
 " Enable syntax highlighting
 syntax on
 
+" Change indentation based on filetype
+autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd Filetype ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
+
 " Highlight trailing whitespace and TAB characters
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
