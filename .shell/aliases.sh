@@ -5,6 +5,7 @@ alias la='ls -hal'
 alias lai='ls -hail'
 alias ip='ip --color'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r='ranger'
 alias clock='tty-clock -c'
 
 alias gs='git status'
