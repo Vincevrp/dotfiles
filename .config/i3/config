@@ -12,7 +12,7 @@ exec redshift                                           # Start Redshift
 exec imwheel -k -b 45                                   # Start imwheel
 
 # Status bars
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always (sleep 0.1; ~/.config/polybar/launch.sh)
 
 # Start a terminal
 bindsym $mod+Return exec urxvt
@@ -26,6 +26,12 @@ bindsym $mod+Shift+Return exec /opt/i3lock-fancy/lock.sh
 
 # Screenshot
 bindsym Print exec maim -s -f png | xclip -selection clipboard -t image/png
+
+# Scratchpad terminal
+exec --no-startup-id scratchpad
+for_window [instance="scratchpad"] floating enable;
+for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scratchpad show; move scratchpad
+bindsym $mod+u [instance="scratchpad"] scratchpad show
 
 # Workspace monitor configs
 workspace 1 output DVI-D-0

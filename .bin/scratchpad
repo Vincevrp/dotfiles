@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Delay startup
+sleep 0.1
+
+# Reopen scratchpad if closed
+while true
+do
+    urxvt -name scratchpad -e tmux
+    sleep 0.1
+done
