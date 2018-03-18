@@ -1,45 +1,47 @@
-# i3 config file for Antergos Setup
+# Title: i3 config for Antergos Setup
+# Author: Vincevrp | github.com/Vincevrp
 
-# Mod key
-set $mod Mod4
+# Variables and commands {{{
 
-# Auto start
-exec_always xrdb $HOME/.Xresources                      # Load .Xresources
-exec_always xmodmap $HOME/.Xmodmap                      # Load .Xmodmap
-exec compton -f                                         # Start compton
-exec_always feh --bg-scale $HOME/wallpaper.jpg          # Set wallpaper
-exec redshift                                           # Start Redshift
-exec imwheel -k -b 45                                   # Start imwheel
+# Set super key as mod
+set $mod        Mod4
 
-# Status bars
-exec_always (sleep 0.1; ~/.config/polybar/launch.sh)
+# Set terminal
+set $term       urxvt
 
-# Start a terminal
-bindsym $mod+Return exec urxvt
+# Launcher command
+set $menu       rofi -show run
+set $window     rofi -show window
 
-# Rofi
-bindsym $mod+d exec rofi -show run
-bindsym Mod1+Tab exec rofi -show window
+# Wallpaper path
+set $wallpaper  $HOME/wallpaper.jpg
 
-# i3lock
-bindsym $mod+Shift+Return exec /opt/i3lock-fancy/lock.sh
+# Lockscreen command
+set $lock       /opt/i3lock-fancy/lock.sh
 
-# Screenshot
-bindsym Print exec maim -s -f png | xclip -selection clipboard -t image/png
+# Screenshot command
+set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
+# }}}
 
-# Scratchpad terminal
-exec --no-startup-id scratchpad
-for_window [instance="scratchpad"] floating enable;
-for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scratchpad show; move scratchpad
-bindsym $mod+u [instance="scratchpad"] scratchpad show
+# Auto start {{{
+exec            compton -f                              # Start compton
+exec            redshift                                # Start Redshift
+exec            imwheel -k -b 45                        # Start imwheel
+exec            --no-startup-id scratchpad              # Start scratchpad terminal
+exec_always     xrdb $HOME/.Xresources                  # Load .Xresources
+exec_always     sleep 0.1; ~/.config/polybar/launch.sh  # Status bar
+exec_always     feh --bg-scale $wallpaper               # Set wallpaper
+exec_always     xmodmap $HOME/.Xmodmap                  # Load .Xmodmap
+# }}}
 
-# Workspace monitor configs
-workspace 1 output DVI-D-0
-workspace 2 output DP-0
-workspace 3 output DVI-I-1
+# Layout and colorscheme {{{
 
 # Font
 font pango:System San Francisco Display 10
+
+# Gaps
+gaps inner 10
+gaps outer 10
 
 # Colors
 set $bg-color               #2f343f
@@ -49,7 +51,7 @@ set $inactive-text-color    #676E7D
 set $urgent-bg-color        #E53935
 
 # Window colors
-#                           border                  background              text                    indicator
+#                           Border                  Background              Text                    Indicator
 client.focused              $bg-color               $bg-color               $text-color             $text-color
 client.unfocused            $inactive-bg-color      $inactive-bg-color      $inactive-text-color    $text-color
 client.focused_inactive     $inactive-bg-color      $inactive-bg-color      $inactive-text-color    $text-color
@@ -58,121 +60,161 @@ client.urgent               $urgent-bg-color        $urgent-bg-color        $tex
 # Window style
 for_window [class="^.*"] border pixel 1
 
-# Gaps
-gaps inner 10
-gaps outer 10
+# Scratchpad terminal layout
+for_window [instance="scratchpad"] floating enable;
+for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scratchpad show; move scratchpad
+# }}}
 
-# <- Default Configuration ->
+# Workspace and monitor config {{{
+workspace 1 output DVI-D-0
+workspace 2 output DP-0
+workspace 3 output DVI-I-1
+# }}}
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Keybindings {{{
+
+# Basic {{{
+
+# Start a terminal
+bindsym $mod+Return         exec $term
+
+# Application launcher
+bindsym $mod+d              exec $menu
+bindsym Mod1+Tab            exec $window
 
 # Kill focused window
-bindsym $mod+Shift+A kill
+bindsym $mod+Shift+A        kill
+
+# Fullscreen
+bindsym $mod+f              fullscreen toggle
+
+# Split in horizontal orientation
+bindsym $mod+n              split h
+
+# Split in vertical orientation
+bindsym $mod+v              split v
+
+# Reload the configuration file
+bindsym $mod+Shift+c        reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r        restart
+
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e        exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# }}}
+
+# Movement {{{
 
 # Change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+h              focus left
+bindsym $mod+j              focus down
+bindsym $mod+k              focus up
+bindsym $mod+l              focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# Change focus arrow keys
+bindsym $mod+Left           focus left
+bindsym $mod+Down           focus down
+bindsym $mod+Up             focus up
+bindsym $mod+Right          focus right
 
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# Move focused window
+bindsym $mod+Shift+h        move left
+bindsym $mod+Shift+j        move down
+bindsym $mod+Shift+k        move up
+bindsym $mod+Shift+l        move right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# Moved focused window arrow keys
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
 
-# split in horizontal orientation
-bindsym $mod+n split h
+# }}}
 
-# split in vertical orientation
-bindsym $mod+v split v
+# Tools {{{
+# Lockscreen
+bindsym $mod+Shift+Return   exec $lock
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+# Screenshot
+bindsym Print               exec $screenshot
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+# Show scratchpad
+bindsym $mod+u              [instance="scratchpad"] scratchpad show
+# }}}
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# Workspaces {{{
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# Switch to workspace
+bindsym $mod+ampersand      workspace 1
+bindsym $mod+eacute         workspace 2
+bindsym $mod+quotedbl       workspace 3
+bindsym $mod+apostrophe     workspace 4
+bindsym $mod+parenleft      workspace 5
+bindsym $mod+section        workspace 6
+bindsym $mod+egrave         workspace 7
+bindsym $mod+exclam         workspace 8
+bindsym $mod+ccedilla       workspace 9
+bindsym $mod+agrave         workspace 10
 
-# focus the parent container
-bindsym $mod+q focus parent
+# Move focused container to workspace
+bindsym $mod+Shift+1        move container to workspace 1
+bindsym $mod+Shift+eacute   move container to workspace 2
+bindsym $mod+Shift+3        move container to workspace 3
+bindsym $mod+Shift+4        move container to workspace 4
+bindsym $mod+Shift+5        move container to workspace 5
+bindsym $mod+Shift+section  move container to workspace 6
+bindsym $mod+Shift+egrave   move container to workspace 7
+bindsym $mod+Shift+8        move container to workspace 8
+bindsym $mod+Shift+ccedilla move container to workspace 9
+bindsym $mod+Shift+agrave   move container to workspace 10
+# }}}
 
-# focus the child container
+# Layouts and modes {{{
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s              layout stacking
+bindsym $mod+z              layout tabbed
+bindsym $mod+e              layout toggle split
+
+# Drag floating window
+floating_modifier $mod
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space    floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus    mode_toggle
+
+# Focus the parent container
+bindsym $mod+q              focus parent
+
+# Focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
-bindsym $mod+ampersand workspace 1
-bindsym $mod+eacute workspace 2
-bindsym $mod+quotedbl workspace 3
-bindsym $mod+apostrophe workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+section workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+exclam workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
+# Resize mode binding
+bindsym $mod+r              mode "resize"
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+eacute move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+section move container to workspace 6
-bindsym $mod+Shift+egrave move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
+# Resize mode config
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Resize window
+    bindsym h               resize grow width 10 px or 10 ppt
+    bindsym j               resize shrink height 10 px or 10 ppt
+    bindsym k               resize grow height 10 px or 10 ppt
+    bindsym l               resize shrink width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # Resize window arrow keys
+    bindsym Left            resize shrink width 10 px or 10 ppt
+    bindsym Down            resize grow height 10 px or 10 ppt
+    bindsym Up              resize shrink height 10 px or 10 ppt
+    bindsym Right           resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # Back to normal mode
+    bindsym Return          mode "default"
+    bindsym Escape          mode "default"
 }
 
-bindsym $mod+r mode "resize"
+# }}}
+
+# }}}
