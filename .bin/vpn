@@ -1,28 +1,121 @@
 #!/bin/bash
 
 OPENVPN_DIR="/etc/openvpn/conf.d"
+OPENVPN_EXT=".conf"
 PID_DIR="/run/openvpn"
 PID_FILE="openvpn.pid"
 
-if [ "$EUID" -ne 0 ]; then
-    echo "Root privileges required"
-    exit 1
-fi
+function check_root {
+    if [ "$EUID" -ne 0 ]; then
+        echo "Root privileges required"
+        exit 1
+    fi
+}
 
-if [ "$#" -le 0 ] || [ "$#" -gt 1 ]; then
-    echo "Please specify 1 configuration file"
-    exit 1
-fi
+function check_openvpn {
+    if pgrep openvpn; then
+        return 1
+    fi
 
-# Disable IPv6
-sysctl -w net.ipv6.conf.all.disable_ipv6=1
+    return 0
+}
 
-# Create directory and PID file
-mkdir -p $PID_DIR && touch $PID_DIR/$PID_FILE
+function print_help {
+    printf "Usage: %s [option]\\n" "$(basename "$0")"
+    echo "Options"
+    echo "  -c | --connect [server-name]        Connect using given server"
+    echo "  -d | --disconnect                   Disconnect by killing openvpn deamon"
+    echo "  -l | --list                         Print all available config files in conf.d"
+    echo "  -h | --help                         Show this message"
+    echo "  -s | --status                       Show openvpn daemon status"
+    echo
+    exit 0
+}
 
-# Start OpenVPN
-openvpn --writepid "$PID_DIR/$PID_FILE" --cd "$OPENVPN_DIR" --config "$1.conf"
+function list_conf {
+    find "${OPENVPN_DIR}" -name \*.conf -printf '%f\n' | sed "s/${OPENVPN_EXT}//g" | sort | column
+    exit 0
+}
 
-# Re-enable IPv6 and run DHCP
-sysctl -w net.ipv6.conf.all.disable_ipv6=0
-dhcpcd
+function ip_info {
+    DATA=$(curl -s https://ipv4.ipleak.net/json/)
+    COUNTRY=$(echo "${DATA}" | grep country_code | awk -F '["]' '{print $(NF-1)}')
+    IP=$(echo "${DATA}" | grep ip | awk -F '["]' '{print $(NF-1)}' | head -n 1)
+
+    echo "Info: ${COUNTRY} | ${IP}"
+}
+
+function connect {
+    # Check root privileges
+    check_root
+
+    # Disable IPv6
+    sysctl -w net.ipv6.conf.all.disable_ipv6=1 &> /dev/null
+
+    # Create directory and PID file
+    mkdir -p ${PID_DIR} && touch ${PID_DIR}/${PID_FILE}
+
+    # Start OpenVPN
+    openvpn --daemon --auth-nocache --writepid "${PID_DIR}/${PID_FILE}" --cd "${OPENVPN_DIR}" --config "$1""${OPENVPN_EXT}"
+
+    # Display message and exit
+    echo "OpenVPN daemon started in background"
+    exit 0
+}
+
+function disconnect {
+    # Check root privileges
+    check_root
+
+    if check_openvpn &>/dev/null; then
+        echo "OpenVPN daemon is not running"
+        exit 0
+    fi
+
+    # Kill daemon
+    killall openvpn
+
+    # Re-enable IPv6 and run DHCP
+    sysctl -w net.ipv6.conf.all.disable_ipv6=0 &> /dev/null
+    dhcpcd &> /dev/null
+
+    # Display message and exit
+    echo "Disconnected from VPN"
+    exit 0
+}
+
+function status {
+    if [[ $(check_openvpn 1) ]]; then
+        echo "OpenVPN daemon is running at $(pgrep openvpn)"
+        ip_info
+        exit 0
+    fi
+
+    echo "Openvpn daemon is not running"
+    ip_info
+    exit 0
+}
+
+eval set -- "$(getopt -n "$0" -o c:dhls --long "connect,disconnect,help,list,status" -- "$@")"
+
+while  (( "$#" )); do
+    case $1 in
+        -c | --connect)
+            connect "$2"
+            shift 2;;
+        -d | --disconnect)
+            disconnect
+            shift 2;;
+        -h | --help)
+            print_help
+            shift 2;;
+        -l | --list)
+            list_conf
+            shift 2;;
+        -s | --status)
+            status;;
+        --) print_help;;
+        *) echo Invalid && exit 1;
+    esac
+done
+
