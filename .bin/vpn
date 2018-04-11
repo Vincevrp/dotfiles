@@ -49,6 +49,18 @@ function connect {
     # Check root privileges
     check_root
 
+    # Check if OpenVPN is already running
+    if ! check_openvpn &>/dev/null; then
+        echo "OpenVPN daemon is already running"
+        exit 0
+    fi
+
+    # Check if config file exists
+    if [[ ! -f "${OPENVPN_DIR}"/"$1""${OPENVPN_EXT}" ]]; then
+        echo "Config file does not exist"
+        exit 0
+    fi
+
     # Disable IPv6
     sysctl -w net.ipv6.conf.all.disable_ipv6=1 &> /dev/null
 
@@ -67,6 +79,7 @@ function disconnect {
     # Check root privileges
     check_root
 
+    # Check if OpenVPN is running
     if check_openvpn &>/dev/null; then
         echo "OpenVPN daemon is not running"
         exit 0
@@ -92,6 +105,8 @@ function status {
     fi
 
     echo "Openvpn daemon is not running"
+
+    # Show IP info and exit
     ip_info
     exit 0
 }
