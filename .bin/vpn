@@ -98,15 +98,13 @@ function disconnect {
 }
 
 function status {
-    if [[ $(check_openvpn 1) ]]; then
-        echo "OpenVPN daemon is running at $(pgrep openvpn)"
+    if check_openvpn &> /dev/null; then
+        echo "Openvpn daemon is not running"
         ip_info
         exit 0
     fi
 
-    echo "Openvpn daemon is not running"
-
-    # Show IP info and exit
+    echo "OpenVPN daemon is running at $(pgrep openvpn)"
     ip_info
     exit 0
 }
