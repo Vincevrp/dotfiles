@@ -36,6 +36,9 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'gcorne/vim-sass-lint'
 Plugin 'cakebaker/scss-syntax.vim'
 
+" EJS Syntax
+Plugin 'nikvdp/ejs-syntax'
+
 " I3 config syntax
 Plugin 'PotatoesMaster/i3-vim-syntax'
 
