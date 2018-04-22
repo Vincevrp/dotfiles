@@ -131,6 +131,8 @@ nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
 nnoremap <silent> <C-n> :tabe<CR>
 nnoremap <silent> <C-c> :bw<CR>
+noremap <silent> <C-s> :%s/\s\+$//e<CR>
+nnoremap <silent> <C-q> :shell<CR>
 
 inoremap <C-Space> <C-x><C-o>
 
@@ -138,7 +140,6 @@ noremap <silent> <F2> :set nospell<CR>
 noremap <silent> <F3> :set spell spelllang=en_us<CR>
 noremap <silent> <F4> :set spell spelllang=nl<CR>
 noremap <silent> <F5> :call Ranger()<CR>
-noremap <silent> <C-s> :%s/\s\+$//e<CR>
 
 autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
 autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
