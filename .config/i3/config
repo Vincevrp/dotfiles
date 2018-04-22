@@ -28,10 +28,11 @@ exec            compton -f                              # Start compton
 exec            redshift                                # Start Redshift
 exec            imwheel -k -b 45                        # Start imwheel
 exec            --no-startup-id scratchpad              # Start scratchpad terminal
+exec            dunst                                   # Start dunst
 exec_always     xrdb $HOME/.Xresources                  # Load .Xresources
 exec_always     sleep 0.1; ~/.config/polybar/launch.sh  # Status bar
 exec_always     feh --bg-scale $wallpaper               # Set wallpaper
-exec_always     xmodmap $HOME/.Xmodmap                  # Load .Xmodmap
+exec_always     $HOME/.bin/xmodmap-init                 # Load .Xmodmap
 # }}}
 
 # Layout and colorscheme {{{
@@ -188,6 +189,10 @@ bindsym $mod+space focus    mode_toggle
 
 # Focus the parent container
 bindsym $mod+q              focus parent
+
+# Toggle gaps
+bindsym $mod+g               gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+g         gaps inner current set 10; gaps outer current set 10
 
 # Focus the child container
 #bindsym $mod+d focus child
