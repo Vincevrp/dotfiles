@@ -16,6 +16,7 @@ alias gca='git commit -a'
 alias gf='git fetch'
 alias gp='git pull'
 alias gP='git push'
+alias gr='cd $(git rev-parse --show-toplevel)'
 
 alias v='vagrant'
 alias vs='vagrant ssh'
