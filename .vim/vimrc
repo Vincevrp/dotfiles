@@ -105,6 +105,12 @@ set guifont=Hack-regular
 " Write as sudo
 command W execute ":w !sudo tee %"
 
+" Convert to unix line ending
+function DOS2Unix()
+    edit ++ff=unix
+    %s///g
+endfun
+
 " Ranger file explorer
 function Ranger()
     let l:file = "/tmp/vim-ranger"
@@ -140,6 +146,7 @@ noremap <silent> <F2> :set nospell<CR>
 noremap <silent> <F3> :set spell spelllang=en_us<CR>
 noremap <silent> <F4> :set spell spelllang=nl<CR>
 noremap <silent> <F5> :call Ranger()<CR>
+noremap <silent> <F6> :call DOS2Unix()<CR>
 
 autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
 autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
