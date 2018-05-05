@@ -73,6 +73,7 @@ set breakindent                     " Indent breaks
 set showbreak=↪\                    " Display ↪\ in front of wrapped lines
 set splitbelow                      " Open horizontal split below
 set cursorline                      " Highlight current line
+set nrformats-=octal                " Remove octal numbers from increment
 " }}}
 
 " Other settings {{{
@@ -139,8 +140,14 @@ nnoremap <silent> <C-n> :tabe<CR>
 nnoremap <silent> <C-c> :bw<CR>
 noremap <silent> <C-s> :%s/\s\+$//e<CR>
 nnoremap <silent> <C-q> :shell<CR>
+nnoremap <silent> <C-e> 2<C-e>
+nnoremap <silent> <C-y> 2<C-y>
 
 inoremap <C-Space> <C-x><C-o>
+
+" Fix for macro's using ESC
+inoremap <Esc> <C-c>
+inoremap <C-s> <Esc>ddi
 
 noremap <silent> <F2> :set nospell<CR>
 noremap <silent> <F3> :set spell spelllang=en_us<CR>
@@ -197,7 +204,7 @@ let g:ctrlp_prompt_mappings = {
 " }}}
 
 " Emmet {{{
-let g:user_emmet_leader_key='<C-a>'
+let g:user_emmet_leader_key='<C-h>'
 " }}}
 
 " Syntastic settings {{{
