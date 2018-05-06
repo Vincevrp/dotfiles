@@ -8,5 +8,11 @@
 [github]
     user = Vincevrp
 
+[diff]
+    tool = vimdiff
+
+[difftool]
+	prompt = false
+
 [color]
     ui = true
