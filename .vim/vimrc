@@ -96,9 +96,13 @@ autocmd BufWinLeave * call clearmatches()
 " }}}
 
 " Colorscheme and font {{{
-colorscheme nord
+let g:nord_italic=1
+let g:nord_italic_comments=1
 let g:airline_powerline_fonts=1
+
 set guifont=Hack-regular
+
+colorscheme nord
 " }}}
 
 " Custom commands and functions {{{
