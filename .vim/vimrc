@@ -74,6 +74,7 @@ set showbreak=↪\                    " Display ↪\ in front of wrapped lines
 set splitbelow                      " Open horizontal split below
 set cursorline                      " Highlight current line
 set nrformats-=octal                " Remove octal numbers from increment
+set noesckeys                       " Fix macro's using ESC key
 " }}}
 
 " Other settings {{{
@@ -149,10 +150,6 @@ nnoremap <silent> <C-y> 2<C-y>
 
 inoremap <C-Space> <C-x><C-o>
 
-" Fix for macro's using ESC
-inoremap <Esc> <C-c>
-inoremap <C-s> <Esc>ddi
-
 noremap <silent> <F2> :set nospell<CR>
 noremap <silent> <F3> :set spell spelllang=en_us<CR>
 noremap <silent> <F4> :set spell spelllang=nl<CR>
@@ -171,6 +168,16 @@ while c <= 'z'
     exec "imap \e".c." <A-".c.">"
     let c=nr2char(1+char2nr(c))
 endw
+
+" Fix arrow keys when using noesckeys
+nnoremap <silent> <ESC>OA <UP>
+nnoremap <silent> <ESC>OB <DOWN>
+nnoremap <silent> <ESC>OC <RIGHT>
+nnoremap <silent> <ESC>OD <LEFT>
+inoremap <silent> <ESC>OA <UP>
+inoremap <silent> <ESC>OB <DOWN>
+inoremap <silent> <ESC>OC <RIGHT>
+inoremap <silent> <ESC>OD <LEFT>
 " }}}
 
 " Markdown settings {{{
