@@ -99,6 +99,7 @@ autocmd BufWinLeave * call clearmatches()
 " Colorscheme and font {{{
 let g:nord_italic=1
 let g:nord_italic_comments=1
+let g:nord_uniform_diff_background=1
 let g:airline_powerline_fonts=1
 
 set guifont=Hack-regular
@@ -129,11 +130,25 @@ endfun
 " }}}
 
 " Custom keybindings {{{
-nnoremap <silent> <F1> :NERDTreeToggle<CR>
-nnoremap <silent> <A-e> :SyntasticCheck<CR>
-nnoremap <silent> <M-r> :SyntasticReset<CR>
+let mapleader=","
+
 nnoremap <silent> <S-l> :noh<CR>
 
+" Ctrl-keybindings
+nnoremap <silent> <C-e> 2<C-e>
+nnoremap <silent> <C-y> 2<C-y>
+nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
+
+" Leader-keybindings
+nnoremap <silent> <leader>q :terminal<CR>
+nnoremap <silent> <leader>s :shell<CR>
+nnoremap <silent> <leader>r :call Ranger()<CR>
+nnoremap <silent> <leader>f :NERDTreeToggle<CR>
+
+" Insert mode keybindings
+inoremap <C-Space> <C-x><C-o>
+
+" Window and buffer management
 nnoremap <silent> <A-h> <C-W>h
 nnoremap <silent> <A-j> <C-W>j
 nnoremap <silent> <A-k> <C-W>k
@@ -143,23 +158,30 @@ nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
 nnoremap <silent> <C-n> :tabe<CR>
 nnoremap <silent> <C-c> :bw<CR>
-noremap <silent> <C-s> :%s/\s\+$//e<CR>
-nnoremap <silent> <C-q> :shell<CR>
-nnoremap <silent> <C-e> 2<C-e>
-nnoremap <silent> <C-y> 2<C-y>
 
-inoremap <C-Space> <C-x><C-o>
+nnoremap <silent> <leader><leader> <C-^>
+nnoremap <silent> <leader>h :new<CR>
+nnoremap <silent> <leader>v :vnew<CR>
+nnoremap <silent> <leader>e <C-w><C-w>
+nnoremap <silent> <leader>d :bd<CR>
+nnoremap <silent> <leader>l :ls<CR>
+nnoremap <silent> <leader>b :execute ':b' input('Buffer: ')<CR>
 
-noremap <silent> <F2> :set nospell<CR>
-noremap <silent> <F3> :set spell spelllang=en_us<CR>
-noremap <silent> <F4> :set spell spelllang=nl<CR>
-noremap <silent> <F5> :call Ranger()<CR>
-noremap <silent> <F6> :call DOS2Unix()<CR>
+" Alt-keybindings
+nnoremap <silent> <A-e> :SyntasticCheck<CR>
+nnoremap <silent> <A-r> :SyntasticReset<CR>
 
-autocmd FileType tex  nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
-autocmd FileType tex  nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
+" F-keys
+nnoremap <silent> <F1> :set nospell<CR>
+nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
+nnoremap <silent> <F3> :set spell spelllang=nl<CR>
+nnoremap <silent> <F4> :call DOS2Unix()<CR>
+
+" Filetype specific
+autocmd FileType tex      nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
+autocmd FileType tex      nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <A-p> :LivedownToggle<CR>
-autocmd FileType markdown vmap <A-t> :EasyAlign*<Bar><Enter>
+autocmd FileType markdown vmap     <silent> <A-t> :EasyAlign*<Bar><Enter>
 
 " Fix for Alt-keybindings
 let c='a'
@@ -174,6 +196,7 @@ nnoremap <silent> <ESC>OA <UP>
 nnoremap <silent> <ESC>OB <DOWN>
 nnoremap <silent> <ESC>OC <RIGHT>
 nnoremap <silent> <ESC>OD <LEFT>
+nnoremap <silent> <ESC> <ESC>
 inoremap <silent> <ESC>OA <UP>
 inoremap <silent> <ESC>OB <DOWN>
 inoremap <silent> <ESC>OC <RIGHT>
