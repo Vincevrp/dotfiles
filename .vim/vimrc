@@ -60,7 +60,7 @@ set hlsearch                        " Highlight search terms
 set incsearch                       " Show search matches as you type
 set showmatch                       " Show matching parenthesis
 set mouse=a                         " Enable mouse input
-set timeoutlen=1001                 " Set mapping delay (Escape delay fix)
+set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
 set ttimeoutlen=0                   " Set key code delay (Escape delay fix)
 set encoding=utf-8                  " Enable UTF-8
 set t_Co=256                        " Enable 256 color support
@@ -74,7 +74,6 @@ set showbreak=↪\                    " Display ↪\ in front of wrapped lines
 set splitbelow                      " Open horizontal split below
 set cursorline                      " Highlight current line
 set nrformats-=octal                " Remove octal numbers from increment
-set noesckeys                       " Fix macro's using ESC key
 " }}}
 
 " Other settings {{{
@@ -145,14 +144,17 @@ nnoremap <silent> <leader>s :shell<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
 nnoremap <silent> <leader>f :NERDTreeToggle<CR>
 
+nnoremap <silent> <leader><S-e> :SyntasticCheck<CR>
+nnoremap <silent> <leader><S-r> :SyntasticReset<CR>
+
 " Insert mode keybindings
 inoremap <C-Space> <C-x><C-o>
 
 " Window and buffer management
-nnoremap <silent> <A-h> <C-W>h
-nnoremap <silent> <A-j> <C-W>j
-nnoremap <silent> <A-k> <C-W>k
-nnoremap <silent> <A-l> <C-W>l
+nnoremap <silent> <C-h> <C-W>h
+nnoremap <silent> <C-j> <C-W>j
+nnoremap <silent> <C-k> <C-W>k
+nnoremap <silent> <C-l> <C-W>l
 
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
@@ -167,10 +169,6 @@ nnoremap <silent> <leader>d :bd<CR>
 nnoremap <silent> <leader>l :ls<CR>
 nnoremap <silent> <leader>b :execute ':b' input('Buffer: ')<CR>
 
-" Alt-keybindings
-nnoremap <silent> <A-e> :SyntasticCheck<CR>
-nnoremap <silent> <A-r> :SyntasticReset<CR>
-
 " F-keys
 nnoremap <silent> <F1> :set nospell<CR>
 nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
@@ -178,29 +176,11 @@ nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
 " Filetype specific
-autocmd FileType tex      nnoremap <silent> <A-p> :!mupdf %:r.pdf &<CR><CR>
-autocmd FileType tex      nnoremap <silent> <A-c> :!pdflatex %<CR><CR>
-autocmd FileType markdown nnoremap <silent> <A-p> :LivedownToggle<CR>
-autocmd FileType markdown vmap     <silent> <A-t> :EasyAlign*<Bar><Enter>
-
-" Fix for Alt-keybindings
-let c='a'
-while c <= 'z'
-    exec "set <A-".c.">=\e".c
-    exec "imap \e".c." <A-".c.">"
-    let c=nr2char(1+char2nr(c))
-endw
-
-" Fix arrow keys when using noesckeys
-nnoremap <silent> <ESC>OA <UP>
-nnoremap <silent> <ESC>OB <DOWN>
-nnoremap <silent> <ESC>OC <RIGHT>
-nnoremap <silent> <ESC>OD <LEFT>
-nnoremap <silent> <ESC> <ESC>
-inoremap <silent> <ESC>OA <UP>
-inoremap <silent> <ESC>OB <DOWN>
-inoremap <silent> <ESC>OC <RIGHT>
-inoremap <silent> <ESC>OD <LEFT>
+autocmd FileType tex      nnoremap <silent> <leader>c :!pdflatex %<CR><CR>
+autocmd FileType tex      nnoremap <silent> <leader>p :!mupdf %:r.pdf &<CR><CR>
+autocmd FileType html     nnoremap <silent> <leader>p :!chromium %<CR><CR>
+autocmd FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
+autocmd FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><Enter>
 " }}}
 
 " Markdown settings {{{
@@ -238,7 +218,7 @@ let g:ctrlp_prompt_mappings = {
 " }}}
 
 " Emmet {{{
-let g:user_emmet_leader_key='<C-h>'
+let g:user_emmet_leader_key='<leader>H'
 " }}}
 
 " Syntastic settings {{{
