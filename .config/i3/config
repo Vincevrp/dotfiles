@@ -41,6 +41,7 @@ exec_always     $HOME/.bin/xmodmap-init                 # Load .Xmodmap
 font pango:System San Francisco Display 10
 
 # Gaps
+smart_gaps on
 gaps inner 10
 gaps outer 10
 
