@@ -143,6 +143,7 @@ nnoremap <silent> <leader>q :terminal<CR>
 nnoremap <silent> <leader>s :shell<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
 nnoremap <silent> <leader>f :NERDTreeToggle<CR>
+nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
 
 nnoremap <silent> <leader><S-e> :SyntasticCheck<CR>
 nnoremap <silent> <leader><S-r> :SyntasticReset<CR>
