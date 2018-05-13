@@ -131,8 +131,6 @@ endfun
 " Custom keybindings {{{
 let mapleader=","
 
-nnoremap <silent> <S-l> :noh<CR>
-
 " Ctrl-keybindings
 nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
@@ -144,6 +142,7 @@ nnoremap <silent> <leader>s :shell<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
 nnoremap <silent> <leader>f :NERDTreeToggle<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
+nnoremap <silent> <leader>n :noh<CR>
 
 nnoremap <silent> <leader><S-e> :SyntasticCheck<CR>
 nnoremap <silent> <leader><S-r> :SyntasticReset<CR>
