@@ -18,7 +18,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'Valloric/YouCompleteMe'
 
 " Markdown plugins
@@ -84,6 +84,9 @@ syntax on
 " Change indentation based on filetype
 autocmd FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
 autocmd Filetype ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd Filetype css setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd Filetype sass setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd Filetype scss setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Highlight trailing whitespace and TAB characters
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -135,6 +138,7 @@ let mapleader=","
 nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
 nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
+nnoremap <silent> <C-m>  :noh<CR>
 
 " Leader-keybindings
 nnoremap <silent> <leader>q :terminal<CR>
@@ -142,10 +146,11 @@ nnoremap <silent> <leader>s :shell<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
 nnoremap <silent> <leader>f :NERDTreeToggle<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
-nnoremap <silent> <leader>n :noh<CR>
 
-nnoremap <silent> <leader><S-e> :SyntasticCheck<CR>
-nnoremap <silent> <leader><S-r> :SyntasticReset<CR>
+nnoremap <silent> <leader>e :copen<CR>
+nnoremap <silent> <leader><S-e> :cclose<CR>
+nnoremap <silent> <leader><S-n> :cp<CR>
+nnoremap <silent> <leader>n :cn<CR>
 
 " Insert mode keybindings
 inoremap <C-Space> <C-x><C-o>
@@ -164,7 +169,6 @@ nnoremap <silent> <C-c> :bw<CR>
 nnoremap <silent> <leader><leader> <C-^>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
-nnoremap <silent> <leader>e <C-w><C-w>
 nnoremap <silent> <leader>d :bd<CR>
 nnoremap <silent> <leader>l :ls<CR>
 nnoremap <silent> <leader>b :execute ':b' input('Buffer: ')<CR>
@@ -221,16 +225,11 @@ let g:ctrlp_prompt_mappings = {
 let g:user_emmet_leader_key='<leader>H'
 " }}}
 
-" Syntastic settings {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" ALE Settings {{{
+let g:ale_completion_enabled = 0
+let g:ale_lint_on_text_changed="normal"
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:airline#extensions#ale#enabled = 1
+" }}}
 
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
-
-let g:syntastic_sass_checkers=["sasslint"]
-let g:syntastic_scss_checkers=["sasslint"]
- " }}}
