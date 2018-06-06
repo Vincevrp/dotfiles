@@ -7,6 +7,7 @@ alias ip='ip --color'
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r='ranger'
 alias clock='tty-clock -c'
+alias bc="bc -q"
 
 alias gs='git status'
 alias ga='git add'
