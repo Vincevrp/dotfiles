@@ -1,50 +1,45 @@
 " Title: .vimrc
 " Author: Vincevrp | github.com/Vincevrp
 
-" Vundle setup {{{
+" Initial setup {{{
 set nocompatible
-filetype off
 set viminfo+=n~/.vim/viminfo
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 " }}}
 
 " Plugins {{{
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'w0rp/ale'
-Plugin 'Valloric/YouCompleteMe'
+call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'w0rp/ale'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 " Markdown plugins
-Plugin 'shime/vim-livedown'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'junegunn/vim-easy-align'
+Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'shime/vim-livedown'
+Plug 'junegunn/vim-easy-align'
 
 " LaTeX
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " Emmet + CSS3 and SASS Syntax support
-Plugin 'mattn/emmet-vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'gcorne/vim-sass-lint'
-Plugin 'cakebaker/scss-syntax.vim'
+Plug 'mattn/emmet-vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gcorne/vim-sass-lint'
+Plug 'cakebaker/scss-syntax.vim'
 
 " EJS Syntax
-Plugin 'nikvdp/ejs-syntax'
+Plug 'nikvdp/ejs-syntax'
 
 " I3 config syntax
-Plugin 'PotatoesMaster/i3-vim-syntax'
+Plug 'PotatoesMaster/i3-vim-syntax'
 
-" All plugins must be added before the following line
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 " }}}
 
 " Vim behaviour {{{
@@ -59,7 +54,7 @@ set smartcase                       " Ignore case if search is all lowercase, ca
 set hlsearch                        " Highlight search terms
 set incsearch                       " Show search matches as you type
 set showmatch                       " Show matching parenthesis
-set mouse=a                         " Enable mouse input
+set mouse=                          " Mouse input (empty=disabled)
 set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
 set ttimeoutlen=0                   " Set key code delay (Escape delay fix)
 set encoding=utf-8                  " Enable UTF-8
