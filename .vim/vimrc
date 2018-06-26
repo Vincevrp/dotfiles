@@ -21,7 +21,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 " Markdown plugins
 Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
-Plug 'shime/vim-livedown'
+Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
 Plug 'junegunn/vim-easy-align'
 
 " LaTeX
