@@ -43,10 +43,9 @@ call plug#end()
 " }}}
 
 " Vim behaviour {{{
-set tabstop=4                       " Number of spaces a tab counts for
+set expandtab                       " Expand tab character to spaces
 set softtabstop=4                   " Set columns to 0 for tabs
-set expandtab                       " Use tab character instead of spaces
-set shiftwidth=4                    " Make indent correspond to single tab
+set shiftwidth=4                    " Make indent correspond to 4 spaces
 set smarttab                        " Enable smarttab
 set number relativenumber           " Enable relative line numbers
 set ignorecase                      " Ignore case when searching
