@@ -120,6 +120,11 @@ function Ranger()
     endif
     redraw!
 endfun
+
+" Use appropriae FZF function
+function CheckFZF()
+    execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
+endfun
 " }}}
 
 " Custom keybindings {{{
@@ -130,9 +135,7 @@ nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
 nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
 nnoremap <silent> <C-m>  :noh<CR>
-
-" FZF
-nnoremap <silent> <C-p> :Files<cr>
+nnoremap <silent> <C-p> :call CheckFZF()<cr>
 
 " Leader-keybindings
 nnoremap <silent> <leader>q :terminal<CR>
