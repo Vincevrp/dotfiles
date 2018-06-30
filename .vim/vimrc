@@ -14,7 +14,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
@@ -131,6 +131,9 @@ nnoremap <silent> <C-y> 2<C-y>
 nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
 nnoremap <silent> <C-m>  :noh<CR>
 
+" FZF
+nnoremap <silent> <C-p> :Files<cr>
+
 " Leader-keybindings
 nnoremap <silent> <leader>q :terminal<CR>
 nnoremap <silent> <leader>s :shell<CR>
@@ -161,8 +164,7 @@ nnoremap <silent> <leader><leader> <C-^>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
 nnoremap <silent> <leader>d :bd<CR>
-nnoremap <silent> <leader>l :ls<CR>
-nnoremap <silent> <leader>b :execute ':b' input('Buffer: ')<CR>
+nnoremap <silent> <leader>l :Buffers<CR>
 
 " F-keys
 nnoremap <silent> <F1> :set nospell<CR>
@@ -173,7 +175,7 @@ nnoremap <silent> <F4> :call DOS2Unix()<CR>
 " Filetype specific
 autocmd FileType tex      nnoremap <silent> <leader>c :!pdflatex %<CR><CR>
 autocmd FileType tex      nnoremap <silent> <leader>p :!mupdf %:r.pdf &<CR><CR>
-autocmd FileType html     nnoremap <silent> <leader>p :!chromium %<CR><CR>
+autocmd FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
 autocmd FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><Enter>
 " }}}
@@ -187,7 +189,7 @@ let g:vim_markdown_frontmatter=1
 let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=4444
-let g:livedown_browser="chromium"
+let g:livedown_browser="firefox"
 " }}}
 
 " Easymotion settings {{{
@@ -202,14 +204,11 @@ let NERDTreeMapOpenSplit='h'
 let NERDTreeMapOpenInTab='t'
 " }}}
 
-" CtrlP settings {{{
-let g:ctrlp_show_hidden=1
-let g:ctrlp_clear_cache_on_exit=0
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("v")': ['<c-v>'],
-    \ 'AcceptSelection("h")': ['<c-h>'],
-    \ 'AcceptSelection("t")': ['<c-t>'],
-\ }
+" FZF settings {{{
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-h': 'split',
+  \ 'ctrl-v': 'vsplit' }
 " }}}
 
 " Emmet {{{

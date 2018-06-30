@@ -22,6 +22,10 @@ source $HOME/.shell/aliases.sh
 # Variables
 source $HOME/.shell/vars.sh
 
+# FZF
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # Source external files
 eval "$(dircolors ~/.shell/.dir_colors)"
 
