@@ -136,4 +136,4 @@ fzf is used by both vim and zsh. Install by running `sudo pacman -S fzf`.
 
 ## License
 
-See [LICENSE](LICENSE)
+See [LICENSE](../LICENSE)
