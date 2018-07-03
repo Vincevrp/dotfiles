@@ -44,6 +44,8 @@ URxvt*scrollBar: false
 URxvt*font: xft:Hack-regular:size=10:style=Regular
 URxvt*depth: 32
 URxvt*background: [95]nord0
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 ! Enable the extended coloring options
 rofi.color-enabled: true
