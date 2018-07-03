@@ -28,3 +28,6 @@ alias vpw='vagrant provision --provision-with'
 alias vh='vagrant halt'
 alias vr='vagrant reload'
 alias vd='vagrant destroy'
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dot="dotfiles"
