@@ -14,7 +14,7 @@ set $menu       rofi -show run
 set $window     rofi -show window
 
 # Wallpaper path
-set $wallpaper  $HOME/wallpaper.jpg
+set $wallpaper  $HOME/.github/wallpaper.jpg
 
 # Lockscreen command
 set $lock       /opt/i3lock-fancy/lock.sh
