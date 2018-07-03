@@ -82,7 +82,7 @@ I use [i3-gaps](https://www.archlinux.org/packages/community/x86_64/i3-gaps/) as
 
 ##### openvpn
 
-The openvpn script I use for polybar is a modified version of the script provided in the [i3blocks-contrib repository](https://github.com/vivien/i3blocks-contrib/tree/master/openvpn).
+I wrote a python script for polybar that works together with my vpn script found in `.bin/vpn`. The vpn script writes a PID file and the openvpn scripts parses this to display the configuration file name.
 
 #### Rofi
 
