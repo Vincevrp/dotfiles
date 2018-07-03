@@ -68,6 +68,7 @@ set showbreak=↪\                    " Display ↪\ in front of wrapped lines
 set splitbelow                      " Open horizontal split below
 set cursorline                      " Highlight current line
 set nrformats-=octal                " Remove octal numbers from increment
+set wildmenu                        " Show wildmenu when using tab completion
 " }}}
 
 " Other settings {{{
