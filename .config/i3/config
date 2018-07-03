@@ -29,7 +29,6 @@ exec            redshift                                # Start Redshift
 exec            imwheel -k -b 45                        # Start imwheel
 exec            --no-startup-id scratchpad              # Start scratchpad terminal
 exec            dunst                                   # Start dunst
-exec_always     xrdb $HOME/.Xresources                  # Load .Xresources
 exec_always     sleep 0.1; ~/.config/polybar/launch.sh  # Status bar
 exec_always     feh --bg-scale $wallpaper               # Set wallpaper
 exec_always     $HOME/.bin/xmodmap-init                 # Load .Xmodmap
