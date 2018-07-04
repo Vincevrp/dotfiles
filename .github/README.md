@@ -18,6 +18,7 @@ I use a bare git repository to manage my dotfiles. To initialize use the followi
 git clone --bare <git-repo-url> $HOME/.dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 dotfiles checkout
+dotfiles config --local status.showUntrackedFiles no
 ```
 
 If you receive an error message about untracked working tree files; run the following command:
