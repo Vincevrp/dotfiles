@@ -3,7 +3,6 @@
 import os, re
 
 # Variables
-OPENVPN_DIR="/etc/openvpn/conf.d"
 OPENVPN_EXT=".conf"
 PID_DIR="/run/openvpn"
 PID_FILE="openvpn.pid"
@@ -13,7 +12,7 @@ CMD_PATH="/proc/PID/cmdline"
 def main():
     pid = getPid()
 
-    if getPid() is not None:
+    if pid is not None:
         cmdline = getCmdline(pid)
         if cmdline is not None:
             return getConfigName(cmdline)
