@@ -11,7 +11,7 @@ secondary = ${xrdb:color14}
 alert = #bd2c40
 
 [bar/main]
-monitor = ${env:MONITOR:DVI-I-1}
+;monitor = ${env:MONITOR:DVI-D-0}
 width = 100%
 height = 27
 radius = 0.0
@@ -36,7 +36,7 @@ module-margin-right = 2
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu temperature memory storage openvpn date
+modules-right = alsa xbacklight battery cpu temperature memory storage openvpn date
 
 tray-position = right
 tray-detached = false
@@ -53,6 +53,41 @@ monitor = ${env:MONITOR}
 modules-center =
 modules-right =
 tray-position = none
+
+[module/alsa]
+type = internal/alsa
+master-mixer = Master
+mapped = true
+
+label-volume = "VOL %percentage%%"
+label-muted = "sound muted"
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ACAD
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
 
 [module/xwindow]
 type = internal/xwindow
@@ -93,6 +128,11 @@ label-urgent = %index%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
+[module/xbacklight]
+type = internal/xbacklight
+format = <label>
+label = "  %percentage%%"
+
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -111,7 +151,7 @@ label = " %gb_used%"
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = wlp2s0
 interval = 3.0
 
 ; format-connected-underline = ${xrdb:color3}

@@ -17,7 +17,7 @@ set $window     rofi -show window
 set $wallpaper  $HOME/.github/wallpaper.png
 
 # Lockscreen command
-set $lock       $HOME/.bin/lock
+set $lock       dm-tool lock
 
 # Screenshot command
 set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
@@ -29,9 +29,9 @@ exec            redshift -l 51.0535:3.7304              # Start Redshift
 exec            imwheel -k -b 4567                        # Start imwheel
 exec            $HOME/.bin/scratchpad                   # Start scratchpad terminal
 exec            dunst                                   # Start dunst
+exec            nm-applet                               # Start NetworkManager
 exec_always     $HOME/.config/polybar/launch.sh         # Status bar
-exec_always     feh --bg-scale ~/.github/wallpaper.png  \
-                    --bg-fill  ~/.github/wallpaper.png  # Set wallpaper
+exec_always     feh --bg-scale $wallpaper               # Set wallpaper
 # }}}
 
 # Layout and colorscheme {{{
@@ -69,10 +69,10 @@ for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scra
 # }}}
 
 # Workspace and monitor config {{{
-workspace 1 output DVI-I-1
-workspace 2 output DP-0
-workspace 3 output HDMI-0
-workspace 4 output HDMI-0
+#workspace 1 output DVI-D-0
+#workspace 2 output DP-0
+#workspace 3 output DVI-I-1
+#workspace 4 output HDMI-0
 # }}}
 
 # Keybindings {{{
@@ -205,6 +205,16 @@ bindsym $mod+Shift+g         gaps inner current set 10; gaps outer current set 1
 
 # Resize mode binding
 bindsym $mod+r              mode "resize"
+
+# Function keys
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym $mod+F11 exec xbacklight -set 1
+bindsym $mod+F12 exec xbacklight -set 100
+
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
 
 # Resize mode config
 mode "resize" {
