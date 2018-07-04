@@ -13,7 +13,11 @@ function check_root {
 }
 
 function check_openvpn {
-    return "$(pgrep openvpn || return 0)"
+    if pgrep openvpn; then
+        return 1
+    fi
+
+    return 0
 }
 
 function print_help {
