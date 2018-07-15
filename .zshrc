@@ -22,6 +22,22 @@ source $HOME/.shell/aliases.sh
 # Variables
 source $HOME/.shell/vars.sh
 
+# Keybindings
+bindkey -v
+bindkey '^ ' autosuggest-accept
+bindkey -M 'vicmd' -r ':'
+
+# Vi-mode prompt
+precmd() { RPROMPT="" }
+function zle-line-init zle-keymap-select {
+   VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # FZF
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
@@ -33,13 +49,9 @@ eval "$(dircolors ~/.shell/.dir_colors)"
 ENABLE_CORRECTION="true"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
 
-# Keybindings
-bindkey '^ ' autosuggest-accept
-
 # Default
 HISTFILE=$ZDOTDIR/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd
-bindkey -e
 autoload -Uz compinit
