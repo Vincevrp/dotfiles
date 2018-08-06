@@ -7,7 +7,7 @@
 set $mod        Mod4
 
 # Set terminal
-set $term       urxvt
+set $term       st
 
 # Launcher command
 set $menu       rofi -show run
