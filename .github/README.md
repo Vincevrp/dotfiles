@@ -91,7 +91,11 @@ I wrote a python script for polybar that works together with my vpn script found
 
 #### Rxvt-unicode
 
-[urxvt](https://wiki.archlinux.org/index.php/Rxvt-unicode) is set as the default terminal for i3. It uses `.Xresources` for its configuration.
+[urxvt](https://wiki.archlinux.org/index.php/Rxvt-unicode) is installed as a backup terminal. It uses `.Xresources` for its configuration.
+
+#### st (suckless terminal)
+
+The default terminal for i3 is my own build of st. You can find it [here](https://github.com/Vincevrp/st)!
 
 ### Ranger
 
