@@ -25,11 +25,11 @@ set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
 
 # Auto start {{{
 exec            compton -f                              # Start compton
-exec            redshift                                # Start Redshift
+exec            redshift -l 51.0535:3.7304              # Start Redshift
 exec            imwheel -k -b 45                        # Start imwheel
-exec            --no-startup-id scratchpad              # Start scratchpad terminal
+exec            $HOME/.bin/scratchpad                   # Start scratchpad terminal
 exec            dunst                                   # Start dunst
-exec_always     sleep 0.1; ~/.config/polybar/launch.sh  # Status bar
+exec_always     $HOME/.config/polybar/launch.sh         # Status bar
 exec_always     feh --bg-scale $wallpaper               # Set wallpaper
 exec_always     $HOME/.bin/xmodmap-init                 # Load .Xmodmap
 # }}}
