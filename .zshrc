@@ -26,13 +26,14 @@ source $HOME/.shell/vars.sh
 bindkey -v
 bindkey '^ ' autosuggest-accept
 bindkey -M 'vicmd' -r ':'
+bindkey "^[[P" delete-char
 
 # Vi-mode prompt
 precmd() { RPROMPT="" }
 function zle-line-init zle-keymap-select {
-   VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-   zle reset-prompt
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
 }
 
 zle -N zle-line-init
