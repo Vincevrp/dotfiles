@@ -1,0 +1,15 @@
+/* Rofi configuration */
+
+configuration {
+    modi:                   "run,ssh,window";
+    matching:               "fuzzy";
+    theme:                  ".config/rofi/theme.rasi";
+    font:                   "Hack 11";
+    lines:                  7;
+    separator-style:        "solid";
+    hide-scrollbar:         true;
+    kb-row-down:            "Control+j";
+    kb-row-up:              "Control+k";
+    kb-accept-entry:        "Return,KP_Enter";
+    kb-remove-to-eol:       "";
+}
