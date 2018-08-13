@@ -1,14 +1,15 @@
 #!/bin/bash
 
 OPENVPN_DIR="/etc/openvpn/conf.d"
-OPENVPN_EXT=".conf"
+OPENVPN_EXT=".ovpn"
 PID_DIR="/run/openvpn"
 PID_FILE="openvpn.pid"
+ARGS=("$@")
 
 function check_root {
     if [ "$EUID" -ne 0 ]; then
-        echo "Root privileges required"
-        exit 1
+        sudo "$0" "${ARGS[@]}"
+        exit $?
     fi
 }
 
