@@ -34,7 +34,7 @@ function print_help {
 }
 
 function list_conf {
-    find "${OPENVPN_DIR}" -name \*.conf -printf '%f\n' | sed "s/${OPENVPN_EXT}//g" | sort | column
+    find "${OPENVPN_DIR}" -name \*${OPENVPN_EXT} -printf '%f\n' | sed "s/${OPENVPN_EXT}//g" | sort | column
     exit 0
 }
 
