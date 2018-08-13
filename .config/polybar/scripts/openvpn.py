@@ -3,7 +3,7 @@
 import os, re
 
 # Variables
-OPENVPN_EXT=".conf"
+OPENVPN_EXT=".ovpn"
 PID_DIR="/run/openvpn"
 PID_FILE="openvpn.pid"
 CMD_PATH="/proc/PID/cmdline"
