@@ -6,22 +6,22 @@ vim: set ft=css:
  */
 
 * {
-  nord0:                  			  #2E3440;
-  nord1:                  			  #3B4252;
-  nord2:                  			  #434C5E;
-  nord3:                  			  #4C566A;
-  nord4:                  			  #D8DEE9;
-  nord5:                   			  #E5E9F0;
-  nord6:                   			  #ECEFF4;
-  nord7:                  			  #8FBCBB;
-  nord8:                    		  #88C0D0;
-  nord9:                   			  #81A1C1;
-  nord10:                  			  #5E81AC;
-  nord11:                  			  #BF616A;
-  nord12:                  			  #D08770;
-  nord13:                  			  #EBCB8B;
-  nord14:                  			  #A3BE8C;
-  nord15:                  			  #B48EAD;
+  nord0:                          #2E3440;
+  nord1:                          #3B4252;
+  nord2:                          #434C5E;
+  nord3:                          #4C566A;
+  nord4:                          #D8DEE9;
+  nord5:                          #E5E9F0;
+  nord6:                          #ECEFF4;
+  nord7:                          #8FBCBB;
+  nord8:                          #88C0D0;
+  nord9:                          #81A1C1;
+  nord10:                         #5E81AC;
+  nord11:                         #BF616A;
+  nord12:                         #D08770;
+  nord13:                         #EBCB8B;
+  nord14:                         #A3BE8C;
+  nord15:                         #B48EAD;
   background:                     @nord0;
   foreground:                     @nord4;
   active-background:              @background;
@@ -69,7 +69,7 @@ vim: set ft=css:
 
 #listview {
   fixed-height: 0;
-  padding:	  5 0 0;
+  padding:  5 0 0;
   spacing:      5px ;
 }
 
@@ -132,7 +132,7 @@ vim: set ft=css:
   spacing:    5;
   text-color: @normal-foreground;
   padding:    5px ;
-  border:	0 0 1;
+  border:0 0 1;
   border-color: @separatorcolor;
 }
 
