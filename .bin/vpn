@@ -2,8 +2,6 @@
 
 OPENVPN_DIR="/etc/openvpn/conf.d"
 OPENVPN_EXT=".ovpn"
-PID_DIR="/run/openvpn"
-PID_FILE="openvpn.pid"
 ARGS=("$@")
 
 function check_root {
@@ -65,11 +63,8 @@ function connect {
     # Disable IPv6
     sysctl -w net.ipv6.conf.all.disable_ipv6=1 &> /dev/null
 
-    # Create directory and PID file
-    mkdir -p ${PID_DIR} && touch ${PID_DIR}/${PID_FILE}
-
     # Start OpenVPN
-    openvpn --daemon --auth-nocache --writepid "${PID_DIR}/${PID_FILE}" --cd "${OPENVPN_DIR}" --config "$1""${OPENVPN_EXT}"
+    openvpn --daemon --auth-nocache --cd "${OPENVPN_DIR}" --config "$1""${OPENVPN_EXT}"
 
     # Display message and exit
     echo "OpenVPN daemon started in background"
