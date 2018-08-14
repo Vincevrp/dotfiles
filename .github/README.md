@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This repository contains the configuration files (dotfiles) for my desktop workstation, based on Antergos/Arch Linux. Other branches are used for my other devices.
+This repository contains the configuration files (dotfiles) for my desktop workstation, based on Arch/Antergos Linux. Other branches are used for my other devices.
 
 ### Initialize
 
@@ -38,11 +38,7 @@ The idea behind the method described here is based on [this](https://developer.a
 
 ## Contents
 
-Listed below are the main components of my setup. This does not include everything, only the main configuration that is necessary for the core looks and functionality, and other components that needs extra information.
-
-### Bash
-
-Used as a backup shell, I mainly use [zsh](#zsh).
+Listed below are the main components of my setup. This does not include everything, only the main configuration that is necessary for the core looks and functionality, and other components that need extra information.
 
 ### Color scheme
 
@@ -55,19 +51,15 @@ All colors are based on [Nord](https://github.com/arcticicestudio/nord).
 </div>
 <br>
 
-Some files come from the official repository, which may or may not be modified:
-- `.Xresources`
-- `.dir_colors`
-
-I may have referenced the same colors in other configuration files that are not officially supported by Nord.
+I may have referenced these colors in other configuration files that are not officially supported by Nord.
 
 ### Fonts
 
 The following fonts are used throughout this config:
 
+- [Hack (patched)](https://github.com/source-foundry/Hack)
+- [Noto Sans](https://www.archlinux.org/packages/extra/any/noto-fonts/)
 - [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
-- [San Francisco](https://github.com/supermarin/YosemiteSanFranciscoFont)
-- [Powerline Fonts](https://github.com/powerline/fonts)
 
 ### i3-gaps
 
@@ -81,17 +73,9 @@ I use [i3-gaps](https://www.archlinux.org/packages/community/x86_64/i3-gaps/) as
 
 [Polybar](https://github.com/jaagr/polybar) is the statusbar that I use for i3. Configuration files and scripts are stored in `.config/polybar`.
 
-##### openvpn
-
-I wrote a python script for polybar that works together with my vpn script found in `.bin/vpn`. The vpn script writes a PID file and the openvpn scripts parses this to display the configuration file name.
-
 #### Rofi
 
 [Rofi](https://github.com/DaveDavenport/rofi) is used as my application launcher.
-
-#### Rxvt-unicode
-
-[urxvt](https://wiki.archlinux.org/index.php/Rxvt-unicode) is installed as a backup terminal. It uses `.Xresources` for its configuration.
 
 #### st (suckless terminal)
 
@@ -113,19 +97,6 @@ Extra syntax checkers:
 
 - [JSHint](https://github.com/jshint/jshint/): Install by running `sudo npm install -g jshint`.
 - [Sass-lint](https://github.com/sasstools/sass-lint): Install by running `sudo npm install -g sass-lint`.
-
-### X.org
-
-[X.org](https://www.x.org/) requires different files:
-
-- `.xinitrc`
-  - Makes sure that i3 starts when the Xserver starts.
-- `.Xmodmap`
-  - I rebind caps lock to the mod key for [i3](#i3wm).
-- `.Xresources`
-  - [Nord](#color-scheme) color scheme.
-  - [Rofi](#rofi) theme using the colors from Nord.
-  - [Rxvt-unicode](#rxvt-unicode) settings.
 
 ### Zsh
 
