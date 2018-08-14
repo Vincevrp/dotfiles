@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo poweroff reboot exit | xargs -n 1 | rofi -dmenu | bash
+
