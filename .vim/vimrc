@@ -17,6 +17,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'junegunn/goyo.vim'
 
 " Markdown plugins
 Plug 'plasticboy/vim-markdown'
@@ -143,6 +144,7 @@ nnoremap <silent> <leader>s :shell<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
 nnoremap <silent> <leader>f :NERDTreeToggle<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
+nnoremap <silent> <leader>g :Goyo<CR>
 
 nnoremap <silent> <leader>e :copen<CR>
 nnoremap <silent> <leader><S-e> :cclose<CR>
