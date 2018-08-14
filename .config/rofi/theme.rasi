@@ -149,3 +149,4 @@ vim: set ft=css:
 #prompt {
   spacing:    0;
   text-color: @normal-foreground;
+}
