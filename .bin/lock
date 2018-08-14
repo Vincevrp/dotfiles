@@ -1,5 +1,6 @@
 #!/bin/sh
 # Inspired by @Lokesh-krishna
+# Uses PandorasFox/i3lock-color
 
 i3lock -neti ~/.github/blur.png \
     --linecolor=00000000        \
