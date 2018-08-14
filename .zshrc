@@ -27,6 +27,8 @@ bindkey -v
 bindkey '^ ' autosuggest-accept
 bindkey -M 'vicmd' -r ':'
 bindkey "^[[P" delete-char
+bindkey "^j" down-history
+bindkey "^k" up-history
 
 # Vi-mode prompt
 precmd() { RPROMPT="" }
