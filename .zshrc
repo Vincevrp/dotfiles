@@ -22,6 +22,9 @@ source $HOME/.shell/aliases.sh
 # Variables
 source $HOME/.shell/vars.sh
 
+# Functions
+source $HOME/.shell/functions.sh
+
 # Keybindings
 bindkey -v
 bindkey '^ ' autosuggest-accept
