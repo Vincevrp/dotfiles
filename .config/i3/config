@@ -17,7 +17,7 @@ set $window     rofi -show window
 set $wallpaper  $HOME/.github/wallpaper.png
 
 # Lockscreen command
-set $lock       /opt/i3lock-fancy/lock.sh
+set $lock       $HOME/.bin/lock
 
 # Screenshot command
 set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
