@@ -33,6 +33,9 @@ bindkey "^[[P" delete-char
 bindkey "^j" down-history
 bindkey "^k" up-history
 bindkey "^o" vi-cmd-mode
+bindkey "^a" vi-beginning-of-line
+bindkey "^e" vi-end-of-line
+
 
 # Vi-mode prompt
 precmd() { RPROMPT="" }
