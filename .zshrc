@@ -32,6 +32,7 @@ bindkey -M 'vicmd' -r ':'
 bindkey "^[[P" delete-char
 bindkey "^j" down-history
 bindkey "^k" up-history
+bindkey "^o" vi-cmd-mode
 
 # Vi-mode prompt
 precmd() { RPROMPT="" }
