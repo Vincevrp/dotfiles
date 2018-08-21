@@ -164,7 +164,7 @@ nnoremap <silent> <C-l> <C-W>l
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
 nnoremap <silent> <C-n> :tabe<CR>
-nnoremap <silent> <C-c> :bw<CR>
+nnoremap <silent> <C-x> :bw<CR>
 
 nnoremap <silent> <leader><leader> <C-^>
 nnoremap <silent> <leader>h :new<CR>
