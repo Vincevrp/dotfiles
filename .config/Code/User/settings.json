@@ -9,5 +9,6 @@
     "vim.useSystemClipboard": true,
     "jshint.config": "~/.jshintrc",
     "editor.fontFamily": "'Hack', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "workbench.startupEditor": "newUntitledFile"
 }
