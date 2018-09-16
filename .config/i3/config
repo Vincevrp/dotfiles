@@ -26,11 +26,12 @@ set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
 # Auto start {{{
 exec            compton -f                              # Start compton
 exec            redshift -l 51.0535:3.7304              # Start Redshift
-exec            imwheel -k -b 45                        # Start imwheel
+exec            imwheel -k -b 4567                        # Start imwheel
 exec            $HOME/.bin/scratchpad                   # Start scratchpad terminal
 exec            dunst                                   # Start dunst
 exec_always     $HOME/.config/polybar/launch.sh         # Status bar
-exec_always     feh --bg-scale $wallpaper               # Set wallpaper
+exec_always     feh --bg-scale ~/.github/wallpaper.png  \
+                    --bg-fill  ~/.github/wallpaper.png  # Set wallpaper
 exec_always     $HOME/.bin/xmodmap-init                 # Load .Xmodmap
 # }}}
 
@@ -69,9 +70,9 @@ for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scra
 # }}}
 
 # Workspace and monitor config {{{
-workspace 1 output DVI-D-0
+workspace 1 output DVI-I-1
 workspace 2 output DP-0
-workspace 3 output DVI-I-1
+workspace 3 output HDMI-0
 # }}}
 
 # Keybindings {{{
