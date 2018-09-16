@@ -151,6 +151,7 @@ nnoremap <silent> <leader>e :copen<CR>
 nnoremap <silent> <leader><S-e> :cclose<CR>
 nnoremap <silent> <leader><S-n> :cp<CR>
 nnoremap <silent> <leader>n :cn<CR>
+nnoremap <silent> <leader><C-p> :Files<cr>
 
 " Insert mode keybindings
 inoremap <C-Space> <C-x><C-o>
@@ -164,7 +165,7 @@ nnoremap <silent> <C-l> <C-W>l
 nnoremap <silent> <Tab> :tabn<CR>
 nnoremap <silent> <S-Tab> :tabp<CR>
 nnoremap <silent> <C-n> :tabe<CR>
-nnoremap <silent> <C-x> :bw<CR>
+nnoremap <silent> <S-x> :bw<CR>
 
 nnoremap <silent> <leader><leader> <C-^>
 nnoremap <silent> <leader>h :new<CR>
