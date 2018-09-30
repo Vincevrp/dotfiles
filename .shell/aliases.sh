@@ -1,6 +1,6 @@
 # Shell aliases
 alias :q='exit'
-alias ls='ls --color=always'
+alias ls='ls --color=always --group-directories-first'
 alias la='ls -hal'
 alias lai='ls -hail'
 alias ip='ip --color'
@@ -19,6 +19,7 @@ alias gca='git commit -a'
 alias gf='git fetch'
 alias gp='git pull'
 alias gP='git push'
+alias gl='git log'
 alias gr='cd $(git rev-parse --show-toplevel)'
 
 alias v='vagrant'
