@@ -180,7 +180,7 @@ nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
 " Filetype specific
-autocmd FileType tex      nnoremap <silent> <leader>c :!pdflatex %<CR><CR>
+autocmd FileType tex      nnoremap <silent> <leader>c :!pdflatex -output-directory %:p:h %:p<CR><CR>
 autocmd FileType tex      nnoremap <silent> <leader>p :!mupdf %:r.pdf &<CR><CR>
 autocmd FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
