@@ -53,6 +53,7 @@ set ignorecase                      " Ignore case when searching
 set smartcase                       " Ignore case if search is all lowercase, case-sensitive otherwise
 set hlsearch                        " Highlight search terms
 set incsearch                       " Show search matches as you type
+set scrolloff=10                    " Number of lines to keep above and below cursor
 set showmatch                       " Show matching parenthesis
 set mouse=                          " Mouse input (empty=disabled)
 set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
@@ -79,7 +80,7 @@ set noshowmode                      " Disable default mode indicator
 syntax on
 
 " Change indentation based on filetype
-autocmd FileType yaml,ruby,css,sass,scss setlocal shiftwidth=2 softtabstop=2 tabstop=2
+autocmd FileType yaml,ruby,html,css,sass,scss setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
 " Highlight trailing whitespace and TAB characters
 highlight ExtraWhitespace ctermbg=red guibg=red
