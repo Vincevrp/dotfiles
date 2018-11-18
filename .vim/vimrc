@@ -19,6 +19,9 @@ Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'junegunn/goyo.vim'
 
+" VIM Hardtime
+Plug 'takac/vim-hardtime'
+
 " Markdown plugins
 Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
@@ -128,6 +131,18 @@ endfun
 function CheckFZF()
     execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
 endfun
+
+" Toggle 80 column width highlight
+let s:columnwidth = 0
+function! ToggleWidthHighlight()
+    if s:columnwidth == 0
+        let s:columnwidth = 1
+        match WarningMsg '\%>80v.\+'
+    else
+        let s:columnwidth = 0
+        match none
+    endif
+endfunction
 " }}}
 
 " Custom keybindings {{{
@@ -147,6 +162,7 @@ nnoremap <silent> <leader>r :call Ranger()<CR>
 nnoremap <silent> <leader>f :NERDTreeToggle<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
+nnoremap <silent> <leader>w :call ToggleWidthHighlight()<CR>
 
 nnoremap <silent> <leader>e :copen<CR>
 nnoremap <silent> <leader><S-e> :cclose<CR>
@@ -163,8 +179,7 @@ nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
 
-nnoremap <silent> <Tab> :tabn<CR>
-nnoremap <silent> <S-Tab> :tabp<CR>
+nnoremap <silent> <S-n> :tabn<CR>
 nnoremap <silent> <C-n> :tabe<CR>
 nnoremap <silent> <S-x> :bw<CR>
 
@@ -229,5 +244,8 @@ let g:ale_lint_on_text_changed="normal"
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
+
+" Hardtime
+let g:hardtime_default_on = 1
 " }}}
 
