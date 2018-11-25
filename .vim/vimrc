@@ -179,7 +179,7 @@ nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
 
-nnoremap <silent> <S-n> :tabn<CR>
+nnoremap <silent> <C-b> :tabn<CR>
 nnoremap <silent> <C-n> :tabe<CR>
 nnoremap <silent> <S-x> :bw<CR>
 
@@ -247,5 +247,6 @@ let g:airline#extensions#ale#enabled = 1
 
 " Hardtime
 let g:hardtime_default_on = 1
+let g:hardtime_timeout = 500
 " }}}
 
