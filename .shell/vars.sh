@@ -1,6 +1,7 @@
 # Shell variables
-export PATH=$PATH:~/.bin                     # Add ~/.bin to PATH
+export PATH=$PATH:~/.bin:~/.gem/ruby/2.5.0/bin                     # Add ~/.bin to PATH
 export EDITOR=/usr/bin/vim
+export BROWSER=/usr/bin/firefox
 export VIMINIT="source ~/.vim/vimrc"
 export ZDOTDIR=$HOME/.shell
 export XDG_CONFIG_HOME="$HOME/.config"
