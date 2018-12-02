@@ -13,13 +13,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'junegunn/goyo.vim'
-
-" VIM Hardtime
 Plug 'takac/vim-hardtime'
 
 " Markdown plugins
@@ -75,6 +72,7 @@ set cursorline                      " Highlight current line
 set nrformats-=octal                " Remove octal numbers from increment
 set wildmenu                        " Show wildmenu when using tab completion
 set noshowmode                      " Disable default mode indicator
+set autochdir                       " Automatically change working directory
 " }}}
 
 " Other settings {{{
@@ -109,7 +107,7 @@ colorscheme nord
 " Custom commands and functions {{{
 
 " Write as sudo
-command W execute ":w !sudo tee %"
+command! W execute ":w !sudo tee %"
 
 " Convert to unix line ending
 function DOS2Unix()
@@ -163,7 +161,8 @@ nnoremap <silent> <C-p> :call CheckFZF()<cr>
 nnoremap <silent> <leader>q :terminal<CR>
 nnoremap <silent> <leader>s :shell<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
-nnoremap <silent> <leader>f :NERDTreeToggle<CR>
+nnoremap <silent> <leader><S-r> :so ~/.vim/vimrc<CR>
+nnoremap <silent> <leader>f :Ex<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
 nnoremap <silent> <leader>w :call ToggleWidthHighlight()<CR>
@@ -224,11 +223,10 @@ let g:EasyMotion_do_mapping=0
 map <Space> <Plug>(easymotion-bd-w)
 " }}}
 
-" NERDTree settings {{{
-let NERDTreeShowHidden=1 " Use Shift + i to toggle
-let NERDTreeMapOpenVSplit='v'
-let NERDTreeMapOpenSplit='h'
-let NERDTreeMapOpenInTab='t'
+" Netrw settings {{{
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 " }}}
 
 " FZF settings {{{
