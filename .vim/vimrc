@@ -148,6 +148,10 @@ endfunction
 " Custom keybindings {{{
 let mapleader=","
 
+" Add J and K motions to jumplist
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'gk'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'gj'
+
 " Ctrl-keybindings
 nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
