@@ -17,7 +17,7 @@ set $window     rofi -show window
 set $wallpaper  $HOME/.github/wallpaper.png
 
 # Lockscreen command
-set $lock       dm-tool lock
+set $lock       lock
 
 # Screenshot command
 set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
