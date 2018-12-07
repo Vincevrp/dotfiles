@@ -8,39 +8,43 @@ set viminfo+=n~/.vim/viminfo
 
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
-Plug 'arcticicestudio/nord-vim'
-Plug 'vim-airline/vim-airline'
+" Essential
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
+
+" Looks
+Plug 'arcticicestudio/nord-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'maximbaz/lightline-ale'
+Plug 'maximbaz/lightline-trailing-whitespace'
+
+" Tools
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'takac/vim-hardtime'
 
-" Markdown plugins
-Plug 'plasticboy/vim-markdown'
+" Formatting
 Plug 'godlygeek/tabular'
-Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
 Plug 'junegunn/vim-easy-align'
 
+" Markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
+
 " LaTeX
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'lervag/vimtex'
 
-" Emmet + CSS3 and SASS Syntax support
-Plug 'mattn/emmet-vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'gcorne/vim-sass-lint'
-Plug 'cakebaker/scss-syntax.vim'
-
-" EJS Syntax
-Plug 'nikvdp/ejs-syntax'
-
-" I3 config syntax
+" Syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
-
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'nikvdp/ejs-syntax'
 call plug#end()
 " }}}
 
@@ -72,8 +76,11 @@ set splitbelow                      " Open horizontal split below
 set cursorline                      " Highlight current line
 set nrformats-=octal                " Remove octal numbers from increment
 set wildmenu                        " Show wildmenu when using tab completion
+set laststatus=2                    " Enable statusline
 set noshowmode                      " Disable default mode indicator
 set autochdir                       " Automatically change working directory
+set undofile                        " Enable persistent undo
+set undodir=~/.vim/undodir          " Set undodir
 " }}}
 
 " Other settings {{{
@@ -98,7 +105,6 @@ autocmd BufWinLeave * call clearmatches()
 let g:nord_italic=1
 let g:nord_italic_comments=1
 let g:nord_uniform_diff_background=1
-let g:airline_powerline_fonts=1
 
 set guifont=Hack-regular
 
@@ -200,8 +206,8 @@ nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
 " Filetype specific
-autocmd FileType tex      nnoremap <silent> <leader>c :!pdflatex -output-directory %:p:h %:p<CR><CR>
-autocmd FileType tex      nnoremap <silent> <leader>p :!mupdf %:r.pdf &<CR><CR>
+autocmd FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
+autocmd FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
 autocmd FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
 autocmd FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
 autocmd FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><Enter>
@@ -211,12 +217,21 @@ autocmd FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><Enter>
 autocmd FileType markdown set foldmethod=expr
 let g:vim_markdown_folding_style_pythonic=1
 let g:vim_markdown_frontmatter=1
+let g:vim_markdown_new_list_item_indent = 0
 
 " Livedown settings
 let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=4444
 let g:livedown_browser="firefox"
+" }}}
+
+" VimTex settings {{{
+let g:vimtex_view_method = 'mupdf'
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 " }}}
 
 " Easymotion settings {{{
@@ -246,9 +261,9 @@ let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed="normal"
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
-let g:airline#extensions#ale#enabled = 1
+" }}}
 
-" Hardtime
+" Hardtime {{{
 let g:hardtime_default_on = 1
 let g:hardtime_timeout = 500
 " }}}
