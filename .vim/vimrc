@@ -88,6 +88,9 @@ set undodir=~/.vim/undodir          " Set undodir
 " Enable syntax highlighting
 syntax on
 
+" Open help in new tab
+cabbrev help tab help
+
 " Change indentation based on filetype
 autocmd FileType yaml,ruby,html,css,sass,scss setlocal shiftwidth=2 softtabstop=2 tabstop=2
 
