@@ -58,7 +58,7 @@ set ignorecase                      " Ignore case when searching
 set smartcase                       " Ignore case if search is all lowercase, case-sensitive otherwise
 set hlsearch                        " Highlight search terms
 set incsearch                       " Show search matches as you type
-set scrolloff=10                    " Number of lines to keep above and below cursor
+set scrolloff=999                   " Number of lines to keep above and below cursor
 set showmatch                       " Show matching parenthesis
 set mouse=                          " Mouse input (empty=disabled)
 set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
@@ -208,6 +208,10 @@ nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
 nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
+" Plug mappings
+map <Space> <Plug>(easymotion-bd-w)
+map <leader>a <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+
 " Filetype specific
 autocmd FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
 autocmd FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
@@ -239,7 +243,10 @@ let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " Easymotion settings {{{
 let g:EasyMotion_do_mapping=0
-map <Space> <Plug>(easymotion-bd-w)
+" }}}
+
+" NERDCommenter {{{
+let g:NERDCreateDefaultMappings = 0
 " }}}
 
 " Netrw settings {{{
