@@ -21,7 +21,8 @@ alias gf='git fetch'
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gP='git push'
-alias gl='git log'
+alias glog='git log'
+alias gl="git log --graph --pretty=format:'%Cred%h %C(bold blue)%an %C(yellow)(%cr) %Cgreen%GK%C(yellow)%d%Creset%n%Creset%n%s%n'"
 alias gr='git rebase'
 alias gR='cd $(git rev-parse --show-toplevel)'
 
