@@ -2,7 +2,7 @@
 " Author: Vincevrp | github.com/Vincevrp
 
 " Initial setup {{{
-set nocompatible
+syntax on
 set viminfo+=n~/.vim/viminfo
 " }}}
 
@@ -55,10 +55,10 @@ set shiftwidth=4                    " Make indent correspond to 4 spaces
 set smarttab                        " Enable smarttab
 set number relativenumber           " Enable relative line numbers
 set ignorecase                      " Ignore case when searching
-set smartcase                       " Ignore case if search is all lowercase, case-sensitive otherwise
+set smartcase                       " Ignore if lowercase, otherwise don't
 set hlsearch                        " Highlight search terms
 set incsearch                       " Show search matches as you type
-set scrolloff=999                   " Number of lines to keep above and below cursor
+set scrolloff=999                   " Lines to keep above and below cursor
 set showmatch                       " Show matching parenthesis
 set mouse=                          " Mouse input (empty=disabled)
 set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
@@ -85,38 +85,37 @@ set ttyfast                         " Enable fast terminal connection
 set lazyredraw                      " Only redraw when necessary
 " }}}
 
-" Other settings {{{
+" Autocmds and Filetypes {{{
 
-" Enable syntax highlighting
-syntax on
+" Augroup for filetype specific autocommands, may be declared below this point
+augroup FTS
+    autocmd!
+    autocmd FTS FileType markdown set foldmethod=expr
+augroup END
+
+" Change indentation based on filetype
+augroup FiletypeIndentation
+    autocmd!
+    autocmd FileType yaml,ruby,html,css,sass,scss call SetIndent(2)
+augroup END
+
+" Highlight trailing whitespace and TAB characters
+augroup HighlightTrailingWhitespace
+    autocmd!
+    highlight TrailingWhitespace ctermbg=red guibg=red
+    autocmd ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
+    match TrailingWhitespace /\s\+$/
+    autocmd BufWinEnter * match TrailingWhitespace /\s\+$/
+    autocmd InsertEnter * match TrailingWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match TrailingWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()
+augroup END
+" }}}
+
+" Functions and commands {{{
 
 " Open help in new tab
 cabbrev help tab help
-
-" Change indentation based on filetype
-autocmd FileType yaml,ruby,html,css,sass,scss setlocal shiftwidth=2 softtabstop=2 tabstop=2
-
-" Highlight trailing whitespace and TAB characters
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-" }}}
-
-" Colorscheme and font {{{
-let g:nord_italic=1
-let g:nord_italic_comments=1
-let g:nord_uniform_diff_background=1
-
-set guifont=Hack-regular
-
-colorscheme nord
-" }}}
-
-" Custom commands and functions {{{
 
 " Write as sudo
 command! W execute ":w !sudo tee %"
@@ -127,19 +126,25 @@ function DOS2Unix()
     %s///g
 endfun
 
+function SetIndent(num)
+   execute "setlocal shiftwidth=".a:num
+   execute "setlocal softtabstop=".a:num
+endfun
+
 " Ranger file explorer
 function Ranger()
     let l:file = "/tmp/vim-ranger"
-    exec "silent !ranger --choosefile=".l:file
+    execute "silent !ranger --choosefile=".l:file
     if filereadable(l:file)
-        exec 'edit'.system('<'.l:file.'&& rm '.l:file)
+        execute 'edit'.system('<'.l:file.'&& rm '.l:file)
     endif
     redraw!
 endfun
 
 " Use appropriae FZF function
 function CheckFZF()
-    execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'
+    let status = system('git rev-parse --is-inside-work-tree')
+    execute status =~ 'true' ? 'GFiles' : 'Files'
 endfun
 
 " Toggle 80 column width highlight
@@ -155,7 +160,7 @@ function! ToggleWidthHighlight()
 endfunction
 " }}}
 
-" Custom keybindings {{{
+" Keybindings {{{
 let mapleader=","
 
 " Add J and K motions to jumplist
@@ -215,27 +220,35 @@ map <Space> <Plug>(easymotion-bd-w)
 map <leader>a <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
 
 " Filetype specific
-autocmd FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
-autocmd FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
-autocmd FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
-autocmd FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
-autocmd FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><Enter>
+autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
+autocmd FTS FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
+autocmd FTS FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
+autocmd FTS FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
+autocmd FTS FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><CR>
 " }}}
 
-" Markdown settings {{{
-autocmd FileType markdown set foldmethod=expr
+" Plugin settings {{{
+
+" Nord colorscheme {{{
+let g:nord_italic=1
+let g:nord_italic_comments=1
+let g:nord_uniform_diff_background=1
+colorscheme nord
+" }}}
+
+" Markdown {{{
 let g:vim_markdown_folding_style_pythonic=1
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_new_list_item_indent = 0
 
-" Livedown settings
+" Livedown
 let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=4444
 let g:livedown_browser="firefox"
 " }}}
 
-" VimTex settings {{{
+" VimTex {{{
 let g:vimtex_view_method = 'mupdf'
 if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers = {}
@@ -243,7 +256,7 @@ endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 " }}}
 
-" Easymotion settings {{{
+" Easymotion {{{
 let g:EasyMotion_do_mapping=0
 " }}}
 
@@ -251,13 +264,13 @@ let g:EasyMotion_do_mapping=0
 let g:NERDCreateDefaultMappings = 0
 " }}}
 
-" Netrw settings {{{
+" Netrw {{{
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
 " }}}
 
-" FZF settings {{{
+" FZF {{{
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-h': 'split',
@@ -268,7 +281,7 @@ let g:fzf_action = {
 let g:user_emmet_leader_key='<leader>H'
 " }}}
 
-" ALE Settings {{{
+" ALE {{{
 let g:ale_completion_enabled = 0
 let g:ale_lint_on_text_changed="normal"
 let g:ale_set_loclist = 0
@@ -279,4 +292,4 @@ let g:ale_set_quickfix = 1
 let g:hardtime_default_on = 1
 let g:hardtime_timeout = 500
 " }}}
-
+" }}}
