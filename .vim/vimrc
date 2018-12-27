@@ -23,7 +23,7 @@ Plug 'maximbaz/lightline-trailing-whitespace'
 
 " Tools
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'ajh17/VimCompletesMe'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/goyo.vim'
@@ -110,6 +110,11 @@ augroup HighlightTrailingWhitespace
     autocmd InsertLeave * match TrailingWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
 augroup END
+
+augroup VimCompletesMeTex
+    autocmd!
+    autocmd FileType tex let b:vcm_omni_pattern = g:vimtex#re#neocomplete
+augroup END
 " }}}
 
 " Functions and commands {{{
@@ -127,8 +132,8 @@ function DOS2Unix()
 endfun
 
 function SetIndent(num)
-   execute "setlocal shiftwidth=".a:num
-   execute "setlocal softtabstop=".a:num
+    execute "setlocal shiftwidth=".a:num
+    execute "setlocal softtabstop=".a:num
 endfun
 
 " Ranger file explorer
@@ -171,7 +176,7 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
 nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
-nnoremap <silent> <C-m>  :noh<CR>
+nnoremap <silent> <C-m> :noh<CR>
 nnoremap <silent> <C-p> :call CheckFZF()<cr>
 
 " Leader-keybindings
@@ -189,9 +194,6 @@ nnoremap <silent> <leader><S-e> :cclose<CR>
 nnoremap <silent> <leader><S-n> :cp<CR>
 nnoremap <silent> <leader>n :cn<CR>
 nnoremap <silent> <leader><C-p> :Files<cr>
-
-" Insert mode keybindings
-inoremap <C-Space> <C-x><C-o>
 
 " Window and buffer management
 nnoremap <silent> <C-h> <C-W>h
@@ -218,6 +220,9 @@ nnoremap <silent> <F4> :call DOS2Unix()<CR>
 " Plug mappings
 map <Space> <Plug>(easymotion-bd-w)
 map <leader>a <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+
+imap <C-j> <Plug>vim_completes_me_forward
+imap <C-k> <Plug>vim_completes_me_backward
 
 " Filetype specific
 autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
@@ -250,10 +255,6 @@ let g:livedown_browser="firefox"
 
 " VimTex {{{
 let g:vimtex_view_method = 'mupdf'
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 " }}}
 
 " Easymotion {{{
@@ -272,9 +273,9 @@ let g:netrw_winsize = 25
 
 " FZF {{{
 let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-h': 'split',
-  \ 'ctrl-v': 'vsplit' }
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-h': 'split',
+    \ 'ctrl-v': 'vsplit' }
 " }}}
 
 " Emmet {{{
@@ -282,10 +283,14 @@ let g:user_emmet_leader_key='<leader>H'
 " }}}
 
 " ALE {{{
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed="normal"
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+" }}}
+
+" VimCompletesMe {{{
+let g:vcm_default_maps = 0
 " }}}
 
 " Hardtime {{{
