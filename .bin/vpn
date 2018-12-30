@@ -38,8 +38,8 @@ function list_conf {
 
 function ip_info {
     DATA=$(curl -s https://ipv4.ipleak.net/json/)
-    COUNTRY=$(echo "${DATA}" | grep country_code | awk -F '["]' '{print $(NF-1)}')
-    IP=$(echo "${DATA}" | grep ip | awk -F '["]' '{print $(NF-1)}' | head -n 1)
+    COUNTRY=$(echo "${DATA}" | awk -F '["]' '/country_code/ {print $(NF-1)}')
+    IP=$(echo "${DATA}" | awk -F '["]' '/ip/ {print $(NF-1)}' | head -n 1)
 
     echo "Info: ${COUNTRY} | ${IP}"
 }
