@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
 
@@ -25,7 +26,6 @@ Plug 'maximbaz/lightline-trailing-whitespace'
 Plug 'w0rp/ale'
 Plug 'ajh17/VimCompletesMe'
 Plug 'mattn/emmet-vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/goyo.vim'
 Plug 'takac/vim-hardtime'
 
@@ -126,18 +126,18 @@ cabbrev help tab help
 command! W execute ":w !sudo tee %"
 
 " Convert to unix line ending
-function DOS2Unix()
+function! DOS2Unix() abort
     edit ++ff=unix
     %s///g
 endfun
 
-function SetIndent(num)
+function! SetIndent(num) abort
     execute "setlocal shiftwidth=".a:num
     execute "setlocal softtabstop=".a:num
 endfun
 
 " Ranger file explorer
-function Ranger()
+function! Ranger() abort
     let l:file = "/tmp/vim-ranger"
     execute "silent !ranger --choosefile=".l:file
     if filereadable(l:file)
@@ -147,14 +147,14 @@ function Ranger()
 endfun
 
 " Use appropriae FZF function
-function CheckFZF()
+function! CheckFZF() abort
     let status = system('git rev-parse --is-inside-work-tree')
     execute status =~ 'true' ? 'GFiles' : 'Files'
 endfun
 
 " Toggle 80 column width highlight
 let s:columnwidth = 0
-function! ToggleWidthHighlight()
+function! ToggleWidthHighlight() abort
     if s:columnwidth == 0
         let s:columnwidth = 1
         match WarningMsg '\%>80v.\+'
@@ -219,7 +219,9 @@ nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
 " Plug mappings
 map <Space> <Plug>(easymotion-bd-w)
-map <leader>a <Plug>NERDCommenterToggle('n', 'Toggle')<Cr>
+
+imap <C-j> <Plug>vim_completes_me_forward
+imap <C-k> <Plug>vim_completes_me_backward
 
 imap <C-j> <Plug>vim_completes_me_forward
 imap <C-k> <Plug>vim_completes_me_backward
@@ -259,10 +261,6 @@ let g:vimtex_view_method = 'mupdf'
 
 " Easymotion {{{
 let g:EasyMotion_do_mapping=0
-" }}}
-
-" NERDCommenter {{{
-let g:NERDCreateDefaultMappings = 0
 " }}}
 
 " Netrw {{{
