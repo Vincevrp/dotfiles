@@ -223,9 +223,6 @@ map <Space> <Plug>(easymotion-bd-w)
 imap <C-j> <Plug>vim_completes_me_forward
 imap <C-k> <Plug>vim_completes_me_backward
 
-imap <C-j> <Plug>vim_completes_me_forward
-imap <C-k> <Plug>vim_completes_me_backward
-
 " Filetype specific
 autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
 autocmd FTS FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
