@@ -15,6 +15,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 
 " Looks
 Plug 'arcticicestudio/nord-vim'
@@ -28,10 +29,6 @@ Plug 'ajh17/VimCompletesMe'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'takac/vim-hardtime'
-
-" Formatting
-Plug 'godlygeek/tabular'
-Plug 'junegunn/vim-easy-align'
 
 " Markdown
 Plug 'plasticboy/vim-markdown'
@@ -223,12 +220,14 @@ map <Space> <Plug>(easymotion-bd-w)
 imap <C-j> <Plug>vim_completes_me_forward
 imap <C-k> <Plug>vim_completes_me_backward
 
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
 " Filetype specific
 autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
 autocmd FTS FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
 autocmd FTS FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
 autocmd FTS FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
-autocmd FTS FileType markdown vmap     <silent> <leader>t :EasyAlign*<Bar><CR>
 " }}}
 
 " Plugin settings {{{
