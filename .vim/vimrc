@@ -151,7 +151,7 @@ function! ToggleColorColumn() abort
     execute "set colorcolumn=". (&colorcolumn == "" ? "80" : "")
 endfun
 
-function! QuickFix_toggle() abort
+function! ToggleQuickFix() abort
     for i in range(1, winnr('$'))
         if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
             cclose
@@ -196,7 +196,7 @@ nnoremap <silent> <leader>g :Goyo<CR>
 nnoremap <silent> <leader>q :terminal<CR>
 nnoremap <silent> <leader>f :Explore<CR>
 nnoremap <silent> <leader>r :call Ranger()<CR>
-nnoremap <silent> <leader>e :call QuickFix_toggle()<CR>
+nnoremap <silent> <leader>e :call ToggleQuickFix()<CR>
 nnoremap <silent> <leader>w :call ToggleColorColumn()<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
 
