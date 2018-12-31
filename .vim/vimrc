@@ -30,18 +30,16 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'takac/vim-hardtime'
 
-" Markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
-
-" LaTeX
-Plug 'lervag/vimtex'
-
-" Syntax
+" Languages and Syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'nikvdp/ejs-syntax'
+" Markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
+" LaTeX
+Plug 'lervag/vimtex'
 call plug#end()
 " }}}
 
@@ -149,16 +147,19 @@ function! CheckFZF() abort
     execute status =~ 'true' ? 'GFiles' : 'Files'
 endfun
 
-" Toggle 80 column width highlight
-let s:columnwidth = 0
-function! ToggleWidthHighlight() abort
-    if s:columnwidth == 0
-        let s:columnwidth = 1
-        match WarningMsg '\%>80v.\+'
-    else
-        let s:columnwidth = 0
-        match none
-    endif
+function! ToggleColorColumn() abort
+    execute "set colorcolumn=". (&colorcolumn == "" ? "80" : "")
+endfun
+
+function! QuickFix_toggle() abort
+    for i in range(1, winnr('$'))
+        if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+            cclose
+            return
+        endif
+    endfor
+
+    copen
 endfunction
 " }}}
 
@@ -170,43 +171,34 @@ nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 " Ctrl-keybindings
-nnoremap <silent> <C-e> 2<C-e>
-nnoremap <silent> <C-y> 2<C-y>
-nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
-nnoremap <silent> <C-m> :noh<CR>
-nnoremap <silent> <C-p> :call CheckFZF()<cr>
-
-" Leader-keybindings
-nnoremap <silent> <leader>q :terminal<CR>
-nnoremap <silent> <leader>s :shell<CR>
-nnoremap <silent> <leader>r :call Ranger()<CR>
-nnoremap <silent> <leader><S-r> :so ~/.vim/vimrc<CR>
-nnoremap <silent> <leader>f :Ex<CR>
-nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
-nnoremap <silent> <leader>g :Goyo<CR>
-nnoremap <silent> <leader>w :call ToggleWidthHighlight()<CR>
-
-nnoremap <silent> <leader>e :copen<CR>
-nnoremap <silent> <leader><S-e> :cclose<CR>
-nnoremap <silent> <leader><S-n> :cp<CR>
-nnoremap <silent> <leader>n :cn<CR>
-nnoremap <silent> <leader><C-p> :Files<cr>
-
-" Window and buffer management
 nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
+nnoremap <silent> <C-n> :tabnext<CR>
+nnoremap <silent> <C-e> 2<C-e>
+nnoremap <silent> <C-y> 2<C-y>
+nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
+nnoremap <silent> <C-m> :nohlsearch<CR>
+nnoremap <silent> <C-p> :call CheckFZF()<cr>
 
-nnoremap <silent> <C-b> :tabn<CR>
-nnoremap <silent> <C-n> :tabe<CR>
-nnoremap <silent> <S-x> :bw<CR>
-
+" Leader-keybindings
+nnoremap <silent> <leader><C-p> :Files<cr>
+nnoremap <silent> <leader><S-r> :so ~/.vim/vimrc<CR>
+nnoremap <silent> <leader><S-n> :cprevious<CR>
 nnoremap <silent> <leader><leader> <C-^>
+nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
-nnoremap <silent> <leader>d :bd<CR>
 nnoremap <silent> <leader>l :Buffers<CR>
+nnoremap <silent> <leader>n :cnext<CR>
+nnoremap <silent> <leader>g :Goyo<CR>
+nnoremap <silent> <leader>q :terminal<CR>
+nnoremap <silent> <leader>f :Explore<CR>
+nnoremap <silent> <leader>r :call Ranger()<CR>
+nnoremap <silent> <leader>e :call QuickFix_toggle()<CR>
+nnoremap <silent> <leader>w :call ToggleColorColumn()<CR>
+nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
 
 " F-keys
 nnoremap <silent> <F1> :set nospell<CR>
@@ -214,12 +206,10 @@ nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
 nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
-" Plug mappings
+" Plugin mappings
 map <Space> <Plug>(easymotion-bd-w)
-
 imap <C-j> <Plug>vim_completes_me_forward
 imap <C-k> <Plug>vim_completes_me_backward
-
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
