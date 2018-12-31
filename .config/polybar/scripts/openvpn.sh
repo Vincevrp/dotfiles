@@ -1,2 +1,2 @@
 #!/bin/bash
-(pgrep -a openvpn$ | head -n 1 | awk '{print $NF }' | cut -d '.' -f 1 && echo down) | head -n 1
+(pgrep -a openvpn$ || echo down) | awk -F '[. ]' '{print $(NF-1);exit}'
