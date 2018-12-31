@@ -30,7 +30,7 @@ Plug 'mattn/emmet-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'takac/vim-hardtime'
 
-" Languages and Syntax
+" Languages and syntax
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
@@ -207,11 +207,11 @@ nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
 " Plugin mappings
-map <Space> <Plug>(easymotion-bd-w)
-imap <C-j> <Plug>vim_completes_me_forward
-imap <C-k> <Plug>vim_completes_me_backward
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
+map  <Space> <Plug>(easymotion-bd-w)
+imap <C-j>   <Plug>vim_completes_me_forward
+imap <C-k>   <Plug>vim_completes_me_backward
+nmap ga      <Plug>(EasyAlign)
+xmap ga      <Plug>(EasyAlign)
 
 " Filetype specific
 autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
