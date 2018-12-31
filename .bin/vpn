@@ -11,14 +11,6 @@ function check_root {
     fi
 }
 
-function check_openvpn {
-    if pgrep openvpn; then
-        return 1
-    fi
-
-    return 0
-}
-
 function print_help {
     printf "Usage: %s [option]\\n" "$(basename "$0")"
     echo "Options"
@@ -38,10 +30,10 @@ function list_conf {
 
 function ip_info {
     DATA=$(curl -s https://ipv4.ipleak.net/json/)
-    COUNTRY=$(echo "${DATA}" | awk -F '["]' '/country_code/ {print $(NF-1)}')
-    IP=$(echo "${DATA}" | awk -F '["]' '/ip/ {print $(NF-1)}' | head -n 1)
+    COUNTRY=$(awk -F '["]' '/country_code/ {print $(NF-1)}' <<< "${DATA}")
+    IP=$(awk -F '["]' '/ip/ {print $(NF-1);exit}' <<< "${DATA}")
 
-    echo "Info: ${COUNTRY} | ${IP}"
+    printf "Info: %s | %s\n" "${COUNTRY}" "${IP}"
 }
 
 function connect {
@@ -49,7 +41,7 @@ function connect {
     check_root
 
     # Check if OpenVPN is already running
-    if ! check_openvpn &>/dev/null; then
+    if [[ -n $(pgrep openvpn) ]]; then
         echo "OpenVPN daemon is already running"
         exit 0
     fi
@@ -76,32 +68,30 @@ function disconnect {
     check_root
 
     # Check if OpenVPN is running
-    if check_openvpn &>/dev/null; then
-        echo "OpenVPN daemon is not running"
+    if [[ -n $(pgrep openvpn) ]]; then
+        # Kill daemon
+        killall openvpn
+
+        # Re-enable IPv6 and run DHCP
+        sysctl -w net.ipv6.conf.all.disable_ipv6=0 &> /dev/null
+        dhcpcd &> /dev/null
+
+        # Display message and exit
+        echo "Disconnected from VPN"
         exit 0
     fi
 
-    # Kill daemon
-    killall openvpn
-
-    # Re-enable IPv6 and run DHCP
-    sysctl -w net.ipv6.conf.all.disable_ipv6=0 &> /dev/null
-    dhcpcd &> /dev/null
-
-    # Display message and exit
-    echo "Disconnected from VPN"
+    echo "OpenVPN daemon is not running"
     exit 0
 }
 
 function status {
-    if check_openvpn &> /dev/null; then
-        echo "Openvpn daemon is not running"
-        ip_info
+    if [[ -n $(pgrep openvpn) ]]; then
+        printf "OpenVPN daemon is running at %s\n%s\n" "$(pgrep openvpn)" "$(ip_info)"
         exit 0
     fi
 
-    echo "OpenVPN daemon is running at $(pgrep openvpn)"
-    ip_info
+    printf "Openvpn daemon is not running\n%s\n" "$(ip_info)"
     exit 0
 }
 
