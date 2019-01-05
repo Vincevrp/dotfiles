@@ -13,17 +13,16 @@ antigen theme robbyrussell
 
 antigen apply
 
-# Disable XON/XOFF Control
-stty -ixon
-
-# Aliases
+# Source
+source $HOME/.shell/vars.sh
+source $HOME/.shell/functions.sh
 source $HOME/.shell/aliases.sh
 
-# Variables
-source $HOME/.shell/vars.sh
+# FZF
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
-# Functions
-source $HOME/.shell/functions.sh
+eval "$(dircolors ~/.shell/.dir_colors)"
 
 # Keybindings
 bindkey -v
@@ -36,11 +35,10 @@ bindkey "^o" vi-cmd-mode
 bindkey "^a" vi-beginning-of-line
 bindkey "^e" vi-end-of-line
 
-
 # Vi-mode prompt
 precmd() { RPROMPT="" }
 function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
     zle reset-prompt
 }
@@ -48,20 +46,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-# FZF
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
-# Source external files
-eval "$(dircolors ~/.shell/.dir_colors)"
-
 # Settings
-ENABLE_CORRECTION="true"
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
-
-# Default
-HISTFILE=$ZDOTDIR/zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
 setopt autocd
+stty -ixon              # Disable XON/XOFF Control
 autoload -Uz compinit
