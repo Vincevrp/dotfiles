@@ -37,7 +37,7 @@ bindkey "^a" vi-beginning-of-line
 bindkey "^e" vi-end-of-line
 
 # Zplugin
-source '/home/vince/.shell/.zplugin/bin/zplugin.zsh'
+source '/home/vince/.shell/.zplugin/mod-bin/zplugin.zsh'
 autoload -Uz _zplugin compinit
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 
