@@ -1,6 +1,7 @@
 # Shell aliases
 alias :q='exit'
 alias ls='ls --color=always --group-directories-first'
+alias ll='ls -lh'
 alias la='ls -hal'
 alias lai='ls -hail'
 alias ip='ip --color'
