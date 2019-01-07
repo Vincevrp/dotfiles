@@ -1,23 +1,17 @@
 # Zsh config
 
-# Antigen
-source /usr/share/zsh/share/antigen.zsh
-
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-antigen apply
-
-autoload -Uz compinit
-
 # Settings
-setopt autocd
-setopt prompt_subst
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushdminus
+setopt autocd                   # Auto cd when executing directory
+setopt prompt_subst             # Required for prompt
+setopt auto_pushd               # Automatically use pushd
+setopt pushd_ignore_dups        # Pushd will ignore duplicates
+setopt pushdminus               # Allow numbers
+setopt hist_expire_dups_first   # Delete duplicates when HISTFILE is full
+setopt hist_ignore_dups         # Ignore duplicates
+setopt hist_verify              # Show with history expansion before executing
+setopt inc_append_history       # Add in order of execution
 
-stty -ixon      # Disable XON/XOFF Control
+stty -ixon                      # Disable XON/XOFF Control
 
 # Source
 source $HOME/.shell/vars.sh
@@ -41,3 +35,14 @@ bindkey "^k" up-history
 bindkey "^o" vi-cmd-mode
 bindkey "^a" vi-beginning-of-line
 bindkey "^e" vi-end-of-line
+
+# Zplugin
+source '/home/vince/.shell/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin compinit
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+
+zplugin ice wait"0" atload"_zsh_autosuggest_start" lucid
+zplugin light zsh-users/zsh-autosuggestions
+
+zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin light zdharma/fast-syntax-highlighting

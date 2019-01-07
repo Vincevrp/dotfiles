@@ -102,9 +102,9 @@ Extra syntax checkers:
 
 I use zsh as my main shell. Everything in `~/.bin/` is available in `$PATH`.
 
-#### Antigen
+#### Zplugin
 
-Zsh requires [Antigen](https://github.com/zsh-users/antigen) to be installed. Refer to the repository for usage and installation instructions.
+Zsh requires [Zplugin](https://github.com/zdharma/zplugin) to be installed. Refer to the repository for usage and installation instructions.
 
 #### fzf
 
