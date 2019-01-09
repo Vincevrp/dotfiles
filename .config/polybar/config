@@ -20,10 +20,10 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-font-0 = "Nimbus Sans:style=Regular:size=10"
-font-1 = "Font Awesome 5 Free:style=solid:size=10;1"
+font-0 = "Arimo Nerd Font:pixelsize=11;2:antialias=true"
+font-1 = "Font Awesome 5 Free:style=solid:size=10;3"
 
-line-size = 3
+line-size = 2
 line-color = #f00
 
 border-size = 0
@@ -37,7 +37,7 @@ module-margin-right = 2
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu temperature memory eth openvpn date
+modules-right = cpu temperature memory openvpn date
 
 tray-position = right
 tray-detached = false
@@ -54,13 +54,6 @@ monitor = ${env:MONITOR}
 modules-center =
 modules-right =
 tray-position =
-
-[module/openvpn]
-type = custom/script
-label = VPN: %output%
-exec = ~/.config/polybar/scripts/openvpn.sh
-format-underline = ${xrdb:color4}
-interval = 5
 
 [module/xwindow]
 type = internal/xwindow
@@ -82,7 +75,7 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 
-label-focused-background = ${colors.background-alt}
+label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -104,44 +97,28 @@ label-urgent-padding = 2
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix =
+format-prefix = %{F#81A1C1}%{F-}
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color6}
-label = %percentage:2%%
+; format-underline = ${xrdb:color6}
+label = " %percentage:2%%"
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = %{F#A3BE8C}%{F-}
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color2}
-label = %gb_used%
+; format-underline = ${xrdb:color2}
+label = " %gb_used%"
 
 [module/eth]
 type = internal/network
 interface = enp3s0
 interval = 3.0
 
-format-connected-underline = ${xrdb:color3}
+; format-connected-underline = ${xrdb:color3}
 format-connected-prefix =
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
-
-[module/date]
-type = internal/date
-interval = 2
-
-date = "%a %d %b"
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${xrdb:color9}
-
-label = %date%, %time%
 
 [module/temperature]
 type = internal/temperature
@@ -150,13 +127,31 @@ thermal-zone = 2
 warn-temperature = 60
 
 format = <label>
-label = %temperature%
-format-underline = ${xrdb:color1}
+format-prefix = %{F#D08770}%{F-}
+; format-underline = ${xrdb:color1}
+label = " %temperature%"
+
+[module/openvpn]
+type = custom/script
+interval = 5
+format-prefix = %{F#EBCB8B}%{F-}
+; format-underline = ${xrdb:color4}
+exec = ~/.config/polybar/scripts/openvpn.sh
+label = " %output%"
+
+[module/date]
+type = internal/date
+interval = 2
+
+date = "%H:%M"
+date-alt = " %d-%m-%Y"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = %{F#8FBCBB}%{F-}
+; format-underline = ${xrdb:color9}
+label = " %date%"
 
 [settings]
 screenchange-reload = true
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
