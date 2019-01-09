@@ -59,8 +59,8 @@ type = internal/alsa
 master-mixer = Master
 mapped = true
 
-label-volume = "VOL %percentage%%"
-label-muted = "sound muted"
+label-volume = " %percentage%%"
+label-muted = ""
 
 [module/battery]
 type = internal/battery
@@ -69,15 +69,15 @@ adapter = ACAD
 full-at = 98
 
 format-charging = <label-charging>
-format-charging-underline = #ffb52a
+; format-charging-underline = #ffb52a
 
 format-discharging = <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+; format-discharging-underline = ${self.format-charging-underline}
 
-label-charging = " %percentage%%"
-label-discharging = " %percentage%%"
+label-charging = "%{F#EBCB8B}%{F-} %percentage%%"
+label-discharging = "%{F#EBCB8B}%{F-} %percentage%%"
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+; format-full-underline = ${self.format-charging-underline}
 
 [module/xwindow]
 type = internal/xwindow
@@ -121,7 +121,7 @@ label-urgent-padding = 2
 [module/xbacklight]
 type = internal/xbacklight
 format = <label>
-label = "  %percentage%%"
+label = "%{F#88C0D0} %{F-} %percentage%%"
 
 [module/cpu]
 type = internal/cpu
