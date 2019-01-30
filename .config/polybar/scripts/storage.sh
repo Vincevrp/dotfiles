@@ -1,3 +1,3 @@
 #!/bin/sh
 
-df -h | awk '/sde2/ {print $4}'
+df -h | awk '/root/ {print $4}'
