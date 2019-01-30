@@ -10,8 +10,8 @@ setopt hist_expire_dups_first   # Delete duplicates when HISTFILE is full
 setopt hist_ignore_dups         # Ignore duplicates
 setopt hist_verify              # Show with history expansion before executing
 setopt inc_append_history       # Add in order of execution
-setopt auto_menu         	# Show completion menu on tab
-setopt complete_in_word		# Completion from both ends
+setopt auto_menu                # Show completion menu on tab
+setopt complete_in_word         # Completion from both ends
 setopt always_to_end		# Move cursor to end on completion
 
 stty -ixon                      # Disable XON/XOFF Control
