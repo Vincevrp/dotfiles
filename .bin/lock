@@ -2,7 +2,7 @@
 # Inspired by @Lokesh-krishna
 # Uses PandorasFox/i3lock-color
 
-i3lock -neti ~/.github/lock.png  \
+i3lock -neti ~/.github/wallpaper.png  \
     --linecolor=00000000         \
     --keyhlcolor=88c0d0ff        \
     --bshlcolor=d8dee9ff         \
