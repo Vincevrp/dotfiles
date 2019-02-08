@@ -142,7 +142,7 @@ label = " %temperature%"
 [module/openvpn]
 type = custom/script
 interval = 5
-format-prefix = %{F#EBCB8B}%{F-}
+format-prefix = %{F#D08770}ﱾ%{F-}
 ; format-underline = ${xrdb:color4}
 exec = ~/.config/polybar/scripts/openvpn.sh
 label = " %output%"
