@@ -89,6 +89,14 @@ Required packages: `nerd-fonts-complete gsfonts`.
 
 ### Tools
 
+#### [MPD](https://github.com/MusicPlayerDaemon/MPD)
+
+Music Player Daemon is used to manage my music library.
+
+##### [ncmpcpp](https://github.com/arybczak/ncmpcpp)
+
+Music player for MPD, configuration resides in `.config/ncmpcpp`.
+
 #### [Ranger](https://github.com/ranger/ranger)
 
 Terminal file browser. Run `ranger --copy-config=all` before copying `rc.conf` to get the required default configuration.
