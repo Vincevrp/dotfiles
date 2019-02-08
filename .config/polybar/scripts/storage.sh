@@ -1,3 +1,3 @@
 #!/bin/bash
 
-df -h | awk '/sda1/ {print $4}'
+df -h | awk '/sde2/ {print $4}'
