@@ -1,0 +1,33 @@
+# ncmpcpp config
+# Docs in /usr/share/doc/ncmpcpp
+
+# Directories
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/.config/ncmpcpp/lyrics
+
+# Visualizer
+visualizer_fifo_path = "/tmp/mpd_visualizer.fifo"
+visualizer_output_name = "mpd_visualizer"
+visualizer_sync_interval = "30"
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = ●▮
+# Alternative look: visualizer_look = "••"
+
+# Interface
+user_interface = classic
+startup_screen = playlist
+screen_switcher_mode = playlist, media_library
+progressbar_look = ▬▶
+display_volume_level = no
+
+# Colors
+main_window_color = white
+color1 = white
+color2 = green
+current_item_prefix = $(blue)$r
+current_item_inactive_column_prefix = $(white)$r
+
+# Other
+use_console_editor = yes
+external_editor = vim
