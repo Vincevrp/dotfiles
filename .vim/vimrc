@@ -78,6 +78,8 @@ set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
 set ttyfast                         " Enable fast terminal connection
 set lazyredraw                      " Only redraw when necessary
+set list                            " Show listchars
+set listchars=tab:▶▬                " Show tab characters
 " }}}
 
 " Autocmds and Filetypes {{{
