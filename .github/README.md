@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This repository contains the configuration files (dotfiles) for my desktop workstation, based on Arch Linux. Other branches are used for my other devices.
+This repository contains the configuration files (dotfiles) for my desktop workstation, based on Arch Linux. Other branches are used for my other devices. My system installation is documented [here](https://github.com/Vincevrp/cheat-sheets/blob/gh-pages/arch-install.pdf).
 
 ### Initialize
 
