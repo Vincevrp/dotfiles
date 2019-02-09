@@ -42,7 +42,7 @@ modules-right = cpu temperature memory storage openvpn date
 tray-position = right
 tray-detached = false
 tray-padding = 2
-tray-transparent = false
+; tray-transparent = false
 tray-background = ${colors.background}
 
 cursor-click = pointer
@@ -53,7 +53,7 @@ inherit = bar/main
 monitor = ${env:MONITOR}
 modules-center =
 modules-right =
-tray-position =
+tray-position = none
 
 [module/xwindow]
 type = internal/xwindow
@@ -137,7 +137,7 @@ warn-temperature = 60
 format = <label>
 format-prefix = %{F#D08770}%{F-}
 ; format-underline = ${xrdb:color1}
-label = " %temperature%"
+label = " %temperature-c%"
 
 [module/openvpn]
 type = custom/script
