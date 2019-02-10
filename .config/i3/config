@@ -32,7 +32,6 @@ exec            dunst                                   # Start dunst
 exec_always     $HOME/.config/polybar/launch.sh         # Status bar
 exec_always     feh --bg-scale ~/.github/wallpaper.png  \
                     --bg-fill  ~/.github/wallpaper.png  # Set wallpaper
-exec_always     $HOME/.bin/xmodmap-init                 # Load .Xmodmap
 # }}}
 
 # Layout and colorscheme {{{

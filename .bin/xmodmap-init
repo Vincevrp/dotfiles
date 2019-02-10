@@ -1,7 +1,0 @@
-#!/bin/bash
-
-xmodmap ~/.Xmodmap
-sleep 3
-xmodmap ~/.Xmodmap
-sleep 3
-xmodmap ~/.Xmodmap
