@@ -1,19 +1,20 @@
 # .bashrc
+SHELL_DIR=$HOME/.config/shell
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+    . /etc/bashrc
 fi
 
 # Disable XON/XOFF Flow control
 [[ $- == *i* ]] && stty -ixon
 
 # Aliases
-source "$HOME"/.shell/aliases.sh
+source $SHELL_DIR/aliases.sh
 
 # Variables
-source "$HOME"/.shell/vars.sh
-export HISTFILE=$HOME/.shell/.bash_history
+source $SHELL_DIR/vars.sh
+export HISTFILE=$SHELL_DIR/.bash_history
 
 # Functions
-source "$HOME"/.shell/functions.sh
+source $SHELL_DIR/functions.sh

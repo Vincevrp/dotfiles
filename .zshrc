@@ -1,4 +1,5 @@
 # Zsh config
+SHELL_DIR=$HOME/.config/shell
 
 # Settings
 setopt autocd                   # Auto cd when executing directory
@@ -12,23 +13,23 @@ setopt hist_verify              # Show with history expansion before executing
 setopt inc_append_history       # Add in order of execution
 setopt auto_menu                # Show completion menu on tab
 setopt complete_in_word         # Completion from both ends
-setopt always_to_end		# Move cursor to end on completion
+setopt always_to_end            # Move cursor to end on completion
 
 stty -ixon                      # Disable XON/XOFF Control
-unsetopt flowcontrol		# Disable flowcontrol
-unsetopt menu_complete   	# Don't autoselect first entry
+unsetopt flowcontrol            # Disable flowcontrol
+unsetopt menu_complete          # Don't autoselect first entry
 
 # Source
-source $HOME/.shell/vars.sh
-source $HOME/.shell/functions.sh
-source $HOME/.shell/aliases.sh
-source $HOME/.shell/prompt.sh
+source $SHELL_DIR/vars.sh
+source $SHELL_DIR/functions.sh
+source $SHELL_DIR/aliases.sh
+source $SHELL_DIR/prompt.sh
 
 # FZF
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-eval "$(dircolors ~/.shell/.dir_colors)"
+eval "$(dircolors $SHELL_DIR/.dir_colors)"
 
 # Keybindings
 bindkey -v
@@ -51,7 +52,7 @@ zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 zstyle ':completion::complete:*' use-cache 1
 
 # Zplugin
-source '/home/vince/.shell/.zplugin/mod-bin/zplugin.zsh'
+source $SHELL_DIR/.zplugin/mod-bin/zplugin.zsh
 autoload -Uz _zplugin compinit
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
 

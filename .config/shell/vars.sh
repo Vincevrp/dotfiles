@@ -1,4 +1,4 @@
-# Shell variables
+#.Shell variables
 
 export PATH=$PATH:~/.bin:~/.gem/ruby/2.5.0/bin          # Add ~/.bin to PATH
 export EDITOR=/usr/bin/vim
@@ -7,9 +7,9 @@ export VIMINIT="source ~/.vim/vimrc"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # Zsh
-export ZDOTDIR=$HOME/.shell
+export ZDOTDIR=$SHELL_DIR
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=2"
-export ZSH_CACHE_DIR=$HOME/.shell
+export ZSH_CACHE_DIR=$SHELL_DIR/.cache
 export ZSH_COMPDUMP=$ZDOTDIR/.zcompdump
 
 export ENABLE_CORRECTION="true"
