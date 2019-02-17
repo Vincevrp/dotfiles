@@ -68,16 +68,19 @@ battery = BAT0
 adapter = ACAD
 full-at = 98
 
-format-charging = <label-charging>
-; format-charging-underline = #ffb52a
+format-charging = %{F#EBCB8B}%{F-} <label-charging>
+format-discharging = %{F#EBCB8B}<ramp-capacity>%{F-} <label-discharging>
+format-full = %{F#EBCB8B}%{F-} <label-full>
 
-format-discharging = <label-discharging>
-; format-discharging-underline = ${self.format-charging-underline}
+label-charging = "%percentage%%"
+label-discharging = "%percentage%%"
+label-full = "%percentage%%"
 
-label-charging = "%{F#EBCB8B}%{F-} %percentage%%"
-label-discharging = "%{F#EBCB8B}%{F-} %percentage%%"
-format-full-prefix-foreground = ${colors.foreground-alt}
-; format-full-underline = ${self.format-charging-underline}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 [module/xwindow]
 type = internal/xwindow
