@@ -103,7 +103,7 @@ Terminal file browser. Run `ranger --copy-config=all` before copying `rc.conf` t
 
 #### [Tmux](https://github.com/tmux/tmux)
 
-Requires [tpm](https://github.com/tmux-plugins/tpm) to be installed. Refer to the repository for usage and installation instructions.
+Tmux is configured to support older versions for working on a remote server. This can be achieved by uncommenting the correct section in the file.
 
 #### [Vim](https://github.com/vim/vim)
 
