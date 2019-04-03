@@ -1,10 +1,11 @@
 #.Shell variables
 
-export PATH=$PATH:~/.bin:~/.gem/ruby/2.5.0/bin          # Add ~/.bin to PATH
+export PATH=$PATH:~/.bin:~/.gem/ruby/2.6.0/bin          # Add ~/.bin to PATH
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
 export VIMINIT="source ~/.vim/vimrc"
 export XDG_CONFIG_HOME="$HOME/.config"
+export BW_SESSION_FILE="/tmp/.bw_session"
 
 # Zsh
 export ZDOTDIR=$SHELL_DIR
@@ -20,6 +21,9 @@ export SAVEHIST=1000
 # FZF
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --no-messages --glob '!{.git,node_modules,.cache,.local,.wine}/*'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Libvirt
+export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # Other
 export KEYTIMEOUT=1
