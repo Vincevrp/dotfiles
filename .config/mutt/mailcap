@@ -1,0 +1,5 @@
+text/html;          w3m -I %{charset} -T text/html; copiousoutput;
+application/pdf;    mupdf %s
+image/*;            sxiv %s
+audio/*;            /usr/bin/xdg-open %s
+application/msword; /usr/bin/xdg-open %s

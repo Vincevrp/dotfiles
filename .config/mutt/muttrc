@@ -1,0 +1,125 @@
+# vim: filetype=neomuttrc
+# Mutt config
+
+# Initial {{{
+set editor       = vim
+set my_cfgdir    = "~/.config/mutt"
+set mailcap_path = $my_cfgdir/mailcap
+set folder       = "~/.Mail"
+# }}}
+
+# Mailboxes {{{
+source $my_cfgdir/hooks
+source $my_cfgdir/mailboxes
+# }}}
+
+# Settings {{{
+set sort           = 'reverse-date'
+set mbox_type      = Maildir
+set help           = no
+set sleep_time     = 0
+set sidebar_visible
+set mail_check_stats
+set pager_stop
+# }}}
+
+# Formatting {{{
+set date_format    = "%d/%m/%y %I:%M"
+set index_format   = "%2C %zs %?X?📎&  ? %D %-20.20F %s"
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set status_chars   = " *%A"
+set status_format  = "  [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ] %> %?p?( %p postponed )?"
+# }}}
+
+# Keybindings {{{
+bind index,pager         i  noop
+bind index,pager         g  noop
+bind index               h  noop
+
+bind index,pager         B  sidebar-toggle-visible
+bind index,pager         J  sidebar-next
+bind index,pager         K  sidebar-prev
+bind index,pager         L  sidebar-open
+
+bind index               G  last-entry
+bind index               gg first-entry
+bind pager               j  next-line
+bind pager               k  previous-line
+bind browser             h  goto-parent
+bind pager               h  exit
+bind browser             l  select-entry
+bind index               l  display-message
+bind pager,browser       gg top-page
+bind pager,browser       G  bottom-page
+bind index,browser,pager d  half-down
+bind index,browser,pager u  half-up
+bind index,pager         D  delete-message
+bind index,pager         U  undelete-message
+# }}}
+
+# Macros {{{
+macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+# }}}
+
+# Other settings {{{
+auto_view text/html
+# alternative_order text/enriched text/plain text/html text
+# }}}
+
+# Colors {{{
+# Default index colors:
+color index             yellow        default '.*'
+color index_author      red           default '.*'
+color index_number      brightblack   default
+color index_subject     cyan          default '.*'
+color index_flags       cyan          default '.*'
+
+# For new mail:
+color index             brightyellow  black   "~N"
+color index_author      brightred     black   "~N"
+color index_subject     brightcyan    black   "~N"
+
+# Header colors:
+color header            blue          default ".*"
+color header            brightmagenta default "^(From)"
+color header            brightcyan    default "^(Subject)"
+color header            brightwhite   default "^(CC|BCC)"
+
+mono  bold              bold
+mono  underline         underline
+mono  indicator         reverse
+mono  error             bold
+color normal            default       default
+color indicator         brightblack   white
+color sidebar_highlight red           default
+color sidebar_divider   brightblack   black
+color sidebar_flagged   red           black
+color sidebar_new       green         black
+color normal            brightyellow  default
+color error             red           default
+color tilde             black         default
+color message           cyan          default
+color markers           red           white
+color attachment        white         default
+color search            brightmagenta default
+color status            brightyellow  black
+color hdrdefault        brightgreen   default
+color quoted            green         default
+color quoted1           blue          default
+color quoted2           cyan          default
+color quoted3           yellow        default
+color quoted4           red           default
+color quoted5           brightred     default
+color signature         brightgreen   default
+color bold              black         default
+color underline         black         default
+color normal            default       default
+
+color body              brightred     default "[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+"        # Email addresses
+color body              brightblue    default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+" # URL
+color body              green         default "\`[^\`]*\`"                                 # Between `
+color body              brightblue    default "^# \.*"                                     # Headings
+color body              brightcyan    default "^## \.*"                                    # Subheadings
+color body              brightgreen   default "^### \.*"                                   # Subsubheadings
+color body              yellow        default "^(\t| )*(-|\\*) \.*"                        # List items
+# }}}
