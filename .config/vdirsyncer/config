@@ -1,0 +1,34 @@
+[general]
+status_path    = "~/.config/vdirsyncer/status/"
+
+[pair contacts]
+a              = "contacts_local"
+b              = "contacts_remote"
+collections    = ["from a", "from b"]
+
+[storage contacts_local]
+type           = "filesystem"
+path           = "~/.Contacts/"
+fileext        = ".vcf"
+
+[storage contacts_remote]
+type           = "carddav"
+url.fetch      = ["command", "~/.config/vdirsyncer/passwd.sh", "url_card"]
+username.fetch = ["command", "~/.config/vdirsyncer/passwd.sh", "username"]
+password.fetch = ["command", "~/.config/vdirsyncer/passwd.sh", "password"]
+
+[pair calendar]
+a              = "calendar_local"
+b              = "calendar_remote"
+collections    = ["from a", "from b"]
+
+[storage calendar_local]
+type           = "filesystem"
+path           = "~/.Calendar/"
+fileext        = ".ics"
+
+[storage calendar_remote]
+type           = "caldav"
+url.fetch      = ["command", "~/.config/vdirsyncer/passwd.sh", "url_cal"]
+username.fetch = ["command", "~/.config/vdirsyncer/passwd.sh", "username"]
+password.fetch = ["command", "~/.config/vdirsyncer/passwd.sh", "password"]
