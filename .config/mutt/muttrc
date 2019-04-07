@@ -25,7 +25,7 @@ set pager_stop
 
 # Formatting {{{
 set date_format    = "%d/%m/%y %I:%M"
-set index_format   = "%2C %zs %?X?&  ? %D %-20.20F %s"
+set index_format   = "%2C %zs %?X?& ? %D %-20.20F %s"
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set status_chars   = " *%A"
 set status_format  = "  [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ] %> %?p?( %p postponed )?"
