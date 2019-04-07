@@ -1,0 +1,38 @@
+#!/bin/sh
+
+SLEEP=90
+
+sync() {
+    while true; do
+        sync_cal &
+        sync_mail &
+        sleep $SLEEP
+    done
+}
+
+sync_cal() {
+    vdirsyncer sync
+}
+
+sync_mail() {
+    mbsync -a
+}
+
+print_help() {
+    printf "Usage: %s cal/mail/help \\n" "$(basename "$0")"
+    exit 1
+}
+
+case "$@" in
+    cal)
+        sync_cal
+        ;;
+    mail)
+        sync_mail
+        ;;
+    help)
+        print_help
+        ;;
+    *)
+        sync
+esac
