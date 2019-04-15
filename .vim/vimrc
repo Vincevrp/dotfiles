@@ -34,7 +34,6 @@ Plug 'takac/vim-hardtime'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'nikvdp/ejs-syntax'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
