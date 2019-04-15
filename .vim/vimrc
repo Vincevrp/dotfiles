@@ -205,6 +205,10 @@ nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
 nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
+" Disabled
+nnoremap q: <nop>
+nnoremap Q  <nop>
+
 " Plugin mappings
 map  <Space> <Plug>(easymotion-bd-w)
 imap <C-j>   <Plug>vim_completes_me_forward
