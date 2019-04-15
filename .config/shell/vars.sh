@@ -25,6 +25,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Libvirt
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 
+# GPG-agent
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK="/run/user/1000/gnupg/S.gpg-agent.ssh"
+export GPG_TTY="${TTY}"
+
 # Other
 export KEYTIMEOUT=1
 export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
