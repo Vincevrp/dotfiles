@@ -26,6 +26,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'takac/vim-hardtime'
 
 " Languages and syntax
+Plug 'rodjek/vim-puppet'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
