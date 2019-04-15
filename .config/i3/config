@@ -24,7 +24,7 @@ set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
 # }}}
 
 # Auto start {{{
-exec            compton                                 # Start compton
+exec            compton -CGb                                 # Start compton
 exec            redshift -l 51.0535:3.7304              # Start Redshift
 exec            imwheel -k -b 4567                        # Start imwheel
 exec            $HOME/.bin/scratchpad                   # Start scratchpad terminal
