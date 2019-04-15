@@ -1,11 +1,6 @@
 " Title: .vimrc
 " Author: Vincevrp | github.com/Vincevrp
 
-" Initial setup {{{
-syntax on
-set viminfo+=n~/.vim/viminfo
-" }}}
-
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 " Essential
@@ -43,6 +38,7 @@ call plug#end()
 " }}}
 
 " Vim behaviour {{{
+syntax on                           " Enable syntax highlighting
 set expandtab                       " Expand tab character to spaces
 set softtabstop=4                   " Set columns to 0 for tabs
 set shiftwidth=4                    " Make indent correspond to 4 spaces
@@ -75,6 +71,7 @@ set noshowmode                      " Disable default mode indicator
 set autochdir                       " Automatically change working directory
 set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
+set viminfo+=n~/.vim/viminfo        " Move viminfo file
 set ttyfast                         " Enable fast terminal connection
 set lazyredraw                      " Only redraw when necessary
 set list                            " Show listchars
