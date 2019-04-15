@@ -21,7 +21,6 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 font-0 = "Arimo Nerd Font:pixelsize=11;2:antialias=true"
-font-1 = "Font Awesome 5 Free:style=solid:size=10;3"
 
 line-size = 2
 line-color = #f00
