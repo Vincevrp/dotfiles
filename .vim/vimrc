@@ -130,10 +130,10 @@ function! SetIndent(num) abort
     execute "setlocal softtabstop=".a:num
 endfun
 
-" Ranger file explorer
-function! Ranger() abort
+" LF file explorer
+function! LF() abort
     let l:file = "/tmp/vim-ranger"
-    execute "silent !ranger --choosefile=".l:file
+    execute "silent !lf -selection-path=".l:file
     if filereadable(l:file)
         execute 'edit'.system('<'.l:file.'&& rm '.l:file)
     endif
@@ -194,7 +194,7 @@ nnoremap <silent> <leader>n :cnext<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
 nnoremap <silent> <leader>q :terminal<CR>
 nnoremap <silent> <leader>f :Explore<CR>
-nnoremap <silent> <leader>r :call Ranger()<CR>
+nnoremap <silent> <leader>r :call LF()<CR>
 nnoremap <silent> <leader>e :call ToggleQuickFix()<CR>
 nnoremap <silent> <leader>w :call ToggleColorColumn()<CR>
 nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>

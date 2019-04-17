@@ -1,0 +1,40 @@
+set shell bash
+
+map <enter> open
+map B bulkrename
+map D delete
+map f fzy
+map o push :open_with<space>
+map r push :rename<space>
+map w
+
+cmd open_with $$1 $f
+cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+
+cmd fzy ${{
+    ARG=$(ls | fzf | sed 's| |\\ |g')
+    if [[ ! -z "${ARG}" ]]; then
+        if [[ -d $ARG ]]; then
+            lf -remote "send $id cd "${ARG}""
+            exit 0
+        fi
+        lf -remote "send $id select $ARG"
+        lf -remote "send $id open $f"
+    fi
+}}
+
+cmd open ${{
+    ARG=$(cat "$f" | sed 's| |\\ |g')
+    case $(file --mime-type $f -b) in
+        text/*)          $EDITOR $fx;;
+        image/*)         sxiv $fx &;;
+        video/*)         mpv $fx  & ;;
+        audio/*)         lf -remote "send $id shell mpv $ARG & ";;
+        application/pdf) mupdf $fx &;;
+        *)             for f in $fx; do vim $f; done;;
+    esac
+}}
+
+cmd bulkrename ${{
+    massren $fx
+}}
