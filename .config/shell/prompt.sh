@@ -13,7 +13,7 @@ function git_branch() {
 }
 
 function git_dirty() {
-    STATUS=$(git status --porcelain 2> /dev/null)
+    STATUS=$(git status --porcelain --ignore-submodules=dirty 2> /dev/null)
     if [[ ! -z $STATUS ]]; then
         echo "%F{yellow}✗ "
     fi
