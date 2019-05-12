@@ -4,6 +4,8 @@ map <enter> open
 map B bulkrename
 map D delete
 map f fzy
+map F fzy-file
+map C fzy-dir
 map o push :open_with<space>
 map r push :rename<space>
 map w
@@ -20,6 +22,27 @@ cmd fzy ${{
         fi
         lf -remote "send $id select $ARG"
         lf -remote "send $id open $f"
+    fi
+}}
+
+cmd fzy-file ${{
+    ARG=$(fzf | sed 's| |\\ |g')
+    if [[ ! -z "${ARG}" ]]; then
+        if [[ -d $ARG ]]; then
+            lf -remote "send $id cd "${ARG}""
+            exit 0
+        fi
+        lf -remote "send $id select $ARG"
+        lf -remote "send $id open $f"
+    fi
+}}
+
+cmd fzy-dir ${{
+    ARG=$(find ${1:-.} -path '*/\.*' -prune \
+        -o -type d -print 2> /dev/null | fzf +m | sed 's| |\\ |g')
+    if [[ ! -z "${ARG}" ]]; then
+        lf -remote "send $id cd "${ARG}""
+        exit 0
     fi
 }}
 
