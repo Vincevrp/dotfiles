@@ -49,7 +49,7 @@ set ignorecase                      " Ignore case when searching
 set smartcase                       " Ignore if lowercase, otherwise don't
 set hlsearch                        " Highlight search terms
 set incsearch                       " Show search matches as you type
-set scrolloff=999                   " Lines to keep above and below cursor
+set scrolloff=5                     " Lines to keep above and below cursor
 set showmatch                       " Show matching parenthesis
 set mouse=                          " Mouse input (empty=disabled)
 set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
