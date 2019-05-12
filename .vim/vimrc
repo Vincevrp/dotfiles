@@ -163,7 +163,7 @@ endfunction
 " }}}
 
 " Keybindings {{{
-let mapleader=","
+let mapleader="ù"
 
 " Add J and K motions to jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
