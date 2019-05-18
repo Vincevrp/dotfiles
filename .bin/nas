@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -7,16 +7,17 @@ NAS_IP="192.168.0.135"
 NAS_VOL="volume1"
 NAS_HOMES="homes"
 USR_NAME="Vince"
-ARGS=("$@")
+IFS=""
+ARGS="$*"
 
-function check_root {
-    if [ "$EUID" -ne 0 ]; then
-        sudo "$0" "${ARGS[@]}"
+check_root() {
+    if [ "$(id -u)" -ne 0 ]; then
+        sudo "$0" "${ARGS}"
         exit $?
     fi
 }
 
-function print_help {
+print_help() {
     printf "Usage: %s [option]\\n" "$(basename "$0")"
     echo "Options"
     echo "  -m | --mount [share-name]      Mount a NAS share"
@@ -27,36 +28,36 @@ function print_help {
     exit 0
 }
 
-function mount_share {
+mount_share() {
     check_root
 
-    if [[ $1 == "home" ]]; then
+    if [ "$1" = "home" ]; then
         mount ${NAS_IP}:/${NAS_VOL}/${NAS_HOMES}/${USR_NAME} ${NAS_DIR}/home
         exit 0
     fi
 
-    mount ${NAS_IP}:/${NAS_VOL}/$1 ${NAS_DIR}/$1
+    mount ${NAS_IP}:/${NAS_VOL}/"$1" ${NAS_DIR}/"$1"
     exit 0
 }
 
-function umount_share {
+umount_share() {
     check_root
 
     SHARES=$(mount | awk '/nas/ {print $3}' | sort)
 
-    if [[ ! -z $SHARES ]]; then
-        if [[ $1 == "a" ]]; then
-            for SHARE in "$SHARES"; do
-                umount $SHARE
+    if [ -n "${SHARES}" ]; then
+        if [ "$1" = "a" ]; then
+            for SHARE in $SHARES; do
+                umount "${SHARE}"
             done
 
-            printf "Unmounted: %s\\n" $SHARES
+            printf "Unmounted: %s\\n" "${SHARES}"
             exit 0
         fi
 
-        SHARE=$(mount | grep $1 | awk '{print $3}' | sort)
-        umount $SHARE
-        printf "Unmounted: %s\\n" $SHARE
+        SHARE=$(mount | grep "$1" | awk '{print $3}' | sort)
+        umount "${SHARE}"
+        printf "Unmounted: %s\\n" "${SHARE}"
         exit 0
     fi
 
@@ -64,9 +65,9 @@ function umount_share {
     exit 1
 }
 
-function status {
+status() {
     SHARES=$(mount | awk '/nas/ {print $3}' | sort)
-    if [[ ! -z $SHARES ]]; then
+    if [ -n "${SHARES}" ]; then
         printf "Mounted shares:\\n\\n%s\\n" "${SHARES}"
         exit 0
     fi
@@ -77,8 +78,8 @@ function status {
 
 eval set -- "$(getopt -n "$0" -o m:u:hs --long "mount,umount,help,status" -- "$@")"
 
-while  (( "$#" )); do
-    case $1 in
+while  true; do
+    case "$1" in
         -m | --mount)
             mount_share "$2"
             shift 2;;

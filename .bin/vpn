@@ -1,59 +1,59 @@
-#!/bin/bash
+#!/bin/sh
 
 OPENVPN_DIR="/etc/openvpn/conf.d"
 OPENVPN_EXT=".ovpn"
-ARGS=("$@")
+IFS=""
+ARGS="$*"
 
-function check_root {
-    if [ "$EUID" -ne 0 ]; then
-        sudo "$0" "${ARGS[@]}"
+check_root() {
+    if [ "$(id -u)" -ne 0 ]; then
+        sudo "$0" "${ARGS}"
         exit $?
     fi
 }
 
-function print_help {
+print_help() {
     printf "Usage: %s [option]\\n" "$(basename "$0")"
     echo "Options"
     echo "  -c | --connect [server-name]        Connect using given server"
-    echo "  -d | --disconnect                   Disconnect by killing openvpn deamon"
-    echo "  -l | --list                         Print all available config files in conf.d"
+    echo "  -d | --disconnect                   Kill openvpn deamon"
+    echo "  -l | --list                         Print config files in conf.d"
     echo "  -h | --help                         Show this message"
     echo "  -s | --status                       Show openvpn daemon status"
     echo
     exit 0
 }
 
-function list_conf {
-    find "${OPENVPN_DIR}" -name \*${OPENVPN_EXT} -printf '%f\n' | sed "s/${OPENVPN_EXT}//g" | sort | column
+list_conf() {
+    find "${OPENVPN_DIR}" -name \*${OPENVPN_EXT} -printf '%f\n' \
+        | sed "s/${OPENVPN_EXT}//g" | sort | column
     exit 0
 }
 
-function ip_info {
-    DATA=$(curl -s https://ipv4.ipleak.net/json/)
-    COUNTRY=$(awk -F '["]' '/country_code/ {print $(NF-1)}' <<< "${DATA}")
-    IP=$(awk -F '["]' '/ip/ {print $(NF-1);exit}' <<< "${DATA}")
-
-    printf "Info: %s | %s\n" "${COUNTRY}" "${IP}"
+ip_info() {
+    curl -s https://ipv4.ipleak.net/json/ \
+        | awk -F '["]' '/"country_code":|"ip":/ {print $(NF-1)}' \
+        | xargs printf "Info: %s | %s\n"
 }
 
-function connect {
+connect() {
     # Check root privileges
     check_root
 
     # Check if OpenVPN is already running
-    if [[ -n $(pgrep openvpn) ]]; then
+    if [ -n "$(pgrep openvpn)" ]; then
         echo "OpenVPN daemon is already running"
         exit 0
     fi
 
     # Check if config file exists
-    if [[ ! -f "${OPENVPN_DIR}"/"$1""${OPENVPN_EXT}" ]]; then
+    if [ ! -f "${OPENVPN_DIR}/$1${OPENVPN_EXT}" ]; then
         echo "Config file does not exist"
         exit 0
     fi
 
     # Disable IPv6
-    sysctl -w net.ipv6.conf.all.disable_ipv6=1 &> /dev/null
+    sysctl -w net.ipv6.conf.all.disable_ipv6=1 > /dev/null
 
     # Start OpenVPN
     openvpn --daemon --auth-nocache --cd "${OPENVPN_DIR}" --config "$1""${OPENVPN_EXT}"
@@ -63,18 +63,17 @@ function connect {
     exit 0
 }
 
-function disconnect {
+disconnect() {
     # Check root privileges
     check_root
 
     # Check if OpenVPN is running
-    if [[ -n $(pgrep openvpn) ]]; then
+    if [ -n "$(pgrep openvpn)" ]; then
         # Kill daemon
         killall openvpn
 
         # Re-enable IPv6 and run DHCP
-        sysctl -w net.ipv6.conf.all.disable_ipv6=0 &> /dev/null
-        dhcpcd &> /dev/null
+        sysctl -w net.ipv6.conf.all.disable_ipv6=0 > /dev/null
 
         # Display message and exit
         echo "Disconnected from VPN"
@@ -85,8 +84,8 @@ function disconnect {
     exit 0
 }
 
-function status {
-    if [[ -n $(pgrep openvpn) ]]; then
+status() {
+    if [ -n "$(pgrep openvpn)" ]; then
         printf "OpenVPN daemon is running at %s\n%s\n" "$(pgrep openvpn)" "$(ip_info)"
         exit 0
     fi
@@ -97,8 +96,8 @@ function status {
 
 eval set -- "$(getopt -n "$0" -o c:dhls --long "connect,disconnect,help,list,status" -- "$@")"
 
-while  (( "$#" )); do
-    case $1 in
+while true; do
+    case "$1" in
         -c | --connect)
             connect "$2"
             shift 2;;
@@ -117,4 +116,3 @@ while  (( "$#" )); do
         *) echo Invalid && exit 1;
     esac
 done
-
