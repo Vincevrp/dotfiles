@@ -1,9 +1,12 @@
+#!/bin/sh
 xset r rate 350 35
 
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+if [ -f ~/.Xresources ]; then
+    xrdb -merge "$HOME/.Xresources"
+fi
 
-for i in $(seq 10); do
-    xmodmap $HOME/.Xmodmap
+while seq 10; do
+    xmodmap "$HOME/.Xmodmap"
     sleep 1
 done &
 
