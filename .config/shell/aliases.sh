@@ -27,6 +27,12 @@ alias gl="git log --graph --pretty=format:'%Cred%h %C(bold blue)%an %C(yellow)(%
 alias gr='git rebase'
 alias gR='cd $(git rev-parse --show-toplevel)'
 
+alias t='tmux'
+alias tls='tmux ls'
+alias ta='tmux attach -t'
+alias tk='tmux kill-session -t'
+alias tka='tmux kill-session -a'
+
 alias v='vagrant'
 alias vs='vagrant ssh'
 alias vS='vagrant status'
