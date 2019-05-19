@@ -7,7 +7,7 @@
 set $mod        Mod4
 
 # Set terminal
-set $term       st
+set $term       st -e tmux -L i3
 
 # Launcher command
 set $menu       rofi -show run
