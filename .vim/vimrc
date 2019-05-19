@@ -69,6 +69,8 @@ set nrformats-=octal                " Remove octal numbers from increment
 set wildmenu                        " Show wildmenu when using tab completion
 set laststatus=2                    " Enable statusline
 set noshowmode                      " Disable default mode indicator
+set noruler                         " Disable default ruler
+set shortmess=F                     " Disable default status
 set autochdir                       " Automatically change working directory
 set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
