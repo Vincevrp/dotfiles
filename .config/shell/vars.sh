@@ -30,6 +30,15 @@ unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="/run/user/1000/gnupg/S.gpg-agent.ssh"
 export GPG_TTY="${TTY}"
 
+# Less colors
+export LESS_TERMCAP_mb=$'\e[1;34m'
+export LESS_TERMCAP_md=$'\e[1;34m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;31m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;37m'
+
 # Other
 export KEYTIMEOUT=1
 export SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS=0
