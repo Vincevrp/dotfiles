@@ -1,4 +1,4 @@
-set shell bash
+set shell sh
 
 map <enter> open
 map B bulkrename
@@ -15,8 +15,8 @@ cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 
 cmd fzy ${{
     ARG=$(ls | fzf | sed 's| |\\ |g')
-    if [[ ! -z "${ARG}" ]]; then
-        if [[ -d $ARG ]]; then
+    if [ -n "${ARG}" ]; then
+        if [ -d "${ARG}" ]; then
             lf -remote "send $id cd "${ARG}""
             exit 0
         fi
@@ -27,8 +27,8 @@ cmd fzy ${{
 
 cmd fzy-file ${{
     ARG=$(fzf | sed 's| |\\ |g')
-    if [[ ! -z "${ARG}" ]]; then
-        if [[ -d $ARG ]]; then
+    if [ -n "${ARG}" ]; then
+        if [ -d "${ARG}" ]; then
             lf -remote "send $id cd "${ARG}""
             exit 0
         fi
@@ -40,7 +40,7 @@ cmd fzy-file ${{
 cmd fzy-dir ${{
     ARG=$(find ${1:-.} -path '*/\.*' -prune \
         -o -type d -print 2> /dev/null | fzf +m | sed 's| |\\ |g')
-    if [[ ! -z "${ARG}" ]]; then
+    if [ -n "${ARG}" ]; then
         lf -remote "send $id cd "${ARG}""
         exit 0
     fi
