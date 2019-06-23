@@ -21,6 +21,9 @@ set sleep_time     = 0
 set sidebar_visible
 set mail_check_stats
 set pager_stop
+set mime_forward
+set mime_forward_rest=yes
+set query_command = "echo && notmuch address %s"
 # }}}
 
 # Formatting {{{
@@ -56,6 +59,10 @@ bind index,browser,pager d  half-down
 bind index,browser,pager u  half-up
 bind index,pager         D  delete-message
 bind index,pager         U  undelete-message
+
+# Autocomplete
+bind editor             <Tab> complete-query
+bind editor             ^T complete
 # }}}
 
 # Macros {{{
