@@ -248,6 +248,11 @@ let g:livedown_browser="firefox"
 
 " VimTex {{{
 let g:vimtex_view_method = 'mupdf'
+let g:vimtex_quickfix_autoclose_after_keystrokes = 2
+let g:vimtex_quickfix_latexlog = {
+    \ 'overfull' : 0,
+    \ 'underfull' : 0,
+\}
 " }}}
 
 " Easymotion {{{
@@ -280,6 +285,10 @@ let g:ale_set_quickfix = 1
 
 " VimCompletesMe {{{
 let g:vcm_default_maps = 0
+" }}}
+
+" Goyo {{{
+let g:goyo_linenr = 1
 " }}}
 
 " Hardtime {{{
