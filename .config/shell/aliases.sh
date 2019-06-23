@@ -21,6 +21,7 @@ alias gC='git checkout'
 alias gf='git fetch'
 alias gp='git pull'
 alias gpr='git pull --rebase'
+alias gpra='git pull --rebase; git submodule --quiet sync; git submodule update --init --recursive'
 alias gP='git push'
 alias glog='git log'
 alias gl="git log --graph --pretty=format:'%Cred%h %C(bold blue)%an %C(yellow)(%cr) %Cgreen%GK%C(yellow)%d%Creset%n%Creset%n%s%n'"
