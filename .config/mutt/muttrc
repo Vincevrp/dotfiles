@@ -67,6 +67,7 @@ bind editor             ^T complete
 
 # Macros {{{
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 # }}}
 
 # Other settings {{{
