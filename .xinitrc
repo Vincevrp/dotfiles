@@ -5,9 +5,10 @@ if [ -f ~/.Xresources ]; then
     xrdb -merge "$HOME/.Xresources"
 fi
 
-while seq 10; do
+i=0
+while [ "$i" -le 10 ]; do
     xmodmap "$HOME/.Xmodmap"
-    sleep 1
+    i=$(( i + 1)) && sleep 1
 done &
 
 exec i3
