@@ -47,6 +47,7 @@ cmd fzy-dir ${{
 }}
 
 cmd open ${{
+    IFS=""
     ARG=$(cat "$f" | sed 's| |\\ |g')
     case $(file --mime-type $f -b) in
         text/*)          $EDITOR $fx;;
