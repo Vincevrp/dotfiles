@@ -14,9 +14,6 @@ Plug 'junegunn/vim-easy-align'
 
 " Looks
 Plug 'arcticicestudio/nord-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'maximbaz/lightline-ale'
-Plug 'maximbaz/lightline-trailing-whitespace'
 
 " Tools
 Plug 'w0rp/ale'
@@ -82,6 +79,17 @@ set listchars=tab:▶▬                " Show tab characters
 " }}}
 
 " Autocmds and Filetypes {{{
+
+" Statusline colorscheme
+augroup StatusColorscheme
+    autocmd!
+    autocmd ColorScheme *
+                \ highlight SLnm        ctermfg=0 ctermbg=4    |
+                \ highlight SLWarn      ctermfg=3 ctermbg=NONE |
+                \ highlight SLErr       ctermfg=1 ctermbg=NONE |
+                \ highlight TabLine     ctermfg=8 ctermbg=NONE |
+                \ highlight TabLineSel  ctermfg=5 ctermbg=NONE |
+augroup END
 
 " Augroup for filetype specific autocommands, may be declared below this point
 augroup FTS
