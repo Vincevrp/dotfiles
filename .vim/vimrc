@@ -68,7 +68,7 @@ set laststatus=2                    " Enable statusline
 set noshowmode                      " Disable default mode indicator
 set noruler                         " Disable default ruler
 set shortmess=F                     " Disable default status
-set autochdir                       " Automatically change working directory
+set noautochdir                     " Don't auto change working directory
 set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
 set viminfo+=n~/.vim/viminfo        " Move viminfo file
