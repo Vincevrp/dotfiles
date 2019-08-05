@@ -206,7 +206,9 @@ nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
-nnoremap <silent> <C-n> :tabnext<CR>
+nnoremap <silent> <Tab> :tabnext<CR>
+nnoremap <silent> <C-n> :cnext<CR>
+nnoremap <silent> <C-b> :cprev<CR>
 nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
 nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
@@ -216,20 +218,16 @@ nnoremap <silent> <C-p> :call CheckFZF()<cr>
 " Leader-keybindings
 nnoremap <silent> <leader><C-p> :Files<cr>
 nnoremap <silent> <leader><S-r> :so ~/.vim/vimrc<CR>
-nnoremap <silent> <leader><S-n> :cprevious<CR>
 nnoremap <silent> <leader><leader> <C-^>
 nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
-nnoremap <silent> <leader>l :Buffers<CR>
-nnoremap <silent> <leader>n :cnext<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
-nnoremap <silent> <leader>q :terminal<CR>
-nnoremap <silent> <leader>f :Explore<CR>
-nnoremap <silent> <leader>r :call LF()<CR>
+nnoremap <silent> <leader>q :Buffers<CR>
+nnoremap <silent> <leader>f :call LF()<CR>
 nnoremap <silent> <leader>e :call ToggleQuickFix()<CR>
 nnoremap <silent> <leader>w :call ToggleColorColumn()<CR>
-nnoremap <silent> <leader>x :call system('xclip -selection clipboard', @0)<CR>
+nnoremap <silent> <leader>s :call system('xclip -selection clipboard', @0)<CR>
 
 " F-keys
 nnoremap <silent> <F1> :set nospell<CR>
