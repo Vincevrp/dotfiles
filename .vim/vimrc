@@ -125,6 +125,15 @@ augroup END
 
 " Functions and commands {{{
 
+" Loop back to beginning for cnext and cprev
+command! Cnext try | cnext | catch | cfirst | catch | endtry
+command! Cprev try | cprev | catch | clast  | catch | endtry
+
+cabbrev cnext Cnext
+cabbrev cn    Cnext
+cabbrev cprev CPrev
+cabbrev cp    CPrev
+
 " Open help in new tab
 cabbrev help tab help
 
