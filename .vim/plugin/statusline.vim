@@ -17,10 +17,6 @@ function! Statusline_Mode() abort
     return get(s:modemap, mode(), '')
 endfun
 
-function! Statusline_Color() abort
-    return get(s:modemap, mode(), '')
-endfun
-
 function! Statusline_Whitespace() abort
     return len(filter(getline(1,'$'), 'v:val =~ "\\s$"')) > 0 ? " • " : ""
 endfun
