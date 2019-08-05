@@ -89,6 +89,8 @@ augroup StatusColorscheme
                 \ highlight SLErr       ctermfg=1 ctermbg=NONE |
                 \ highlight TabLine     ctermfg=8 ctermbg=NONE |
                 \ highlight TabLineSel  ctermfg=5 ctermbg=NONE |
+                \ highlight ALEErrorSign ctermfg=1 cterm=bold  |
+                \ highlight ALEWarningSign ctermfg=3 cterm=bold  |
 augroup END
 
 " Augroup for filetype specific autocommands, may be declared below this point
@@ -294,10 +296,13 @@ let g:user_emmet_leader_key='<leader>H'
 " }}}
 
 " ALE {{{
+set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed="normal"
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_sign_error = ''
+let g:ale_sign_warning =  ''
 " }}}
 
 " VimCompletesMe {{{

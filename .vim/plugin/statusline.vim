@@ -31,11 +31,9 @@ function! Statusline_Lint(type) abort
     let l:warnings = l:counts.total - l:errors
 
     if a:type =~ 'warn'
-        return l:warnings == 0 ? '' : printf("%d \uf071  ", warnings)
+        return l:warnings == 0 ? '' : printf("%d \uf12a  ", warnings)
     elseif a:type =~ 'error'
-        return l:errors   == 0 ? '' : printf("%d \uf05e  ", errors)
-    elseif a:type =~ 'ok'
-        return l:counts.total == 0 ? 'OK ' : ''
+        return l:errors   == 0 ? '' : printf("%d \uf00d  ", errors)
     endif
 endfun
 " }}}
