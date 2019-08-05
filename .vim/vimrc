@@ -214,7 +214,6 @@ nnoremap <silent> <C-p> :call CheckFZF()<cr>
 nnoremap <silent> <leader><C-p> :Files<cr>
 nnoremap <silent> <leader><S-r> :so ~/.vim/vimrc<CR>
 nnoremap <silent> <leader><leader> <C-^>
-nnoremap <silent> <leader>t :tabnew<CR>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
