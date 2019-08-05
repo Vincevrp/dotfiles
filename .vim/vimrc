@@ -16,7 +16,7 @@ Plug 'w0rp/ale'
 Plug 'ajh17/VimCompletesMe'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
 
 " Languange and filetype specific
@@ -76,16 +76,17 @@ set listchars=tab:▶▬                " Show tab characters
 " Autocmds and Filetypes {{{
 
 " Statusline colorscheme
-augroup StatusColorscheme
+augroup Colorscheme
     autocmd!
     autocmd ColorScheme *
-                \ highlight SLnm        ctermfg=0 ctermbg=4     |
-                \ highlight SLWarn      ctermfg=3 ctermbg=NONE  |
-                \ highlight SLErr       ctermfg=1 ctermbg=NONE  |
-                \ highlight TabLine     ctermfg=8 ctermbg=NONE  |
-                \ highlight TabLineSel  ctermfg=5 ctermbg=NONE  |
-                \ highlight ALEErrorSign ctermfg=1 cterm=bold   |
-                \ highlight ALEWarningSign ctermfg=3 cterm=bold |
+                \ highlight SLnm            ctermfg=0 ctermbg=4    |
+                \ highlight SLWarn          ctermfg=3 ctermbg=NONE |
+                \ highlight SLErr           ctermfg=1 ctermbg=NONE |
+                \ highlight TabLine         ctermfg=8 ctermbg=NONE |
+                \ highlight TabLineSel      ctermfg=5 ctermbg=NONE |
+                \ highlight ALEErrorSign    ctermfg=1 cterm=bold   |
+                \ highlight ALEWarningSign  ctermfg=3 cterm=bold   |
+                \ highlight Sneak           ctermfg=7 ctermbg=3    |
 augroup END
 
 " Augroup for filetype specific autocommands, may be declared below this point
@@ -126,8 +127,8 @@ command! Cprev try | cprev | catch | clast  | catch | endtry
 
 cabbrev cnext Cnext
 cabbrev cn    Cnext
-cabbrev cprev CPrev
-cabbrev cp    CPrev
+cabbrev cprev Cprev
+cabbrev cp    Cprev
 
 " Open help in new tab
 cabbrev help tab help
@@ -190,7 +191,7 @@ endfunction
 " }}}
 
 " Keybindings {{{
-let mapleader="ù"
+let mapleader=" "
 
 " Add J and K motions to jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
@@ -274,8 +275,10 @@ let g:vimtex_quickfix_latexlog = {
     \ 'underfull' : 0,
 \}
 
-" Easymotion
-let g:EasyMotion_do_mapping=0
+" Sneak
+let g:sneak#label = 1
+let g:sneak#absolute_dir = 0
+let g:sneak#target_labels = "qsdfjklmnctu;QSDFJKLMNCTU"
 
 " Netrw
 let g:netrw_liststyle = 3
