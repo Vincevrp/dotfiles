@@ -4,33 +4,29 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 " Essential
+Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-
-" Looks
-Plug 'arcticicestudio/nord-vim'
 
 " Tools
 Plug 'w0rp/ale'
 Plug 'ajh17/VimCompletesMe'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'easymotion/vim-easymotion'
 Plug 'takac/vim-hardtime'
 
-" Languages and syntax
-Plug 'rodjek/vim-puppet'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
-" Markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'shime/vim-livedown', { 'do': 'sudo npm install -g livedown' }
-" LaTeX
-Plug 'lervag/vimtex'
+" Languange and filetype specific
+Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3'       }
+Plug 'hail2u/vim-css3-syntax',       { 'for': 'css'      }
+Plug 'cakebaker/scss-syntax.vim',    { 'for': 'scss'     }
+Plug 'plasticboy/vim-markdown',      { 'for': 'markdown' }
+Plug 'shime/vim-livedown',           { 'for': 'markdown' }
+Plug 'rodjek/vim-puppet',            { 'for': 'puppet'   }
+Plug 'lervag/vimtex',                { 'for': 'tex'      }
 call plug#end()
 " }}}
 
@@ -254,14 +250,13 @@ autocmd FTS FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
 
 " Plugin settings {{{
 
-" Nord colorscheme {{{
+" Nord colorscheme
 let g:nord_italic=1
 let g:nord_italic_comments=1
 let g:nord_uniform_diff_background=1
 colorscheme nord
-" }}}
 
-" Markdown {{{
+" Markdown
 let g:vim_markdown_folding_style_pythonic=1
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_new_list_item_indent = 0
@@ -271,34 +266,30 @@ let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=4444
 let g:livedown_browser="firefox"
-" }}}
 
-" VimTex {{{
+" VimTex
 let g:vimtex_view_method = 'mupdf'
 let g:vimtex_quickfix_autoclose_after_keystrokes = 2
 let g:vimtex_quickfix_latexlog = {
     \ 'overfull' : 0,
     \ 'underfull' : 0,
 \}
-" }}}
 
-" Easymotion {{{
+" Easymotion
 let g:EasyMotion_do_mapping=0
-" }}}
 
-" Netrw {{{
+" Netrw
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
-" }}}
 
-" FZF {{{
+" FZF
 let g:fzf_action = {
     \ 'ctrl-t': 'tab split',
     \ 'ctrl-h': 'split',
     \ 'ctrl-v': 'vsplit' }
 
-" ALE {{{
+" ALE
 set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed="normal"
@@ -306,20 +297,16 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_sign_error = ''
 let g:ale_sign_warning =  ''
-" }}}
 
-" VimCompletesMe {{{
+" VimCompletesMe
 let g:vcm_default_maps = 0
-" }}}
 
-" Goyo {{{
+" Goyo
 let g:goyo_linenr = 1
-" }}}
 
-" Hardtime {{{
+" Hardtime
 let g:hardtime_default_on = 1
 let g:hardtime_timeout = 500
 let g:hardtime_ignore_quickfix = 1
 let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
-" }}}
 " }}}
