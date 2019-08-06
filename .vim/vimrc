@@ -92,7 +92,7 @@ augroup Colorscheme
                 \ highlight TabLineSel          ctermfg=5 ctermbg=NONE  |
                 \ highlight ALEErrorSign        ctermfg=1 cterm=bold    |
                 \ highlight ALEWarningSign      ctermfg=3 cterm=bold    |
-                \ highlight Sneak               ctermfg=7 ctermbg=3     |
+                \ highlight Sneak               ctermfg=7 ctermbg=5     |
 augroup END
 
 " Augroup for filetype specific autocommands, may be declared below this point
