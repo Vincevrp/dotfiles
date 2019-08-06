@@ -155,14 +155,14 @@ function! DOS2Unix() abort
 endfun
 
 function! SetIndent(num) abort
-    execute "setlocal shiftwidth=".a:num
-    execute "setlocal softtabstop=".a:num
+    execute 'setlocal shiftwidth='.a:num
+    execute 'setlocal softtabstop='.a:num
 endfun
 
 " LF file explorer
 function! LF() abort
-    let l:file = "/tmp/vim-ranger"
-    execute "silent !lf -selection-path=".l:file
+    let l:file = '/tmp/vim-ranger'
+    execute 'silent !lf -selection-path='.l:file
     if filereadable(l:file)
         execute 'edit'.system('<'.l:file.'&& rm '.l:file)
     endif
@@ -172,16 +172,16 @@ endfun
 " Use appropriate FZF function
 function! CheckFZF() abort
     let status = system('git rev-parse --is-inside-work-tree')
-    execute status =~ 'true' ? 'GFiles' : 'Files'
+    execute status =~# 'true' ? 'GFiles' : 'Files'
 endfun
 
 function! ToggleColorColumn() abort
-    execute "set colorcolumn=". (&colorcolumn == "" ? "80" : "")
+    execute 'set colorcolumn='. (&colorcolumn ==# '' ? '80' : '')
 endfun
 
 function! ToggleQuickFix() abort
     for i in range(1, winnr('$'))
-        if getbufvar(winbufnr(i), '&buftype') == 'quickfix'
+        if getbufvar(winbufnr(i), '&buftype') ==# 'quickfix'
             cclose
             return
         endif
@@ -192,7 +192,7 @@ endfunction
 " }}}
 
 " Keybindings {{{
-let mapleader=" "
+let mapleader=' '
 
 " Add J and K motions to jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
@@ -267,7 +267,7 @@ let g:vim_markdown_new_list_item_indent = 0
 let g:livedown_autorun=0
 let g:livedown_open=1
 let g:livedown_port=4444
-let g:livedown_browser="firefox"
+let g:livedown_browser='firefox'
 
 " VimTex
 let g:vimtex_view_method = 'mupdf'
@@ -280,7 +280,7 @@ let g:vimtex_quickfix_latexlog = {
 " Sneak
 let g:sneak#label = 1
 let g:sneak#absolute_dir = 0
-let g:sneak#target_labels = "qsdfjklmnctu;QSDFJKLMNCTU"
+let g:sneak#target_labels = 'qsdfjklmnctu;QSDFJKLMNCTU'
 
 " Netrw
 let g:netrw_liststyle = 3
@@ -294,7 +294,7 @@ let g:fzf_action = {
     \ 'ctrl-v': 'vsplit' }
 
 " ALE
-let g:ale_lint_on_text_changed="normal"
+let g:ale_lint_on_text_changed='normal'
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_sign_error = ''
@@ -310,5 +310,5 @@ let g:goyo_linenr = 1
 let g:hardtime_default_on = 1
 let g:hardtime_timeout = 500
 let g:hardtime_ignore_quickfix = 1
-let g:list_of_disabled_keys = ["<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+let g:list_of_disabled_keys = ['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
 " }}}
