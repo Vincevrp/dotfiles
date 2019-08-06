@@ -11,10 +11,14 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf.vim'
 
-" Tools
+" Completion
 Plug 'w0rp/ale'
-Plug 'ajh17/VimCompletesMe'
-Plug 'junegunn/goyo.vim'
+Plug 'neoclide/coc.nvim',            { 'branch': 'release' }
+Plug 'neoclide/coc-json',            { 'for': 'json'       }
+Plug 'neoclide/coc-yaml',            { 'for': 'yaml'       }
+
+" Tools
+Plug 'junegunn/goyo.vim',            { 'on': 'Goyo' }
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
@@ -230,14 +234,15 @@ nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
 nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :call DOS2Unix()<CR>
 
+" Insert mode
+inoremap <C-j> <C-n>
+inoremap <C-k> <C-p>
+
 " Disabled
 nnoremap q: <nop>
 nnoremap Q  <nop>
 
 " Plugin mappings
-map  <Space> <Plug>(easymotion-bd-w)
-imap <C-j>   <Plug>vim_completes_me_forward
-imap <C-k>   <Plug>vim_completes_me_backward
 nmap ga      <Plug>(EasyAlign)
 xmap ga      <Plug>(EasyAlign)
 
@@ -292,8 +297,6 @@ let g:fzf_action = {
     \ 'ctrl-v': 'vsplit' }
 
 " ALE
-set omnifunc=ale#completion#OmniFunc
-let g:ale_completion_enabled = 1
 let g:ale_lint_on_text_changed="normal"
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
