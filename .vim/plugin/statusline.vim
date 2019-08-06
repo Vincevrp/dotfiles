@@ -1,6 +1,7 @@
 " Title:  Vim statusline configuration
 " Author: Vincevrp | github.com/Vincevrp
 " Note:   Colors are defined in vimrc
+scriptencoding utf-8
 
 " Functions {{{
 let s:modemap = {
@@ -18,7 +19,7 @@ function! Statusline_Mode() abort
 endfun
 
 function! Statusline_Whitespace() abort
-    return len(filter(getline(1,'$'), 'v:val =~ "\\s$"')) > 0 ? " • " : ""
+    return len(filter(getline(1,'$'), 'v:val =~# "\\s$"')) > 0 ? ' • ' : ''
 endfun
 
 function! Statusline_Lint(type) abort
@@ -26,9 +27,9 @@ function! Statusline_Lint(type) abort
     let l:errors   = l:counts.error + l:counts.style_error
     let l:warnings = l:counts.total - l:errors
 
-    if a:type =~ 'warn'
+    if a:type =~# 'warn'
         return l:warnings == 0 ? '' : printf("%d \uf12a  ", warnings)
-    elseif a:type =~ 'error'
+    elseif a:type =~# 'error'
         return l:errors   == 0 ? '' : printf("%d \uf00d  ", errors)
     endif
 endfun
