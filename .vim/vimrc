@@ -148,12 +148,6 @@ else
     let &t_SR = "\e[4 q"
 endif
 
-" Convert to unix line ending
-function! DOS2Unix() abort
-    edit ++ff=unix
-    %s///g
-endfun
-
 function! SetIndent(num) abort
     execute 'setlocal shiftwidth='.a:num
     execute 'setlocal softtabstop='.a:num
@@ -229,7 +223,7 @@ nnoremap <silent> <leader>s :call system('xclip -selection clipboard', @0)<CR>
 nnoremap <silent> <F1> :set nospell<CR>
 nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
 nnoremap <silent> <F3> :set spell spelllang=nl<CR>
-nnoremap <silent> <F4> :call DOS2Unix()<CR>
+nnoremap <silent> <F4> :set ff=unix<CR>
 
 " Insert mode
 inoremap <C-j> <C-n>
