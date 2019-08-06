@@ -81,18 +81,18 @@ scriptencoding utf-8                " Set script encoding to utf-8
 
 " Autocmds and Filetypes {{{
 
-" Statusline colorscheme
+" Custom colors
 augroup Colorscheme
     autocmd!
     autocmd ColorScheme *
-                \ highlight SLnm            ctermfg=0 ctermbg=4    |
-                \ highlight SLWarn          ctermfg=3 ctermbg=NONE |
-                \ highlight SLErr           ctermfg=1 ctermbg=NONE |
-                \ highlight TabLine         ctermfg=8 ctermbg=NONE |
-                \ highlight TabLineSel      ctermfg=5 ctermbg=NONE |
-                \ highlight ALEErrorSign    ctermfg=1 cterm=bold   |
-                \ highlight ALEWarningSign  ctermfg=3 cterm=bold   |
-                \ highlight Sneak           ctermfg=7 ctermbg=3    |
+                \ highlight SLnm                ctermfg=0 ctermbg=4     |
+                \ highlight SLWarn              ctermfg=3 ctermbg=NONE  |
+                \ highlight SLErr               ctermfg=1 ctermbg=NONE  |
+                \ highlight TabLine             ctermfg=8 ctermbg=NONE  |
+                \ highlight TabLineSel          ctermfg=5 ctermbg=NONE  |
+                \ highlight ALEErrorSign        ctermfg=1 cterm=bold    |
+                \ highlight ALEWarningSign      ctermfg=3 cterm=bold    |
+                \ highlight Sneak               ctermfg=7 ctermbg=3     |
 augroup END
 
 " Augroup for filetype specific autocommands, may be declared below this point
@@ -117,11 +117,6 @@ augroup HighlightTrailingWhitespace
     autocmd InsertEnter * match TrailingWhitespace /\s\+\%#\@<!$/
     autocmd InsertLeave * match TrailingWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
-augroup END
-
-augroup VimCompletesMeTex
-    autocmd!
-    autocmd FileType tex let b:vcm_omni_pattern = g:vimtex#re#neocomplete
 augroup END
 " }}}
 
@@ -202,7 +197,6 @@ nnoremap <silent> <C-h> <C-W>h
 nnoremap <silent> <C-j> <C-W>j
 nnoremap <silent> <C-k> <C-W>k
 nnoremap <silent> <C-l> <C-W>l
-nnoremap <silent> <Tab> :tabnext<CR>
 nnoremap <silent> <C-n> :cnext<CR>
 nnoremap <silent> <C-b> :cprev<CR>
 nnoremap <silent> <C-e> 2<C-e>
@@ -298,9 +292,6 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_sign_error = ''
 let g:ale_sign_warning =  ''
-
-" VimCompletesMe
-let g:vcm_default_maps = 0
 
 " Goyo
 let g:goyo_linenr = 1
