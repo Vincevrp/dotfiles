@@ -52,6 +52,7 @@ set statusline+=%6{&paste?'PASTE':''}       " Paste
 set statusline+=\ %n\                       " Buffer number
 set statusline+=%#LineNr#                   " Set color
 set statusline+=%2f                         " Filename
+set statusline+=\ %m\                       " Modified?
 
 set statusline+=%=                          " Align right
 set statusline+=%#Bold#                     " Set color
