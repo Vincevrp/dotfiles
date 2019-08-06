@@ -1,6 +1,11 @@
 #.Shell variables
 
-export PATH=$PATH:~/.bin:~/.gem/ruby/2.6.0/bin          # Add ~/.bin to PATH
+# PATH
+export PATH=$PATH:~/.bin                    # Add ~/.bin to PATH
+export PATH=$PATH:~/.gem/ruby/2.6.0/bin     # Add ruby gems to PATH
+export PATH=$PATH:~/.npm/node_modules/bin   # Add node_modules to PATH
+
+# General
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
 export VIMINIT="source ~/.vim/vimrc"
@@ -29,6 +34,15 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="/run/user/1000/gnupg/S.gpg-agent.ssh"
 export GPG_TTY="${TTY}"
+
+# NPM
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+
+# Ruby
+export BUNDLE_USER_HOME=$HOME/.config/bundle
+export BUNDLE_USER_CACHE=$HOME/.cache/bundle
+export BUNDLE_USER_CONFIG=$BUNDLE_USER_HOME/config
+export BUNDLE_USER_PLUGIN=$BUNDLE_USER_HOME/plugin
 
 # Less colors
 export LESS_TERMCAP_mb=$'\e[1;34m'
