@@ -24,10 +24,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
 
 " Languange and filetype specific
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3'       }
-Plug 'hail2u/vim-css3-syntax',       { 'for': 'css'      }
-Plug 'cakebaker/scss-syntax.vim',    { 'for': 'scss'     }
-Plug 'plasticboy/vim-markdown',      { 'for': 'markdown' }
+Plug 'sheerun/vim-polyglot'
 Plug 'shime/vim-livedown',           { 'for': 'markdown' }
 Plug 'rodjek/vim-puppet',            { 'for': 'puppet'   }
 Plug 'lervag/vimtex',                { 'for': 'tex'      }
