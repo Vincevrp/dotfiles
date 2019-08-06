@@ -32,7 +32,6 @@ call plug#end()
 " }}}
 
 " Vim behaviour {{{
-syntax on                           " Enable syntax highlighting
 set expandtab                       " Expand tab character to spaces
 set softtabstop=4                   " Set columns to 0 for tabs
 set shiftwidth=4                    " Make indent correspond to 4 spaces
@@ -63,7 +62,7 @@ set wildmenu                        " Show wildmenu when using tab completion
 set laststatus=2                    " Enable statusline
 set noshowmode                      " Disable default mode indicator
 set noruler                         " Disable default ruler
-set shortmess=F                     " Disable default status
+set shortmess=FcI                   " Set shortmess
 set noautochdir                     " Don't auto change working directory
 set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
@@ -72,6 +71,12 @@ set ttyfast                         " Enable fast terminal connection
 set lazyredraw                      " Only redraw when necessary
 set list                            " Show listchars
 set listchars=tab:▶▬                " Show tab characters
+set hidden                          " Switch buffers without saving
+set confirm                         " Ask to save when exiting
+
+" Miscellaneous
+syntax on                           " Enable syntax highlighting
+scriptencoding utf-8                " Set script encoding to utf-8
 " }}}
 
 " Autocmds and Filetypes {{{
