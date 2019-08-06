@@ -110,12 +110,9 @@ augroup END
 " Highlight trailing whitespace and TAB characters
 augroup HighlightTrailingWhitespace
     autocmd!
-    highlight TrailingWhitespace ctermbg=red guibg=red
-    autocmd ColorScheme * highlight TrailingWhitespace ctermbg=red guibg=red
-    match TrailingWhitespace /\s\+$/
-    autocmd BufWinEnter * match TrailingWhitespace /\s\+$/
-    autocmd InsertEnter * match TrailingWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * match TrailingWhitespace /\s\+$/
+    autocmd BufWinEnter * match Error /\s\+$/
+    autocmd InsertEnter * match Error /\s\+\%#\@<!$/
+    autocmd InsertLeave * match Error /\s\+$/
     autocmd BufWinLeave * call clearmatches()
 augroup END
 " }}}
