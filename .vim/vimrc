@@ -178,25 +178,20 @@ nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 " Ctrl-keybindings
-nnoremap <silent> <C-h> <C-W>h
-nnoremap <silent> <C-j> <C-W>j
-nnoremap <silent> <C-k> <C-W>k
-nnoremap <silent> <C-l> <C-W>l
-nnoremap <silent> <C-n> :cnext<CR>
-nnoremap <silent> <C-b> :cprev<CR>
 nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
-nnoremap <silent> <C-s> :%s/\s\+$//e<CR>
+nnoremap <silent> <C-n> :Cnext<CR>
+nnoremap <silent> <C-b> :Cprev<CR>
 nnoremap <silent> <C-m> :nohlsearch<CR>
 nnoremap <silent> <C-p> :call CheckFZF()<cr>
 
 " Leader-keybindings
-nnoremap <silent> <leader><C-p> :Files<cr>
-nnoremap <silent> <leader><S-r> :so ~/.vim/vimrc<CR>
 nnoremap <silent> <leader><leader> <C-^>
+nnoremap <silent> <leader>r :source ~/.vim/vimrc<CR>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
+nnoremap <silent> <leader>l :BLines<CR>
 nnoremap <silent> <leader>q :Buffers<CR>
 nnoremap <silent> <leader>f :call LF()<CR>
 nnoremap <silent> <leader>e :call ToggleQuickFix()<CR>
