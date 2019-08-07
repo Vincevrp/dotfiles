@@ -6,7 +6,7 @@ setlocal foldmethod=expr
 " Functions
 " Call ~/.bin/mdtopdf script on current buffer
 function! MD2PDF() abort
-    silent call system('mdtopdf ' . expand('%') . ' &')
+    silent call system('md2pdf ' . expand('%') . ' &')
 endfun
 
 " Autocommands
