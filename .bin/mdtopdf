@@ -1,0 +1,24 @@
+#!/bin/sh
+
+INPUT=$1
+OUTPUT="/tmp/${INPUT}.pdf"
+
+pandoc --quiet                                  \
+    -H "${XDG_CONFIG_HOME}/pandoc/gh_md.css"    \
+    -V papersize=a4                             \
+    -V margin-top=16                            \
+    -V margin-bottom=16                         \
+    -V margin-left=0                            \
+    -V margin-right=0                           \
+    -f markdown                                 \
+    -t html                                     \
+    -s "${INPUT}"                               \
+    -o "${OUTPUT}"
+
+PID=$(pgrep -a mupdf | grep "${INPUT}" | cut -d " " -f1)
+
+if [ -n "${PID}" ]; then
+    kill -HUP "${PID}"
+else
+    mupdf "${OUTPUT}" &
+fi
