@@ -1,8 +1,24 @@
 #!/bin/sh
+# Dependencies: pandoc, wkhtmltopdf
 
 INPUT=$1
-OUTPUT="/tmp/${INPUT}.pdf"
+BASENAME=$(basename "${INPUT}")
+OUTPUT="/tmp/$(basename "${INPUT}").pdf"
 
+# Check if input exists
+if [ -z "${INPUT}" ] ; then
+    echo "Please specify one file"
+    exit 1
+elif [ ! -f "${INPUT}" ]; then
+    echo "File does not exist"
+    exit 1
+fi
+
+# Change to respective directory to resolve images
+cd "$(dirname "$(realpath "${INPUT}")")" \
+    || (echo "Failed to change directory" && exit 1)
+
+# Run pandoc
 pandoc --quiet                                  \
     -H "${XDG_CONFIG_HOME}/pandoc/gh_md.css"    \
     -V papersize=a4                             \
@@ -12,11 +28,13 @@ pandoc --quiet                                  \
     -V margin-right=0                           \
     -f markdown                                 \
     -t html                                     \
-    -s "${INPUT}"                               \
+    -s "${BASENAME}"                               \
     -o "${OUTPUT}"
 
-PID=$(pgrep -a mupdf | grep "${INPUT}" | cut -d " " -f1)
+# Get PID
+PID=$(pgrep -a mupdf | grep "${BASENAME}" | cut -d " " -f1)
 
+# If mupdf is already running, refresh the file. Otherwise start mupdf
 if [ -n "${PID}" ]; then
     kill -HUP "${PID}"
 else
