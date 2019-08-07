@@ -168,6 +168,14 @@ function! ToggleQuickFix() abort
 
     copen
 endfunction
+
+function! RemoveTrailingWhitespace() abort
+    let l =1
+    for line in getline(1, '$')
+        call setline(l, substitute(line, '\s\+$', '', 'g'))
+        let l = l+1
+    endfor
+endfunction
 " }}}
 
 " Keybindings {{{
@@ -184,6 +192,7 @@ nnoremap <silent> <C-n> :Cnext<CR>
 nnoremap <silent> <C-b> :Cprev<CR>
 nnoremap <silent> <C-m> :nohlsearch<CR>
 nnoremap <silent> <C-p> :call CheckFZF()<cr>
+nnoremap <silent> <C-s> :call RemoveTrailingWhitespace()<CR>
 
 " Leader-keybindings
 nnoremap <silent> <leader><leader> <C-^>
