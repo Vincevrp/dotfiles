@@ -95,17 +95,6 @@ augroup Colorscheme
                 \ highlight Sneak               ctermfg=7 ctermbg=5     |
 augroup END
 
-" Augroup for filetype specific autocommands, may be declared below this point
-augroup FTS
-    autocmd!
-augroup END
-
-" Change indentation based on filetype
-augroup FiletypeIndentation
-    autocmd!
-    autocmd FileType yaml,ruby,html,css,sass,scss call SetIndent(2)
-augroup END
-
 " Highlight trailing whitespace and TAB characters
 augroup HighlightTrailingWhitespace
     autocmd!
@@ -231,11 +220,6 @@ nnoremap Q  <nop>
 " Plugin mappings
 nmap ga      <Plug>(EasyAlign)
 xmap ga      <Plug>(EasyAlign)
-
-" Filetype specific
-autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
-autocmd FTS FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
-autocmd FTS FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
 " }}}
 
 " Plugin settings {{{
