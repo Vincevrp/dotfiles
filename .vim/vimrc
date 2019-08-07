@@ -13,20 +13,21 @@ Plug 'junegunn/fzf.vim'
 
 " Completion
 Plug 'w0rp/ale'
-Plug 'neoclide/coc.nvim',            { 'branch': 'release' }
-Plug 'neoclide/coc-json',            { 'for': 'json'       }
-Plug 'neoclide/coc-yaml',            { 'for': 'yaml'       }
+Plug 'neoclide/coc.nvim',       { 'branch': 'release' }
+Plug 'neoclide/coc-json',       { 'for': 'json'       }
+Plug 'neoclide/coc-yaml',       { 'for': 'yaml'       }
 
 " Tools
-Plug 'junegunn/goyo.vim',            { 'on': 'Goyo' }
+Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
 
 " Languange and filetype specific
 Plug 'sheerun/vim-polyglot'
-Plug 'rodjek/vim-puppet',            { 'for': 'puppet'   }
-Plug 'lervag/vimtex',                { 'for': 'tex'      }
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'rodjek/vim-puppet',       { 'for': 'puppet'   }
+Plug 'lervag/vimtex',           { 'for': 'tex'      }
 call plug#end()
 " }}}
 
@@ -284,6 +285,9 @@ let g:ale_sign_warning =  ''
 
 " Goyo
 let g:goyo_linenr = 1
+
+" Polyglot
+let g:polyglot_disabled = ['latex', 'markdown', 'puppet']
 
 " Hardtime
 let g:hardtime_default_on = 1
