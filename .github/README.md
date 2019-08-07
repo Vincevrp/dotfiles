@@ -66,16 +66,7 @@ This is my custom build of st. It resides in a separate repository.
 
 #### [Nord](https://github.com/arcticicestudio/nord)
 
-All colors are based on
-
-[//]: # (Inline HTML to center the image)
-
-<div align="center">
-    <img src="https://github.com/arcticicestudio/nord/blob/develop/assets/nord-overview.svg">
-</div>
-<br>
-
-I may have referenced these colors in other configuration files that are not officially supported by Nord.
+All colors are based on the Nord colorscheme. I may have referenced these colors in other configuration files that are not officially supported by Nord.
 
 #### Fonts
 
