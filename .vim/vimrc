@@ -97,8 +97,6 @@ augroup END
 " Augroup for filetype specific autocommands, may be declared below this point
 augroup FTS
     autocmd!
-    autocmd FTS FileType markdown set foldmethod=expr
-    autocmd FTS FileType markdown autocmd BufWritePost *.md call MD2PDF()
 augroup END
 
 " Change indentation based on filetype
@@ -158,11 +156,6 @@ function! LF() abort
         execute 'edit'.system('<'.l:file.'&& rm '.l:file)
     endif
     redraw!
-endfun
-
-" Call ~/.bin/mdtopdf script on current buffer
-function! MD2PDF() abort
-    silent call system('mdtopdf ' . expand('%') . ' &')
 endfun
 
 " Use appropriate FZF function
@@ -242,7 +235,6 @@ xmap ga      <Plug>(EasyAlign)
 autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
 autocmd FTS FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
 autocmd FTS FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
-autocmd FTS FileType markdown nnoremap <silent> <leader>p :call MD2PDF()<CR>
 " }}}
 
 " Plugin settings {{{
