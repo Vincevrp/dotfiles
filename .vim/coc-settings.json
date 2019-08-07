@@ -1,0 +1,20 @@
+{
+    "suggest.autoTrigger": "always",
+    "suggest.timeout": 2000,
+    "suggest.maxCompleteItemCount": 12,
+    "suggest.floatEnable": false,
+    "diagnostic.displayByAle": true,
+    "diagnostic.errorSign": "",
+    "languageserver": {
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"]
+        },
+        "terraform": {
+            "command": "terraform-lsp",
+            "filetypes": ["terraform"],
+            "initializationOptions": {}
+        }
+    }
+}
