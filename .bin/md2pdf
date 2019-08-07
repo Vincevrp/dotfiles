@@ -28,7 +28,7 @@ pandoc --quiet                                  \
     -V margin-right=0                           \
     -f markdown                                 \
     -t html                                     \
-    -s "${BASENAME}"                               \
+    -s "${BASENAME}"                            \
     -o "${OUTPUT}"
 
 # Get PID
