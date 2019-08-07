@@ -25,7 +25,6 @@ Plug 'takac/vim-hardtime'
 
 " Languange and filetype specific
 Plug 'sheerun/vim-polyglot'
-Plug 'shime/vim-livedown',           { 'for': 'markdown' }
 Plug 'rodjek/vim-puppet',            { 'for': 'puppet'   }
 Plug 'lervag/vimtex',                { 'for': 'tex'      }
 call plug#end()
@@ -99,6 +98,7 @@ augroup END
 augroup FTS
     autocmd!
     autocmd FTS FileType markdown set foldmethod=expr
+    autocmd FTS FileType markdown autocmd BufWritePost *.md call MD2PDF()
 augroup END
 
 " Change indentation based on filetype
@@ -158,6 +158,11 @@ function! LF() abort
         execute 'edit'.system('<'.l:file.'&& rm '.l:file)
     endif
     redraw!
+endfun
+
+" Call ~/.bin/mdtopdf script on current buffer
+function! MD2PDF() abort
+    silent call system('mdtopdf ' . expand('%') . ' &')
 endfun
 
 " Use appropriate FZF function
@@ -237,7 +242,7 @@ xmap ga      <Plug>(EasyAlign)
 autocmd FTS FileType tex      nnoremap <silent> <leader>c :VimtexCompile<CR>
 autocmd FTS FileType tex      nnoremap <silent> <leader>p :VimtexView<CR>
 autocmd FTS FileType html     nnoremap <silent> <leader>p :!firefox %<CR><CR>
-autocmd FTS FileType markdown nnoremap <silent> <leader>p :LivedownToggle<CR>
+autocmd FTS FileType markdown nnoremap <silent> <leader>p :call MD2PDF()<CR>
 " }}}
 
 " Plugin settings {{{
@@ -252,12 +257,6 @@ colorscheme nord
 let g:vim_markdown_folding_style_pythonic=1
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_new_list_item_indent = 0
-
-" Livedown
-let g:livedown_autorun=0
-let g:livedown_open=1
-let g:livedown_port=4444
-let g:livedown_browser='firefox'
 
 " VimTex
 let g:vimtex_view_method = 'mupdf'
