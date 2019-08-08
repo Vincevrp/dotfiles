@@ -1,5 +1,6 @@
 # Title: i3 config for Antergos Setup
 # Author: Vincevrp | github.com/Vincevrp
+# vim:ft=i3config
 
 # Variables and commands {{{
 
@@ -24,11 +25,11 @@ set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
 # }}}
 
 # Auto start {{{
-exec            compton -CGb                                 # Start compton
-exec            redshift -l 51.0535:3.7304              # Start Redshift
-exec            imwheel -k -b 4567                        # Start imwheel
-exec            $HOME/.bin/scratchpad                   # Start scratchpad terminal
+exec            compton -CGb                            # Start compton
 exec            dunst                                   # Start dunst
+exec            redshift -l 51.0535:3.7304              # Start Redshift
+exec            imwheel -k -b 4567                      # Start imwheel
+exec            $HOME/.bin/scratchpad                   # Start scratchpad
 exec_always     $HOME/.config/polybar/launch.sh         # Status bar
 exec_always     feh --bg-scale ~/.github/wallpaper.png  \
                     --bg-fill  ~/.github/wallpaper.png  # Set wallpaper
