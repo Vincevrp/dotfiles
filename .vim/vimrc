@@ -62,7 +62,7 @@ set wildmenu                        " Show wildmenu when using tab completion
 set laststatus=2                    " Enable statusline
 set noshowmode                      " Disable default mode indicator
 set noruler                         " Disable default ruler
-set shortmess=FcI                   " Set shortmess
+set shortmess=actTIO                 " Set shortmess
 set noautochdir                     " Don't auto change working directory
 set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
@@ -179,7 +179,7 @@ endfunction
 " }}}
 
 " Keybindings {{{
-let mapleader=' '
+map <Space> <leader>
 
 " Add J and K motions to jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
