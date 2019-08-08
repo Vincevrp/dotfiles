@@ -11,6 +11,7 @@ endfun
 
 " Autocommands
 augroup Markdown
+    autocmd!
     autocmd BufWritePost *.md call MD2PDF()
 augroup END
 
