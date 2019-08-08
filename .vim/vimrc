@@ -200,7 +200,8 @@ nnoremap <silent> <leader>r :source ~/.vim/vimrc<CR>
 nnoremap <silent> <leader>h :new<CR>
 nnoremap <silent> <leader>v :vnew<CR>
 nnoremap <silent> <leader>g :Goyo<CR>
-nnoremap <silent> <leader>l :BLines<CR>
+nnoremap <silent> <leader>b :BLines<CR>
+nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>q :Buffers<CR>
 nnoremap <silent> <leader>f :call LF()<CR>
 nnoremap <silent> <leader>e :call ToggleQuickFix()<CR>
