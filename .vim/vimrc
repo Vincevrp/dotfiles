@@ -176,7 +176,6 @@ nnoremap <silent> <C-e> 2<C-e>
 nnoremap <silent> <C-y> 2<C-y>
 nnoremap <silent> <C-n> :Cnext<CR>
 nnoremap <silent> <C-b> :Cprev<CR>
-nnoremap <silent> <C-m> :nohlsearch<CR>
 nnoremap <silent> <C-p> :call CheckFZF()<cr>
 nnoremap <silent> <C-s> :call RemoveTrailingWhitespace()<CR>
 
@@ -199,6 +198,9 @@ nnoremap <silent> <F1> :set nospell<CR>
 nnoremap <silent> <F2> :set spell spelllang=en_us<CR>
 nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :set ff=unix<CR>
+
+" Miscellaneous
+nnoremap <silent> ù :nohlsearch<CR>
 
 " Insert mode
 inoremap <C-j> <C-n>
