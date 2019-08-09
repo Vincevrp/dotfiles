@@ -48,7 +48,7 @@ set timeoutlen=1000                 " Set mapping delay (Escape delay fix)
 set ttimeoutlen=0                   " Set key code delay (Escape delay fix)
 set encoding=utf-8                  " Enable UTF-8
 set t_Co=256                        " Enable 256 color support
-set showcmd                         " Show command while typing
+set noshowcmd                       " Don't show command while typing
 set conceallevel=2                  " Enable concealing
 set foldmethod=marker               " Enable folding
 set wrap                            " Enable visual word wrap
@@ -79,7 +79,7 @@ syntax on                           " Enable syntax highlighting
 scriptencoding utf-8                " Set script encoding to utf-8
 " }}}
 
-" Autocmds and Filetypes {{{
+" Autocmds {{{
 
 " Highlight trailing whitespace and TAB characters
 augroup HighlightTrailingWhitespace
@@ -165,7 +165,7 @@ endfunction
 " }}}
 
 " Keybindings {{{
-map <Space> <leader>
+let mapleader=' '
 
 " Add J and K motions to jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
