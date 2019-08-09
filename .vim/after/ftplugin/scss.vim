@@ -1,3 +1,3 @@
 " SCSS specific settings
 
-call SetIndent(2)
+call util#SetIndent(2)

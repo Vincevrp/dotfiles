@@ -1,4 +1,4 @@
-" Functions and commands
+" Functions
 
 " Set indentation
 function! util#SetIndent(num) abort
