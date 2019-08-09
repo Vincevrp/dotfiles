@@ -205,62 +205,7 @@ inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
 
 " Disabled
-nnoremap q: <nop>
-nnoremap Q  <nop>
-
-" Plugin mappings
-nmap ga      <Plug>(EasyAlign)
-xmap ga      <Plug>(EasyAlign)
-" }}}
-
-" Plugin settings {{{
-
-" Markdown
-let g:vim_markdown_folding_style_pythonic=1
-let g:vim_markdown_frontmatter=1
-let g:vim_markdown_new_list_item_indent = 0
-
-" VimTex
-let g:vimtex_view_method = 'mupdf'
-let g:vimtex_quickfix_autoclose_after_keystrokes = 2
-let g:vimtex_quickfix_latexlog = {
-    \ 'overfull' : 0,
-    \ 'underfull' : 0,
-\}
-
-" Sneak
-let g:sneak#label = 1
-let g:sneak#absolute_dir = 0
-let g:sneak#target_labels = 'qsdfjklmnctu;QSDFJKLMNCTU'
-
-" Netrw
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_winsize = 25
-
-" FZF
-let g:fzf_buffers_jump = 1
-let g:fzf_action = {
-    \ 'ctrl-t': 'tab split',
-    \ 'ctrl-h': 'split',
-    \ 'ctrl-v': 'vsplit' }
-
-" ALE
-let g:ale_lint_on_text_changed='normal'
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_sign_error = ''
-let g:ale_sign_warning =  ''
-
-" Goyo
-let g:goyo_linenr = 1
-
-" Polyglot
-let g:polyglot_disabled = ['latex', 'markdown', 'puppet']
-
-" Hardtime
-let g:hardtime_default_on = 1
-let g:hardtime_timeout = 500
-let g:hardtime_ignore_quickfix = 1
-let g:list_of_disabled_keys = ['<UP>', '<DOWN>', '<LEFT>', '<RIGHT>']
+nnoremap q:  <nop>
+nnoremap Q   <nop>
+nnoremap qq  <nop>
 " }}}
