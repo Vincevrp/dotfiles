@@ -12,6 +12,7 @@ set $term       st -e tmux -L i3
 
 # Launcher command
 set $menu       rofi -show run
+set $calc       rofi -show calc -modi calc -no-show-match -no-sort
 set $window     rofi -show window
 
 # Wallpaper path
@@ -85,6 +86,7 @@ bindsym $mod+Return         exec $term
 
 # Application launcher
 bindsym $mod+d              exec $menu
+bindsym $mod+c              exec $calc
 bindsym Mod1+Tab            exec $window
 
 # Kill focused window
