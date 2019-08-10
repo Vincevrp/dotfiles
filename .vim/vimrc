@@ -13,6 +13,7 @@ Plug 'junegunn/fzf.vim'
 
 " Completion
 Plug 'w0rp/ale'
+Plug 'Shougo/neosnippet.vim'
 Plug 'neoclide/coc.nvim',       { 'branch': 'release' }
 Plug 'neoclide/coc-json',       { 'for': 'json'       }
 Plug 'neoclide/coc-yaml',       { 'for': 'yaml'       }
@@ -50,6 +51,7 @@ set encoding=utf-8                  " Enable UTF-8
 set t_Co=256                        " Enable 256 color support
 set noshowcmd                       " Don't show command while typing
 set conceallevel=2                  " Enable concealing
+set concealcursor=niv               " Modes in which text in cursor can conseal
 set foldmethod=marker               " Enable folding
 set wrap                            " Enable visual word wrap
 set linebreak                       " Only wrap at breakat characters
@@ -62,7 +64,7 @@ set wildmenu                        " Show wildmenu when using tab completion
 set laststatus=2                    " Enable statusline
 set noshowmode                      " Disable default mode indicator
 set noruler                         " Disable default ruler
-set shortmess=actTIO                 " Set shortmess
+set shortmess=actTIO                " Set shortmess
 set noautochdir                     " Don't auto change working directory
 set undofile                        " Enable persistent undo
 set undodir=~/.vim/undodir          " Set undodir
@@ -132,6 +134,13 @@ nnoremap <silent> ù :nohlsearch<CR>
 " Insert mode
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
+
+imap <expr><TAB>
+            \ pumvisible() ? "<Plug>(neosnippet_expand_or_jump)" :
+            \ neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " Disabled
 nnoremap q:  <nop>
