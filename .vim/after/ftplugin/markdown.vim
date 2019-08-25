@@ -2,6 +2,7 @@
 
 " Vim behaviour
 setlocal foldmethod=expr
+setlocal concealcursor=
 
 " Functions
 " Call ~/.bin/mdtopdf script on current buffer
