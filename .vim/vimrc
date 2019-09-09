@@ -27,7 +27,6 @@ Plug 'takac/vim-hardtime'
 " Languange and filetype specific
 Plug 'sheerun/vim-polyglot'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'rodjek/vim-puppet',       { 'for': 'puppet'   }
 Plug 'lervag/vimtex',           { 'for': 'tex'      }
 call plug#end()
 " }}}
