@@ -1,0 +1,10 @@
+[Unit]
+Description=Calendar synchronization timer
+
+[Timer]
+OnBootSec=2m
+OnUnitActiveSec=2m
+Unit=vdirsyncer.service
+
+[Install]
+WantedBy=timers.target
