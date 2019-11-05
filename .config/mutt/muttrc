@@ -14,21 +14,24 @@ source $my_cfgdir/mailboxes
 # }}}
 
 # Settings {{{
-set sort           = 'reverse-date'
-set mbox_type      = Maildir
-set help           = no
-set sleep_time     = 0
+set sort       = 'reverse-date'
+set mbox_type  = Maildir
+set help       = no
+set sleep_time = 0
+set mark_old   = no
 set sidebar_visible
 set mail_check_stats
 set pager_stop
 set mime_forward
 set mime_forward_rest=yes
 set query_command = "echo && notmuch address %s"
+set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
 # }}}
 
 # Formatting {{{
 set date_format    = "%d/%m/%y %I:%M"
-set index_format   = "%2C %zs %?X?& ? %D %-20.20F %s"
+set index_format   = "%2C %Z %?X?& ? %D %-20.20F %s"
+set to_chars       = ""
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set status_chars   = " *%A"
 set status_format  = "  [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ] %> %?p?( %p postponed )?"
@@ -67,6 +70,9 @@ bind editor             ^T complete
 
 # Macros {{{
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 # }}}
 
