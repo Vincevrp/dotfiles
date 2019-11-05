@@ -128,6 +128,7 @@ nnoremap <silent> <F3> :set spell spelllang=nl<CR>
 nnoremap <silent> <F4> :set ff=unix<CR>
 
 " Miscellaneous
+nnoremap <silent> ZA :qa<CR>
 nnoremap <silent> ù :nohlsearch<CR>
 
 " Insert mode
