@@ -23,6 +23,7 @@ Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
+Plug 'vimwiki/vimwiki'
 
 " Languange and filetype specific
 Plug 'sheerun/vim-polyglot'
@@ -118,7 +119,7 @@ nnoremap <silent> <leader>l :Lines<CR>
 nnoremap <silent> <leader>q :Buffers<CR>
 nnoremap <silent> <leader>f :call util#LF()<CR>
 nnoremap <silent> <leader>e :call util#ToggleQuickFix()<CR>
-nnoremap <silent> <leader>w :call util#ToggleColorColumn()<CR>
+nnoremap <silent> <leader>n :call util#ToggleColorColumn()<CR>
 nnoremap <silent> <leader>s :call system('xclip -selection clipboard', @0)<CR>
 
 " F-keys
