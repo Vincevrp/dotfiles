@@ -24,6 +24,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
 Plug 'vimwiki/vimwiki'
+Plug 'will133/vim-dirdiff'
 
 " Languange and filetype specific
 Plug 'sheerun/vim-polyglot'
