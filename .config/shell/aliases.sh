@@ -12,6 +12,8 @@ alias bc="bc -q"
 alias u="up"
 
 alias gs='git status'
+alias gS='git stash'
+alias gSp='git stash pop'
 alias ga='git add'
 alias gd='git difftool'
 alias gD='git diff'
@@ -27,6 +29,8 @@ alias glog='git log'
 alias gl="git log --graph --pretty=format:'%Cred%h %C(bold blue)%an %C(yellow)(%cr) %Cgreen%GK%C(yellow)%d%Creset%n%Creset%n%s%n'"
 alias gr='git rebase'
 alias gR='cd $(git rev-parse --show-toplevel)'
+alias gbc='git branch --merged | grep -v \* | xargs git branch -D'
+alias gsmu='git submodule foreach git pull origin master'
 
 alias t='tmux'
 alias tls='tmux ls'
