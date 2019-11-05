@@ -11,6 +11,7 @@ export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
 export VIMINIT="source ~/.vim/vimrc"
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DESKTOP_DIR="$HOME"
 export BW_SESSION_FILE="/tmp/.bw_session"
 
 # Zsh
