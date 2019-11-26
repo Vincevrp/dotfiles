@@ -14,7 +14,7 @@ i3lock -neti ~/.github/wallpaper.png  \
     --insidecolor=00000000       \
                                  \
     --ringcolor=5e81acff         \
-    --ringvercolor=a3be8cff      \
+    --ringvercolor=ebcb8bff      \
     --ringwrongcolor=bf616aff    \
                                  \
     --clock                      \
@@ -27,7 +27,6 @@ i3lock -neti ~/.github/wallpaper.png  \
     --datestr="%A, %d %B"        \
     --date-font=Hack             \
     --datesize=30                \
-    --datepos="tx:650"           \
                                  \
     --veriftext="Verifying..."   \
     --verif-font=Hack            \
