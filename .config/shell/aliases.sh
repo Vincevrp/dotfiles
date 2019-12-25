@@ -66,5 +66,7 @@ alias drmid='docker rmi $(docker images -q -f dangling=true)'
 alias dv='docker volume'
 alias dvp='docker volume prune'
 
+alias switchkey='gpg-connect-agent "scd serialno" "learn --force" /bye'
+
 alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias dot="dotfiles"
