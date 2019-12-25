@@ -29,6 +29,7 @@ alias glog='git log'
 alias gl="git log --graph --pretty=format:'%Cred%h %C(bold blue)%an %C(yellow)(%cr) %Cgreen%GK%C(yellow)%d%Creset%n%Creset%n%s%n'"
 alias gr='git rebase'
 alias gR='cd $(git rev-parse --show-toplevel)'
+alias gbc='git remote prune origin'
 alias gbc='git branch --merged | grep -v \* | xargs git branch -D'
 alias gsmu='git submodule foreach git pull origin master'
 
