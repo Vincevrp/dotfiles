@@ -9,6 +9,7 @@ setopt pushd_ignore_dups        # Pushd will ignore duplicates
 setopt pushdminus               # Allow numbers
 setopt hist_expire_dups_first   # Delete duplicates when HISTFILE is full
 setopt hist_ignore_dups         # Ignore duplicates
+setopt histignorespace          # Don't write to history when prepended by space
 setopt hist_verify              # Show with history expansion before executing
 setopt inc_append_history       # Add in order of execution
 setopt auto_menu                # Show completion menu on tab
