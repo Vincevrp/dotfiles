@@ -34,8 +34,8 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 
 # GPG-agent
 unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="/run/user/1000/gnupg/S.gpg-agent.ssh"
 export GPG_TTY="${TTY}"
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 # NPM
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
