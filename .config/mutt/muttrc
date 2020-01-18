@@ -17,11 +17,13 @@ source $my_cfgdir/mailboxes
 set sort       = 'reverse-date'
 set mbox_type  = Maildir
 set help       = no
-set sleep_time = 0
+set wait_key   = no
 set mark_old   = no
+set sleep_time = 0
 set sidebar_visible
 set mail_check_stats
 set pager_stop
+set narrow_tree
 set mime_forward
 set mime_forward_rest=yes
 set query_command = "echo && notmuch address %s"
@@ -74,11 +76,15 @@ macro index A \
     "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
     "mark all new as read"
 macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro attach 'V' "<pipe-entry>cat > ~/.cache/mutt/mail.html && \
+      firefox -new-window ~/.cache/mutt/mail.html && sleep 2 && \
+      rm ~/.cache/mutt/mail.html<enter>"
 # }}}
 
 # Other settings {{{
 auto_view text/html
-# alternative_order text/enriched text/plain text/html text
+unignore sender
+alternative_order text/enriched text/plain text/html text
 # }}}
 
 # Colors {{{
