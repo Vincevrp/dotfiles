@@ -28,7 +28,6 @@ pandoc --quiet                                  \
     -V margin-right=0                           \
     -f markdown                                 \
     -t html                                     \
-    --mathjax                                   \
     -s "${BASENAME}"                            \
     -o "${OUTPUT}"
 
