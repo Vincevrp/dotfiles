@@ -14,20 +14,27 @@ source $my_cfgdir/mailboxes
 # }}}
 
 # Settings {{{
-set sort       = 'reverse-date'
-set mbox_type  = Maildir
-set help       = no
-set wait_key   = no
-set mark_old   = no
-set sleep_time = 0
-set sidebar_visible
-set mail_check_stats
-set pager_stop
-set narrow_tree
-set mime_forward
-set mime_forward_rest=yes
-set query_command = "echo && notmuch address %s"
-set new_mail_command="notify-send 'New Email' '%n new messages, %u unread.' &"
+set fast_reply                                                      # Enable fast reply
+set include                                                         # Include message in reply
+set delete                                                          # Don't ask, just delete
+set hidden_host                                                     # Hide host details
+set mail_check_stats                                                # Peridically calculate stats
+set nobeep                                                          # Don't beep
+set nohelp                                                          # Don't display help
+set pager_stop                                                      # Don't jump to next mail
+set sidebar_visible                                                 # Enable sidebar
+set narrow_tree                                                     # Make tree smaller
+set fcc_attach                                                      # Forward attachments as part of body
+set wait_key          = no                                          # Don't ask to press key
+set mark_old          = no                                          # Don't mark mail as old
+set sleep_time        = 0                                           # Go faster
+set sort              = 'reverse-date'                              # Sort on reverse date
+set mbox_type         = Maildir                                     # Use local mail
+set new_mail_command  = "notify-send 'New Email' '%u/%n in %f' &"   # Show notifications
+set query_command     = "notmuch address --deduplicate=address --output=address %s" # Autocomplete addresses
+unset markers                                                       # Don't show ugly markers
+unset mime_forward                                                  # Don't forward attachments as separate msg
+unset mime_forward_rest                                             # Don't forward undecodable attachments
 # }}}
 
 # Formatting {{{
@@ -49,6 +56,8 @@ bind index,pager         J  sidebar-next
 bind index,pager         K  sidebar-prev
 bind index,pager         L  sidebar-open
 
+bind index               j next-entry
+bind index               k previous-entry
 bind index               G  last-entry
 bind index               gg first-entry
 bind pager               j  next-line
