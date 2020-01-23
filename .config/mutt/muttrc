@@ -86,7 +86,13 @@ macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 macro index A \
     "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
     "mark all new as read"
-macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro index \cb "\
+:set my_tmp_pipe_decode=\$pipe_decode\n\
+:set pipe_decode\n\
+|urlview\n\
+:set pipe_decode=\$my_tmp_pipe_decode\n\
+:unset my_tmp_pipe_decode\n" \
+'call urlview to extract URLs out of a message'
 macro attach 'V' "<pipe-entry>cat > ~/.cache/mutt/mail.html && \
       firefox -new-window ~/.cache/mutt/mail.html && sleep 2 && \
       rm ~/.cache/mutt/mail.html<enter>"
