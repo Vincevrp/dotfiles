@@ -11,9 +11,11 @@ set folder       = "~/.Mail"
 # Mailboxes {{{
 source $my_cfgdir/hooks
 source $my_cfgdir/mailboxes
+source /usr/share/doc/neomutt/samples/gpg.rc
 # }}}
 
 # Settings {{{
+set pgp_default_key = "0x4638DFB8432AAB98"                          # Set keyID
 set fast_reply                                                      # Enable fast reply
 set include                                                         # Include message in reply
 set delete                                                          # Don't ask, just delete
@@ -28,7 +30,7 @@ set fcc_attach                                                      # Forward at
 set wait_key          = no                                          # Don't ask to press key
 set mark_old          = no                                          # Don't mark mail as old
 set sleep_time        = 0                                           # Go faster
-set sort              = 'reverse-date'                              # Sort on reverse date
+set sort              = "reverse-date"                              # Sort on reverse date
 set mbox_type         = Maildir                                     # Use local mail
 set new_mail_command  = "notify-send 'New Email' '%u/%n in %f' &"   # Show notifications
 set query_command     = "notmuch address --deduplicate=address --output=address %s" # Autocomplete addresses
