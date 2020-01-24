@@ -54,6 +54,8 @@ cmd open ${{
         image/*)         sxiv $fx &;;
         video/*)         mpv $fx  & ;;
         audio/*)         lf -remote "send $id shell mpv $ARG & ";;
+        application/vnd.openxmlformats-officedocument.presentationml.presentation) libreoffice $f & ;;
+        application/vnd.openxmlformats-officedocument.wordprocessingml.document) libreoffice $f & ;;
         application/pdf) mupdf $fx &;;
         *)             for f in $fx; do vim $f; done;;
     esac
