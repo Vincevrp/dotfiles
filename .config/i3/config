@@ -26,7 +26,7 @@ set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
 # }}}
 
 # Auto start {{{
-exec            picom -CGb                              # Start compton
+exec            picom -CGb                              # Start picom
 exec            dunst                                   # Start dunst
 exec            redshift -l 51.0535:3.7304              # Start Redshift
 exec            imwheel -k -b 4567                      # Start imwheel
