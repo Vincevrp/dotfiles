@@ -46,7 +46,10 @@ export BUNDLE_USER_CACHE=$HOME/.cache/bundle
 export BUNDLE_USER_CONFIG=$BUNDLE_USER_HOME/config
 export BUNDLE_USER_PLUGIN=$BUNDLE_USER_HOME/plugin
 
-# Less colors
+# Less
+export LESS='-i -R'
+export LESSHISTSIZE=0
+export LESSHISTFILE=/dev/null
 export LESS_TERMCAP_mb=$'\e[1;34m'
 export LESS_TERMCAP_md=$'\e[1;34m'
 export LESS_TERMCAP_me=$'\e[0m'
