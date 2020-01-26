@@ -30,8 +30,6 @@ source $SHELL_DIR/prompt.sh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-eval "$(dircolors $SHELL_DIR/.dir_colors)"
-
 # Keybindings
 bindkey -v
 bindkey '^ ' autosuggest-accept
@@ -46,19 +44,21 @@ bindkey "^e" vi-end-of-line
 # Completion
 zmodload -i zsh/complist
 WORDCHARS=''
-zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 zstyle ':completion::complete:*' use-cache 1
 
-# Zplugin
-source $SHELL_DIR/.zplugin/mod-bin/zplugin.zsh
-autoload -Uz _zplugin compinit
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+# zinit
+source $SHELL_DIR/.zinit/mod-bin/zinit.zsh
 
-zplugin ice wait"0" atload"_zsh_autosuggest_start" lucid
-zplugin light zsh-users/zsh-autosuggestions
+zinit ice wait"0" atload"_zsh_autosuggest_start" lucid
+zinit light zsh-users/zsh-autosuggestions
 
-zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
-zplugin light zdharma/fast-syntax-highlighting
+zinit ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+zinit light zdharma/fast-syntax-highlighting
+
+zinit ice atclone"dircolors -b src/dir_colors > clrs.zsh" \
+    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+zinit light arcticicestudio/nord-dircolors
