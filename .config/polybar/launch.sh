@@ -8,8 +8,6 @@ while pgrep -u "$(id -u)" -x polybar >/dev/null; do sleep 0.1; done
 
 # Launch bars
 polybar main &
-
-MONITOR=HDMI-0 polybar secondary &
-MONITOR=DVI-D-0 polybar secondary &
+polybar secondary &
 
 echo "Bars launched..."
