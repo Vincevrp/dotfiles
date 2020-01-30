@@ -50,7 +50,7 @@ zstyle ':completion::complete:*' cache-path $ZSH_CACHE_DIR
 zstyle ':completion::complete:*' use-cache 1
 
 # zinit
-source $SHELL_DIR/.zinit/mod-bin/zinit.zsh
+source $SHELL_DIR/.zinit/zinit.zsh
 
 zinit ice wait"0" atload"_zsh_autosuggest_start" lucid
 zinit light zsh-users/zsh-autosuggestions
