@@ -11,7 +11,7 @@ function up() {
 }
 
 
-lfcd () {
+lfcd() {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -23,4 +23,11 @@ lfcd () {
             fi
         fi
     fi
+}
+
+# Lazy load rbenv
+rbenv() {
+    unfunction rbenv
+    eval "$(rbenv init -)"
+    rbenv "$@"
 }
