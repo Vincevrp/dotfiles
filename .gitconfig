@@ -1,6 +1,7 @@
 [user]
     name = Vincevrp
     email = vince@vince.sh
+    signingKey = 0x4638DFB8432AAB98
 
 [push]
     default = simple
