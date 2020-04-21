@@ -1,4 +1,5 @@
 " Vimwiki
+let g:vimwiki_global_ext = 0
 let personal = {}
 let personal.path = '~/Wiki/personal'
 let personal.syntax = 'markdown'
