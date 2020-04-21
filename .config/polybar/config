@@ -11,7 +11,7 @@ secondary = ${xrdb:color14}
 alert = #bd2c40
 
 [bar/main]
-monitor = ${env:MONITOR:DVI-I-1}
+monitor = ${env:MONITOR:DP-1}
 width = 100%
 height = 27
 radius = 0.0
