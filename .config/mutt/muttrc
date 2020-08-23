@@ -82,6 +82,9 @@ bind editor             ^T complete
 # }}}
 
 # Macros {{{
+macro index,pager         \CJ  '<sidebar-next-new><sidebar-open>'
+macro index,pager         \CK  '<sidebar-prev-new><sidebar-open>'
+macro index,pager         \CL  '<sidebar-open>'
 macro index 'c' '<change-folder>?<change-dir><home>^K=<enter>'
 macro index A \
     "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
