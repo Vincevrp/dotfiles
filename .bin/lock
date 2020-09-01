@@ -2,7 +2,7 @@
 # Inspired by @Lokesh-krishna
 # Uses PandorasFox/i3lock-color
 
-i3lock -neti ~/.github/wallpaper.png  \
+i3lock -neti ~/.github/this-is-fine-art.jpg  \
     --linecolor=00000000         \
     --keyhlcolor=88c0d0ff        \
     --bshlcolor=d8dee9ff         \
@@ -13,7 +13,7 @@ i3lock -neti ~/.github/wallpaper.png  \
     --insidewrongcolor=00000000  \
     --insidecolor=00000000       \
                                  \
-    --ringcolor=5e81acff         \
+    --ringcolor=bf616aff         \
     --ringvercolor=ebcb8bff      \
     --ringwrongcolor=bf616aff    \
                                  \
