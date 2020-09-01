@@ -42,3 +42,4 @@
 
 ! Specify DPI
 Xft.dpi: 96
+Xcursor.size: 16
