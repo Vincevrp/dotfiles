@@ -15,13 +15,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'Shougo/neosnippet.vim'
 Plug 'neoclide/coc.nvim',       { 'branch': 'release' }
-Plug 'neoclide/coc-json',       { 'for': 'json'       }
-Plug 'neoclide/coc-yaml',       { 'for': 'yaml'       }
 
 " Tools
 Plug 'junegunn/goyo.vim',       { 'on': 'Goyo' }
 Plug 'junegunn/vim-easy-align'
-Plug 'justinmk/vim-sneak'
 Plug 'takac/vim-hardtime'
 Plug 'vimwiki/vimwiki'
 Plug 'will133/vim-dirdiff'
