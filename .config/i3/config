@@ -16,7 +16,7 @@ set $calc       rofi -show calc -modi calc -no-show-match -no-sort
 set $window     rofi -show window
 
 # Wallpaper path
-set $wallpaper  $HOME/.github/wallpaper.png
+set $wallpaper  $HOME/.github/wallpaper.jpg
 
 # Lockscreen command
 set $lock       $HOME/.bin/lock
