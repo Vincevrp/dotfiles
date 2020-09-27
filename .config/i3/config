@@ -72,9 +72,9 @@ for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scra
 
 # Workspace and monitor config {{{
 workspace 1 output DP-1
-workspace 2 output HDMI-0
-workspace 3 output DVI-D-0
-workspace 4 output DVI-D-0
+workspace 2 output DVI-D-0
+workspace 3 output HDMI-0
+workspace 4 output HDMI-0
 # }}}
 
 # Keybindings {{{

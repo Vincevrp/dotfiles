@@ -40,3 +40,5 @@
 *.color14: nord7
 *.color15: nord6
 
+! Specify DPI
+Xft.dpi: 96
