@@ -39,6 +39,8 @@ alias ta='tmux attach -t'
 alias tk='tmux kill-session -t'
 alias tka='tmux kill-session -a'
 
+alias tf='terraform'
+
 alias v='vagrant'
 alias vs='vagrant ssh'
 alias vS='vagrant status'
