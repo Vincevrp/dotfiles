@@ -14,8 +14,10 @@ source $my_cfgdir/mailboxes
 source /usr/share/doc/neomutt/samples/gpg.rc
 # }}}
 
+
 # Settings {{{
-set pgp_default_key = "0x4638DFB8432AAB98"                          # Set keyID
+set pgp_default_key  = "0x4638DFB8432AAB98"                         # Set keyID
+set pgp_self_encrypt = yes                                          # Always encrypt to self
 set fast_reply                                                      # Enable fast reply
 set include                                                         # Include message in reply
 set delete                                                          # Don't ask, just delete
