@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Run polybar launch script
+"${HOME}"/.config/polybar/launch.sh > /dev/null 2>&1
+
+# Set key repeat again
+xset r rate 350 35
