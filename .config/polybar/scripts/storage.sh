@@ -1,2 +1,2 @@
 #!/bin/sh
-df -h | awk '/nvme0n1p2/ {print $4}'
+df -h 2>/dev/null | awk '/cryptroot/ {print $4}'
