@@ -1,10 +1,10 @@
 #.Shell variables
 
 # PATH
-export PATH=$PATH:~/.bin                    # Add ~/.bin to PATH
-export PATH=$PATH:~/.gem/ruby/2.7.0/bin     # Add ruby gems to PATH
-export PATH=$PATH:~/.npm/node_modules/bin   # Add node_modules to PATH
-export PATH=$PATH:~/.local/bin              # Add python bins to PATH
+export PATH=$PATH:~/.bin                            # Add ~/.bin to PATH
+export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin # Add ruby gems to PATH
+export PATH=$PATH:~/.npm/node_modules/bin           # Add node_modules to PATH
+export PATH=$PATH:~/.local/bin                      # Add python bins to PATH
 
 # General
 export EDITOR=/usr/bin/vim
