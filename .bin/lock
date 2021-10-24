@@ -1,44 +1,9 @@
 #!/bin/sh
-# Inspired by @Lokesh-krishna
-# Uses PandorasFox/i3lock-color
 
-i3lock -neti ~/.github/lock.jpg \
-    --redraw-thread \
-    --linecolor=00000000             \
-    --keyhlcolor=eceff4              \
-    --bshlcolor=d8dee9ff             \
-    --separatorcolor=00000000        \
-    --radius=300                     \
-                                     \
-    --insidevercolor=00000000        \
-    --insidewrongcolor=00000000      \
-    --insidecolor=00000000           \
-                                     \
-    --ringcolor=8fbcbb               \
-    --ringvercolor=ebcb8bff          \
-    --ringwrongcolor=bf616aff        \
-                                     \
-    --clock                          \
-    --timecolor=eceff4ff             \
-    --timestr="%H:%M"                \
-    --time-font=Hack                 \
-    --timesize=134                   \
-                                     \
-    --datecolor=d8dee9ff             \
-    --datestr="%A, %d %B"            \
-    --date-font=Hack                 \
-    --datesize=30                    \
-                                     \
-    --veriftext="Verifying..."       \
-    --verif-font=Hack                \
-    --verifcolor=d8dee9ff            \
-    --verifsize=45                   \
-                                     \
-    --wrongtext="Incorrect"          \
-    --wrong-font=Hack                \
-    --wrongcolor=d8dee9ff            \
-    --wrongsize=45                   \
-    --noinputtext="No input"         \
-                                     \
-    --indicator                      \
-    --color=2e3440
+export XSECURELOCK_SAVER=saver_mpv
+export XSECURELOCK_FONT="Hack Regular"
+export XSECURELOCK_BLANK_TIMEOUT=2
+export XSECURELOCK_LIST_VIDEOS_COMMAND="find $HOME/.github/lock.jpg -type f"
+export XSECURELOCK_IMAGE_DURATION_SECONDS=60
+
+/usr/bin/xsecurelock
