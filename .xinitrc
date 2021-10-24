@@ -1,5 +1,6 @@
 #!/bin/sh
 xset r rate 350 35
+setxkbmap be
 
 if [ -f ~/.Xresources ]; then
     xrdb -merge "$HOME/.Xresources"
