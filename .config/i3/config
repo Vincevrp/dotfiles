@@ -32,7 +32,7 @@ exec            redshift -l 51.0535:3.7304              # Start Redshift
 exec            $HOME/.bin/scratchpad                   # Start scratchpad
 exec            nm-applet                               # Networkmanager
 exec_always     $HOME/.config/polybar/launch.sh         # Status bar
-exec_always     feh --bg-scale $wallpaper               # Set wallpaper
+exec_always     feh --bg-fill $wallpaper                # Set wallpaper
 # }}}
 
 # Layout and colorscheme {{{
@@ -71,9 +71,9 @@ for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scra
 
 # Workspace and monitor config {{{
 workspace 1 output eDP1
-workspace 2 output HDMI2
-#workspace 3 output DVI-I-1
-#workspace 4 output HDMI-0
+workspace 2 output DP-1-3
+workspace 3 output DP-1-2
+workspace 4 output DP-1-2
 # }}}
 
 # Keybindings {{{
