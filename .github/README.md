@@ -1,8 +1,5 @@
 # Dotfiles
 
-
-[![GitHub release](https://img.shields.io/github/release/vincevrp/dotfiles.svg?style=flat-square)](https://github.com/Vincevrp/dotfiles/releases)
-[![GitHub commits (since latest release)](https://img.shields.io/github/commits-since/Vincevrp/dotfiles/latest.svg?style=flat-square)](https://github.com/Vincevrp/dotfiles)
 ![GitHub last commit](https://img.shields.io/github/last-commit/Vincevrp/dotfiles.svg?style=flat-square)
 [![GitHub license](https://img.shields.io/github/license/Vincevrp/dotfiles.svg?style=flat-square)](https://github.com/Vincevrp/dotfiles/blob/master/LICENSE)
 
