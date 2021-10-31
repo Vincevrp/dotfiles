@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 
 " Completion
 Plug 'w0rp/ale'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Shougo/neosnippet.vim'
 Plug 'neoclide/coc.nvim',       { 'branch': 'release' }
 Plug 'neoclide/coc-json',       { 'for': 'json'       }
