@@ -3,7 +3,6 @@
 configuration {
     modi:                   "run,ssh,window";
     matching:               "fuzzy";
-    theme:                  ".config/rofi/theme.rasi";
     font:                   "Hack Nerd Font 11";
     lines:                  7;
     separator-style:        "solid";
@@ -13,3 +12,5 @@ configuration {
     kb-accept-entry:        "Return,KP_Enter";
     kb-remove-to-eol:       "";
 }
+
+@theme "theme.rasi"
