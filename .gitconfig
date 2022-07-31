@@ -3,6 +3,9 @@
     email = vince@vince.sh
     signingKey = 0x4638DFB8432AAB98
 
+[pull]
+    rebase = true
+
 [push]
     default = simple
 
