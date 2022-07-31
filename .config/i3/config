@@ -29,11 +29,10 @@ set $screenshot maim -s -f png | xclip -selection clipboard -t image/png
 exec            picom -CGb                              # Start picom
 exec            dunst                                   # Start dunst
 exec            redshift -l 51.0535:3.7304              # Start Redshift
-exec            imwheel -k -b 4567                      # Start imwheel
 exec            $HOME/.bin/scratchpad                   # Start scratchpad
+exec            nm-applet                               # Networkmanager
 exec_always     $HOME/.config/polybar/launch.sh         # Status bar
-exec_always     feh --bg-scale $wallpaper  \
-                    --bg-fill  $wallpaper               # Set wallpaper
+exec_always     feh --bg-fill $wallpaper                # Set wallpaper
 # }}}
 
 # Layout and colorscheme {{{
@@ -71,10 +70,10 @@ for_window [instance="scratchpad"] move scratchpad; [instance="scratchpad"] scra
 # }}}
 
 # Workspace and monitor config {{{
-workspace 1 output DP-1
-workspace 2 output DVI-D-0
-workspace 3 output HDMI-0
-workspace 4 output HDMI-0
+workspace 1 output eDP1
+workspace 2 output DP-1-3
+workspace 3 output DP-1-2
+workspace 4 output DP-1-2
 # }}}
 
 # Keybindings {{{
@@ -148,6 +147,7 @@ bindsym $mod+Shift+Return   exec $lock
 
 # Screenshot
 bindsym Print               exec $screenshot
+bindsym $mod+m              exec maim -s -f png > "screen_$(date).png"
 
 # Show scratchpad
 bindsym $mod+u              [instance="scratchpad"] scratchpad show
@@ -178,6 +178,10 @@ bindsym $mod+Shift+egrave   move container to workspace 7
 bindsym $mod+Shift+8        move container to workspace 8
 bindsym $mod+Shift+ccedilla move container to workspace 9
 bindsym $mod+Shift+agrave   move container to workspace 10
+
+# Move workspace to other monitor
+bindsym $mod+w move workspace to output HDMI2
+bindsym $mod+x move workspace to output eDP1
 # }}}
 
 # Layouts and modes {{{
@@ -208,6 +212,17 @@ bindsym $mod+Shift+g         gaps inner current set 10; gaps outer current set 1
 
 # Resize mode binding
 bindsym $mod+r              mode "resize"
+
+# Function keys
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym $mod+F11 exec xbacklight -set 1
+bindsym $mod+F12 exec xbacklight -set 100
+
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioMicMute exec amixer set Capture toggle # mute Mic
 
 # Resize mode config
 mode "resize" {
