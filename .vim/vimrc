@@ -140,6 +140,7 @@ nnoremap <silent> ù :nohlsearch<CR>
 " Insert mode
 inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
+inoremap <C-v> <ESC>"+pa
 
 imap <expr><TAB>
             \ pumvisible() ? "<Plug>(neosnippet_expand_or_jump)" :
