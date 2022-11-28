@@ -80,6 +80,7 @@ set list                            " Show listchars
 set listchars=tab:▶▬                " Show tab characters
 set hidden                          " Switch buffers without saving
 set confirm                         " Ask to save when exiting
+set viminfo='100,<1000,s100,h       " Set max lines of registers to 1000
 
 " Miscellaneous
 syntax on                           " Enable syntax highlighting
