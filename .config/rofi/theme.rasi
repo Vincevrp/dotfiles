@@ -43,7 +43,7 @@ vim: set ft=css:
   selected-normal-foreground:     @nord4;
   selected-urgent-background:     @nord3;
   selected-urgent-foreground:     @nord4;
-  separatorcolor:                 @blue;
+  separatorcolor:                 @nord9;
   urgent-background:              @background;
   urgent-foreground:              @foreground;
 }
