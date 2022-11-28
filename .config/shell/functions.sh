@@ -24,3 +24,10 @@ lfcd () {
         fi
     fi
 }
+
+ # Lazy load rbenv
+ rbenv() {
+     unfunction rbenv
+     eval "$(rbenv init -)"
+     rbenv "$@"
+ }
