@@ -9,6 +9,9 @@
 [push]
     default = simple
 
+[commit]
+    verbose = true
+
 [github]
     user = Vincevrp
 
