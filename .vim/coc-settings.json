@@ -1,5 +1,6 @@
 {
     "suggest.autoTrigger": "always",
+    "suggest.noselect": true,
     "suggest.timeout": 2000,
     "suggest.maxCompleteItemCount": 12,
     "suggest.floatEnable": false,
@@ -12,9 +13,14 @@
             "filetypes": ["sh"]
         },
         "terraform": {
-            "command": "terraform-lsp",
-            "filetypes": ["terraform"],
-            "initializationOptions": {}
+            "command": "terraform-ls",
+            "args": ["serve"],
+            "filetypes": [
+                "terraform",
+                "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
         }
     }
 }
