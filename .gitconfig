@@ -23,3 +23,6 @@
 
 [color]
     ui = true
+
+[url "ssh://git@github.com:"]
+    insteadOf = git://github.com
