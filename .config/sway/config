@@ -1,0 +1,282 @@
+# Title: sway config
+# Author: Vincevrp | github.com/Vincevrp
+# vim:ft=swayconfig
+
+# Variables and imports {{{
+include /etc/sway/config.d/*
+
+# Set super key as mod
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Set terminal
+set $term foot -L tmux -L sway
+
+# Set launcher
+set $menu rofi -show run
+
+exec nm-applet --indicator
+# }}}
+
+# Output configuration {{{
+
+# Set wallpaper
+output * bg $HOME/.github/fedora.png fill
+
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# }}}
+
+# Idle configuration {{{
+#
+exec swayidle -w \
+        timeout 120 'swaylock -e -f -c 2F343F' \
+        timeout 125 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+        before-sleep 'swaylock -e -f -c 2F343F'
+# }}}
+
+# Input {{{
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+input "type:keyboard" {
+  xkb_layout be
+}
+# }}}
+
+# Keybindings {{{
+
+# Basic {{{
+
+# Start a terminal
+bindsym $mod+Return         exec $term
+
+# Application launcher
+bindsym $mod+d              exec $menu
+bindsym $mod+c              exec $calc
+bindsym Mod1+Tab            exec $window
+
+# Kill focused window
+bindsym $mod+Shift+A        kill
+
+# Fullscreen
+bindsym $mod+f              fullscreen toggle
+
+# Split in horizontal orientation
+bindsym $mod+n              split h
+
+# Split in vertical orientation
+bindsym $mod+v              split v
+
+# Reload the configuration file
+bindsym $mod+Shift+c        reload
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r        restart
+
+# Powermenu
+bindsym $mod+Shift+p        exec $HOME/.bin/powermenu
+
+# Exit sway (logs you out of your Wayland session)
+set $exit_prompt swaynag -t warning -m 'Exit Sway?' -B 'Exit' 'swaymsg exit' --background 2F343F --border 646F87 --border-bottom E53935 --button-background 646F87 --border 646F87 --text FAFAFA --button-text FAFAFA --button-border-size 1
+bindsym $mod+Shift+e exec $exit_prompt
+# }}}
+
+# Movement {{{
+
+# Change focus
+bindsym $mod+h              focus left
+bindsym $mod+j              focus down
+bindsym $mod+k              focus up
+bindsym $mod+l              focus right
+
+# Change focus arrow keys
+bindsym $mod+Left           focus left
+bindsym $mod+Down           focus down
+bindsym $mod+Up             focus up
+bindsym $mod+Right          focus right
+
+# Move focused window
+bindsym $mod+Shift+h        move left
+bindsym $mod+Shift+j        move down
+bindsym $mod+Shift+k        move up
+bindsym $mod+Shift+l        move right
+
+# Moved focused window arrow keys
+bindsym $mod+Shift+Left     move left
+bindsym $mod+Shift+Down     move down
+bindsym $mod+Shift+Up       move up
+bindsym $mod+Shift+Right    move right
+
+# }}}
+
+# Tools {{{
+# Lockscreen
+set $lock swaylock -e -f -c 2F343F
+bindsym $mod+Shift+Return   exec $lock
+
+# Screenshot
+bindsym Print               exec $screenshot
+# }}}
+
+# Workspaces {{{
+
+# Switch to workspace
+bindsym $mod+ampersand      workspace 1
+bindsym $mod+eacute         workspace 2
+bindsym $mod+quotedbl       workspace 3
+bindsym $mod+apostrophe     workspace 4
+bindsym $mod+parenleft      workspace 5
+bindsym $mod+section        workspace 6
+bindsym $mod+egrave         workspace 7
+bindsym $mod+exclam         workspace 8
+bindsym $mod+ccedilla       workspace 9
+bindsym $mod+agrave         workspace 10
+
+# Move focused container to workspace
+bindsym $mod+1              move container to workspace 1
+bindsym $mod+Shift+eacute   move container to workspace 2
+bindsym $mod++3             move container to workspace 3
+bindsym $mod++4             move container to workspace 4
+bindsym $mod++5             move container to workspace 5
+bindsym $mod+Shift+section  move container to workspace 6
+bindsym $mod+Shift+egrave   move container to workspace 7
+bindsym $mod++8             move container to workspace 8
+bindsym $mod+Shift+ccedilla move container to workspace 9
+bindsym $mod+Shift+agrave   move container to workspace 10
+# }}}
+
+# Layouts and modes {{{
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s              layout stacking
+bindsym $mod+z              layout tabbed
+bindsym $mod+e              layout toggle split
+
+# Drag floating window
+floating_modifier $mod
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space    floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus    mode_toggle
+
+# Focus the parent container
+bindsym $mod+q              focus parent
+
+# Toggle gaps
+bindsym $mod+g               gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+g         gaps inner current set 10; gaps outer current set 10
+
+# Focus the child container
+#bindsym $mod+d focus child
+
+# Resize mode binding
+bindsym $mod+r              mode "resize"
+
+# Resize mode config
+mode "resize" {
+
+    # Resize window
+    bindsym h               resize shrink width 10 px or 10 ppt
+    bindsym j               resize grow height 10 px or 10 ppt
+    bindsym k               resize shrink height 10 px or 10 ppt
+    bindsym l               resize grow width 10 px or 10 ppt
+    # Resize window arrow keys
+    bindsym Left            resize shrink width 10 px or 10 ppt
+    bindsym Down            resize grow height 10 px or 10 ppt
+    bindsym Up              resize shrink height 10 px or 10 ppt
+    bindsym Right           resize grow width 10 px or 10 ppt
+
+    # Back to normal mode
+    bindsym Return          mode "default"
+    bindsym Escape          mode "default"
+}
+
+# }}}
+
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+u move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+u  scratchpad show
+#
+# Utilities:
+#
+    # Special keys to adjust volume via PulseAudio
+    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+    # Special keys to adjust brightness via brightnessctl
+    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    # Special key to take a screenshot with grim
+    #bindsym Print exec grim
+
+# Font
+font Hack 10
+
+# Gaps
+smart_gaps on
+gaps inner 10
+gaps outer 10
+
+# Colors
+set $bg-color               #2F343F
+set $border-color           #646f87
+set $inactive-bg-color      #2F343F
+set $text-color             #F3F4F5
+set $inactive-text-color    #676E7D
+set $urgent-bg-color        #E53935
+
+# Window colors
+#                           Border                  Background              Text                    Indicator
+client.focused              $bg-color               $border-color           $text-color             $text-color
+client.unfocused            $inactive-bg-color      $inactive-bg-color      $inactive-text-color    $text-color
+client.focused_inactive     $inactive-bg-color      $inactive-bg-color      $inactive-text-color    $text-color
+client.urgent               $urgent-bg-color        $urgent-bg-color        $text-color             $text-color
+
+# Window style
+for_window [class="^.*"] border pixel 1
+smart_borders on
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+# bar {
+#     position top
+
+#     # When the status_command prints a new line to stdout, swaybar updates.
+#     # The default just shows the current date and time.
+#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+
+#     colors {
+#         statusline $text-color
+#         background $bg-color
+#         focused_workspace $text-color $inactive-bg-color $text-color
+#         inactive_workspace $inactive-bg-color $inactive-bg-color $border-color
+#     }
+# }
+bar {
+    swaybar_command waybar
+}
+# }}}
+
