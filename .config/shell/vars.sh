@@ -2,6 +2,7 @@
 
 # PATH
 export PATH=$PATH:~/.bin                            # Add ~/.bin to PATH
+export PATH=$PATH:~/.local/share/go/bin             # Add go binaries to PATH
 export PATH=$PATH:~/.local/share/gem/ruby/3.0.0/bin # Add ruby gems to PATH
 export PATH=$PATH:~/.npm/node_modules/bin           # Add node_modules to PATH
 export PATH=$PATH:~/.local/bin                      # Add python bins to PATH
@@ -36,6 +37,9 @@ export LIBVIRT_DEFAULT_URI="qemu:///system"
 unset SSH_AGENT_PID
 export GPG_TTY="${TTY}"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+# GOLANG
+export GOPATH=$HOME/.local/share/go
 
 # NPM
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
