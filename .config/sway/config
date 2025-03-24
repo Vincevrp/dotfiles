@@ -50,6 +50,19 @@ exec swayidle -w \
 input "type:keyboard" {
   xkb_layout be
 }
+
+input "1133:16505:Logitech_G_Pro" {
+    natural_scroll disabled
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0 # set mouse sensitivity (between -1 and 1)
+}
+
+input "1133:16480:Logitech_MX_Master" {
+    natural_scroll disabled
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    pointer_accel 0 # set mouse sensitivity (between -1 and 1)
+}
+
 # }}}
 
 # Keybindings {{{
@@ -124,7 +137,7 @@ set $lock swaylock -e -f -c 2F343F
 bindsym $mod+Shift+Return   exec $lock
 
 # Screenshot
-bindsym Print               exec $screenshot
+bindsym Print               exec grim -g "$(slurp -d)" - | wl-copy -t image/png
 # }}}
 
 # Workspaces {{{
@@ -227,8 +240,6 @@ mode "resize" {
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
-    #bindsym Print exec grim
 
 # Font
 font Hack 10

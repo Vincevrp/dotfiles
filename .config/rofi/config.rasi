@@ -3,7 +3,7 @@
 configuration {
     modi:                   "run,ssh,window";
     matching:               "fuzzy";
-    font:                   "Hack Nerd Font 11";
+    font:                   "Hack 11";
     lines:                  7;
     separator-style:        "solid";
     hide-scrollbar:         true;

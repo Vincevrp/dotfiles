@@ -126,7 +126,7 @@ nnoremap <silent> <leader>q :Buffers<CR>
 nnoremap <silent> <leader>f :call util#LF()<CR>
 nnoremap <silent> <leader>e :call util#ToggleQuickFix()<CR>
 nnoremap <silent> <leader>n :call util#ToggleColorColumn()<CR>
-nnoremap <silent> <leader>s :call system('xclip -selection clipboard', @0)<CR>
+nnoremap <silent> <leader>s :call system('wl-copy', @0)<CR>
 
 " F-keys
 nnoremap <silent> <F1> :set nospell<CR>
