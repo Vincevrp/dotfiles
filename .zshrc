@@ -27,8 +27,8 @@ source $SHELL_DIR/aliases.sh
 source $SHELL_DIR/prompt.sh
 
 # FZF
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
+source ~/completion.zsh
 
 # Keybindings
 bindkey -v
@@ -56,7 +56,7 @@ zinit ice wait"0" atload"_zsh_autosuggest_start" lucid
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 zinit ice atclone"dircolors -b src/dir_colors > clrs.zsh" \
     atpull'%atclone' pick"clrs.zsh" nocompile'!' \

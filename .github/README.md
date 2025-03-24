@@ -66,7 +66,7 @@ Listed below are the main components of my setup. This does not include everythi
 #### Shell
 
 * [zsh](https://wiki.archlinux.org/index.php/Zsh) - *main shell, `~/.bin/` is available in `$PATH`*
-* [zplugin](https://github.com/zdharma/zplugin) - *zsh plugin manager*
+* [zinit](https://github.com/zdharma-continuum/zinit) - *zsh plugin manager*
 
 ## License
 
